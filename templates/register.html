@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="main-content-forms">
+    <div class="container">
+        <div class="content-section">
+            {% if session['logged_in'] %}v
+            <p class="alert-text">You are already logged in. You don't need to register!</p>
+            <!-- TODO add css and correct url_for -->
+            <p class="alert-text">Go to <a class="sign-in-link" href="{{url_for('home')}}">Home</a></p>
+            {% else %}
+            <form action="{{url_for('signup')}}" method="POST" class="form-register">
+                <h5>Register to personalize your cookbook!</h5>
+                <fieldset class="form-group">
+                    <legend class="legend-text">Register</legend>
+
+                    <div class="group">
+                        <label class="form-label" for="author_name">Type Your Full Name</label>
+                        <input class="form-input" id="author_name" name="author_name" type="text" value=""
+                            placeholder="Full name" required>
+
+                        <label class="form-label" for="login-name">Choose a Username</label>
+                        <input class="form-input" id="login-name" name="username" type="text" value=""
+                            placeholder="Username" required>
+
+                        <label class="form-label" for="login-pass">Choose a Password</label>
+                        <input class="form-input" id="password" type="password" value="" placeholder="Password"
+                            name="password" required>
+                    </div>
+                </fieldset>
+                <div class="btn-group">
+                    <button type="submit" name="action" value="Join Now"
+                        class="btn btn-forms btn-sign-up">submit</button>
+                </div>
+
+                <div class="bottom-text">
+                    Already have an account? <a class="sign-in-link" href="{{url_for('login')}}">Log in</a>
+                </div>
+            </form>
+
+
+        </div>
+        <br>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,185 @@
+body {
+    background-color: gray;
+}
+
+.top-section-form {
+    background-image: url(/static/images/three_burgers.jpg);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    height: 100vh;
+}
+
+.title-form,
+.subtitle-form {
+    text-align: center;
+    text-transform: capitalize;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin: 0;
+    font-weight: 700;
+}
+
+
+.title-form {
+    grid-area: header;
+    margin-top: 2.5rem;
+    font-size: 2rem;
+}
+
+.subtitle-form {
+    font-size: 1rem;
+}
+
+/* =================
+   main-content section 
+   ================= */
+
+.main-content {
+    padding-top: 1em;
+}
+
+.main-content-forms {
+    padding: 0em;
+}
+
+.container {
+    max-width: 430px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* =================
+   form
+   ================= */
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.legend-text {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.group {
+    padding-bottom: .9rem;
+}
+
+.btn-group {
+    margin: 0 auto;
+}
+
+.btn-forms {
+    display: inline-block;
+    background-color: transparent;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn-sign-up,
+.sign-in-link,
+.link {
+    color: white;
+    text-decoration: none;;
+}
+
+.btn-sign-up:hover,
+.btn-sign-up:focus,
+.sign-in-link:hover,
+.sign-in-link:focus {
+    color: var(--yellow);
+}
+
+.bottom-text {
+    margin-top: .5rem;
+    color: rgb(184, 181, 181);
+    font-size: 0.75rem;
+    text-transform: capitalize;
+}
+
+/* labels / input  */
+
+.form-label {
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.active {
+    color: black !important;
+    border-bottom: none !important;
+}
+
+.form-input {
+    height: 2rem !important;
+    font-size: 1.5rem !important;
+}
+
+label,
+input {
+    display: inline-grid;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: none;
+    width: auto;
+    color: black;
+}
+
+input {
+    width: 50% !important;
+    color: var(--yellow);
+    text-align: center;
+}
+
+label:focus,
+label:active,
+input:focus,
+input:active {
+    border-bottom: 1px solid var(--yellow) !important;
+    box-shadow: none !important;
+    color: black !important;
+}
+
+
+
+
+
+
+/* =================
+   media queries
+   ================= */
+
+@media (max-width: 372px) {
+
+    body {
+        font-size: 0.8rem;
+    }
+
+    .uname-label,
+    .email-label,
+    .pw-label,
+    .conf-pw-label {
+        justify-items: center;
+    }
+
+    .bottom-text {
+        color:var(--yellow);
+        font-size: 0.8rem;
+    }
+
+    .sign-in-link {
+        color:var(--yellow);
+    }
+
+    .sign-in-link:hover,
+    .sign-in-link:focus {
+        color: black;
+    }
+
+}

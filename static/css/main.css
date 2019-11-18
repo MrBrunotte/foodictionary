@@ -1,0 +1,467 @@
+/* ========================================
+    This is the start of every css page!!
+=========================================== */
+
+/*  Fonts
+    -----
+    font-family: 'Lora', serif;             headers
+    font-family: 'Ubuntu', sans-serif;      Body & buttons
+*/
+
+/* compound selectors */
+
+:root {
+    --yellow: #FFE600;
+    --black: #272727;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;                  /* to not touch the sides */
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;            /* 1rem = 16 px (default) */
+    font-weight: 400;
+    line-height: 1.6;           /* Its easier to read */
+    background: gray;
+}
+
+/* ==================
+    Typography
+===================== */
+
+h1, 
+h2,
+h3 {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    margin-top: 0;
+    color: var(--yellow);
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* ==================
+    header
+===================== */
+
+.header-home{
+    background: transparent;
+    position: absolute;
+    width: 100%;
+}
+
+
+/* navigation */
+nav {
+    background-color: transparent;
+}
+
+i.right {
+    margin: 5px;
+}
+
+.nav-link {
+    /* TODO remove padding! */
+    /*padding: 0em 1.5em;*/
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #FFE600;
+}
+
+nav.nav-center ul {
+    text-align: center;
+}
+nav.nav-center ul li {
+    display: inline;
+    float: none;
+}
+nav.nav-center ul li a {
+    display: inline-block;
+}
+
+nav .brand-logo.center {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+/* Navigation smaller screens*/
+
+.sidenav{
+    background-image: url(/static/images/background.jpg);
+    opacity: 0.9;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    padding-top: 6rem;
+}
+
+.sidenav li > a {
+    color: white;
+    margin: 0rem 0rem 2rem 0rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.sm {
+    text-align: center;
+}
+
+/* ==================
+    top-section (main)
+===================== */
+
+.top-section {
+    background-image: url(/static/images/three_burgers.jpg);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    height: 75vh;
+}
+
+.top-grid {
+    display: grid;
+    grid-template-areas:
+        "navigation" 
+        "header"
+        "sub-header"
+        "button"
+        "flash-message";
+}
+
+.nav            {grid-area: navigation;}
+.title          {grid-area: header;}
+.subtitle       {grid-area: sub-header;}
+.btn-register   {grid-area: button;}
+.flash-message  {grid-area: flash-message;}
+.form-register  {grid-area: form-register;}
+
+.title,
+.subtitle,
+.flash-message {
+    text-align: center;
+    text-transform: capitalize;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-bottom: 1rem;
+}
+
+.title,
+.subtitle {
+    font-weight: 700;
+}
+
+.title {
+    grid-area: header;
+    font-size: 2rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+}
+
+
+
+/* Media queries bigger screens */
+
+@media (min-width: 600px) {
+    .title {
+        padding-top: .4em;
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+/* class category for flash messages */
+
+/*.form-message {
+    color: white;
+    margin: 0 auto;
+    font-size: 2rem;
+    font-family: 'Ubuntu';
+}*/
+
+.flash-message,
+.error,
+.messages {
+    margin-top:20px;
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: 'Ubuntu';
+}
+
+.flash-message,
+.messages {
+    color: var(--yellow);
+}
+
+.error,
+.alert {
+    color: red;
+}
+
+.username-nav {
+    color: var(--yellow);
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: 'Ubuntu';
+    text-transform: capitalize;
+}
+/* ==================
+    buttons
+===================== */
+
+.btn {
+    background-color: transparent !important;
+    font-size: 2rem;
+    text-transform: capitalize;
+    align-self: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2;
+} 
+
+.btn-register,
+.btn-surprise {
+    color: white;
+    transform: scale(.8);
+    transition: transform 250ms;
+    justify-self: center;
+}
+
+.btn-register:hover,
+.btn-register:focus,
+.btn-surprise:hover,
+.btn-surprise:focus {
+    transform: scale(1);
+    color: var(--yellow);
+    background-color: #6d3819;
+}
+
+/* ==================
+    middle section
+===================== */
+
+.middle-grid {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "sub-header"
+        "sub-header-text"
+        "button";
+}
+
+.middle-section-title,
+.middle-section-subtitle,
+.middle-section-subtitle-text {
+    text-align: center;
+    text-transform: capitalize;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    margin: 0;
+}
+
+.middle-section-subtitle {
+    font-weight: 700;
+    margin: 1em 0em;
+}
+
+.middle-section-title {
+    grid-area: header;
+    font-size: 2.5rem;
+}
+
+/* ====================
+    Random meal area
+======================= */
+
+.random-meal-section {
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: 1em;
+    padding: 0em .8em;
+    grid-template-areas:
+        "header"
+        "img-header"
+        "img"
+        "tags-header"    
+        "tags"
+        "ingr-header"    
+        "ingr"
+        "instr-header"   
+        "instr"
+        "video-header"
+        "video";
+}
+
+/* grid areas */
+.random-meal-name       { grid-area: header; }
+.img-food-parent        { grid-area: img; }
+.img-header-parent      { grid-area: img-header; }
+.tags-parent            { grid-area: tags-header; }
+.tags                   { grid-area: tags; }
+.ingredients            { grid-area: ingr; }
+.ingr-parent            { grid-area: ingr-header; }
+.meal-instr-parent      { grid-area: instr-header; }
+.instructions           { grid-area: instr; }
+.video-parent           { grid-area: video; }
+.iframe                 { grid-area: video-header; }
+
+.img-food-parent,
+.random-meal-name,
+.tags-parent,
+.img-header-parent,
+.tags,
+.meal-instr-parent,
+.ingredients,
+.video-parent,
+.video-header-div {
+    display: grid;
+    text-transform: capitalize;
+}
+
+.image-header,
+.random-meal-name p,
+.tags-header,
+.tags-parent,
+.meal-info,
+.ingr-parent h2,
+.ingredients,
+.meal-instr-header,
+.instructions {
+    margin: 0;
+    text-align: center;
+}
+
+.random-meal-name,
+.image-header,
+.tags-header,
+.ingr-header,
+.meal-instr-header,
+.video-parent {
+    border-top: 2px solid rgb(78, 78, 78);
+}
+
+.random-meal-name {
+    font-size: 2.5rem;
+}
+
+.video-parent {
+    padding: 1em;
+}
+
+.tags,
+.meal-instr {
+    margin: 0em 2em;
+}
+
+.img-food {
+    margin: 0 auto;
+    max-height: 400px;
+    width: 60%;
+    object-fit: cover;
+    box-shadow: 3px 3px 5px 3px rgb(66, 66, 66);
+}
+
+.random-meal-name {
+    padding: .3em;
+    margin: 0;
+    text-align: center;
+}
+
+.meal-instr-parent {
+    margin: 0;
+}
+
+.ingredients,
+.meal-instr {
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.videoWrapper {
+    margin: auto;
+}
+
+/*  Media Query - larger screens
+    Screens above 600 px */
+
+@media (min-width: 600px) {
+
+    .random-meal-section {
+        display: grid;
+        width: 100%;
+        row-gap: .5em;
+        column-gap: 2em;
+        padding: 0em 2em;
+        grid-template-areas:
+            "header         header          header"
+            "img            img             img"
+            "tags-header    tags-header     instr-header"
+            "tags           tags            instr"
+            "ingr-header    ingr-header     instr"
+            "ingr           ingr            instr"
+            "video          video           video";
+    }
+
+    .img-header-parent h2 {
+        display: none;
+    }
+
+    
+    .image-header,
+    .tags-header,
+    .ingr-header,
+    .meal-instr-header,
+    .meal-instr,
+    .video-parent {
+        border-top: none;
+    }
+
+    .ingr-parent h2,
+    .tags-header,
+    .meal-instr,
+    .meal-instr-header,
+    .meal-info,
+    .ingredients {
+        text-align: start;
+    }
+
+    .img-food {
+        justify-self: center;
+        margin-bottom: 2em;
+        margin-top: 1em;
+    }
+
+    .meal-instr {
+        width: 75%;
+    }
+}
+
+/* ==================
+    footer
+===================== */

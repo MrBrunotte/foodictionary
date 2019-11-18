@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if session['logged_in'] %}
+<h5 class="center">You are already logged in!</h5>
+<!-- TODO add css and correct url_for -->
+{% else %}
+<div class="main-content-forms">
+    <div class="container">
+        <div class="content-section">
+            <form action="{{url_for('signin')}}" method="POST" class="form-register">
+                <h5>Login to access all your recipes!</h5>
+                <fieldset class="form-group">
+                    <legend class="legend-text">login</legend>
+
+                    <div class="group">
+                        <label class="form-label" for="login-name">Type username:</label>
+                        <input class="form-input" type="text" value="" placeholder="Username" name="username" required>
+
+                        <label class="form-label" for="login-pass">Type password:</label>
+                        <input class="form-input" type="password" value="" placeholder="Password" name="password"
+                            required>
+                    </div>
+                </fieldset>
+                <div class="btn-group">
+                    <button type="submit" value="Log in" class="btn btn-forms btn-sign-up">log in</button>
+                </div>
+                <div class="bottom-text">
+                    need an account? <a class="sign-in-link" href="{{url_for('register')}}">register!</a>
+                </div>
+            </form>
+        </div>
+        <br>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
