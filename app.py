@@ -69,7 +69,7 @@ def signup():
             'password': password
         })
         session['logged_in'] = True
-        flash('Welcome to FOODictionary ' + author_name)
+        flash('Welcome to FOODictionary ' + author_name + '!')
         return login()
     else:
         session['logged_in'] = False
@@ -105,7 +105,7 @@ def signin():
         return signin()
     else:
         session['logged_in'] = True
-        flash('Welcome back ' + user['author_name'].capitalize())
+        flash('Welcome back ' + user['author_name'].capitalize() + '!')
         return render_template('base.html')
 
 

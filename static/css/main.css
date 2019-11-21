@@ -36,7 +36,9 @@ body {
 
 h1, 
 h2,
-h3 {
+h3,
+h4,
+h5 {
     font-family: 'Lora', serif;
     font-weight: 400;
     margin-top: 0;
@@ -129,10 +131,11 @@ nav .brand-logo.center {
 .top-section {
     background-image: url(/static/images/three_burgers.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     color: #fff;
-    height: 75vh;
+    height: 65vh;
 }
+
 
 .top-grid {
     display: grid;
@@ -152,8 +155,7 @@ nav .brand-logo.center {
 .form-register  {grid-area: form-register;}
 
 .title,
-.subtitle,
-.flash-message {
+.subtitle {
     text-align: center;
     text-transform: capitalize;
     padding-left: 1em;
@@ -175,45 +177,29 @@ nav .brand-logo.center {
     font-size: 1rem;
 }
 
-
-
-/* Media queries bigger screens */
-
-@media (min-width: 600px) {
-    .title {
-        padding-top: .4em;
-        font-size: 3rem;
-    }
-
-    .subtitle {
-        font-size: 2rem;
-    }
-}
-
-
-
-
 /* class category for flash messages */
-
-/*.form-message {
-    color: white;
-    margin: 0 auto;
-    font-size: 2rem;
-    font-family: 'Ubuntu';
-}*/
 
 .flash-message,
 .error,
+.message,
 .messages {
-    margin-top:20px;
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0 auto;
     font-weight: 700;
-    font-size: 2rem;
-    font-family: 'Ubuntu';
+    font-size: 1rem;
 }
 
-.flash-message,
+.flash-message {
+
+}
+
 .messages {
-    color: var(--yellow);
+    color: white;
+    background-color: #00000091;
+    padding: 10px 20px;
+    width: 45%;
+    border-radius: 10px;
 }
 
 .error,
@@ -251,6 +237,7 @@ nav .brand-logo.center {
     transform: scale(.8);
     transition: transform 250ms;
     justify-self: center;
+    margin: 0rem 0rem 1rem 0rem;
 }
 
 .btn-register:hover,
@@ -465,3 +452,41 @@ nav .brand-logo.center {
 /* ==================
     footer
 ===================== */
+
+/* Media queries bigger screens */
+
+@media (min-width: 600px) {
+    .title {
+        padding-top: .4em;
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 880px) {
+    .top-section {
+        background-image: url(/static/images/three_burgers_less_background2.jpg);
+    }
+
+    .messages {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .top-section {
+        background-image: url(/static/images/three_burgers_less_background3.jpg);
+    }
+
+    .messages {
+        width: 30%;
+    }
+
+    .title {
+        padding-top: 0px;
+        font-size: 3rem;
+    }
+}

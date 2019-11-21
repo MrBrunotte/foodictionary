@@ -69,12 +69,7 @@
         <div class="top-grid">
             <h1 class="title">FOODictionary</h1>
             <h2 class="subtitle">- Your personalized cookbook -</h2>
-            <a href="{{url_for('register')}}" class="btn btn-register">get started now!</a>
         </div>
-    </section>
-
-    <!--Main Body-->
-    <div>
         <!--Flash Messages-->
         <div class="flash-message">
             <header class="center row flash-message">
@@ -94,6 +89,11 @@
                 {% endwith %}
             </header>
         </div>
+    </section>
+
+    <!--Main Body-->
+    <div>
+
 
         {% block content %} {% endblock %}
     </div>
