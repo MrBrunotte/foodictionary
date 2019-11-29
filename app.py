@@ -5,7 +5,8 @@ import os
 import pymongo
 import math  # remove?
 import random  # remove?
-from flask import Flask, render_template, redirect, request, url_for, request, session, g, abort, flash
+from flask import Flask, flash, render_template, redirect, request, url_for, request, session, g, abort
+from flask_toastr import Toastr
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime, timedelta
@@ -16,6 +17,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 #-----------------------------#
 
 app = Flask(__name__)
+toastr = Toastr(app)
 app.config['MONGO_DBNAME'] = 'foodictionary'
 # app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost')
 app.config['MONGO_URI'] = 'mongodb+srv://mrbrunotte:mrUSERbrunotte@foodictionary-gckbp.mongodb.net/foodictionary?retryWrites=true&w=majority'
@@ -30,6 +32,10 @@ mongo = PyMongo(app)
 
 userDB = mongo.db.users
 
+#---------------#
+# FLASH TOASTR
+#---------------#
+
 
 #----------#
 # HOMEPAGE
@@ -40,7 +46,7 @@ userDB = mongo.db.users
 @app.route('/home')
 def home():
     # returns everything from tasks in task_manager DB
-    return render_template('base.html')
+    return render_template('home.html')
 
 #-----------------------------#
 # USER LOGIN AND REGISTRATION
@@ -69,11 +75,11 @@ def signup():
             'password': password
         })
         session['logged_in'] = True
-        flash('Welcome to FOODictionary ' + author_name + '!')
+        flash('Welcome to FOODictionary ' + author_name + '!', 'success')
         return login()
     else:
         session['logged_in'] = False
-        flash('Username already exists, please try again.')
+        flash('Username already exists, please try again.', 'warning')
     return register()
 
 
@@ -97,16 +103,17 @@ def signin():
     if not user:
         session['logged_in'] = False
         flash('User ' + session['username'] +
-              ' is not registered. Please try again.')
+              ' is not registered. Please try again.', 'warning')
         return signin()
     elif not check_password_hash(user['password'], password):
         session['logged_in'] = False
-        flash('Wrong Password, please try again.')
+        flash('Wrong Password, please try again.', 'warning')
         return signin()
     else:
         session['logged_in'] = True
-        flash('Welcome back ' + user['author_name'].capitalize() + '!')
-        return render_template('base.html')
+        flash('Welcome back ' +
+              user['author_name'].capitalize() + '!', 'success')
+        return render_template('home.html') # if login ok redirect to home
 
 
 @app.route('/logout')

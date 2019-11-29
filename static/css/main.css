@@ -12,7 +12,8 @@
 
 :root {
     --yellow: #FFE600;
-    --black: #272727;
+    --black: #464646;
+    --white: #dcdace;
 }
 
 *,
@@ -27,14 +28,13 @@ body {
     font-size: 1rem;            /* 1rem = 16 px (default) */
     font-weight: 400;
     line-height: 1.6;           /* Its easier to read */
-    background: var(--white);
 }
 
 /* ==================
     Typography
 ===================== */
 
-h1, 
+h1,
 h2,
 h3,
 h4,
@@ -42,7 +42,26 @@ h5 {
     font-family: 'Lora', serif;
     font-weight: 400;
     margin-top: 0;
+}
+
+h1,
+h2 {
     color: var(--yellow);
+}
+
+h3,
+h4,
+h5 {
+    color: #0404047d;
+}
+
+h5 {
+    text-transform: capitalize !important;
+}
+
+h6 {
+    margin: .7666666667rem 0 0rem 0;
+    font-weight: 900;
 }
 
 strong {
@@ -69,18 +88,29 @@ i.right {
     margin: 5px;
 }
 
-.nav-link {
-    /* TODO remove padding! */
-    /*padding: 0em 1.5em;*/
-    color: #fff;
+.nav-link,
+.nav-link-mobile {
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: 700;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 900;
 }
+
 
 .nav-link:hover,
 .nav-link:focus {
-    color: #FFE600;
+    color: #9d9d9d;
+}
+
+.nav-link-mobile:hover,
+.nav-link-mobile:focus {
+    background-color: var(--black) !important;
+    color: var(--white);
+}
+
+.hamburger-list li > a:hover {
+    background-color: var(--black) !important;
+    color: var(--white)
 }
 
 nav.nav-center ul {
@@ -103,25 +133,29 @@ nav .brand-logo.center {
 /* Navigation smaller screens*/
 
 .sidenav{
-    background-image: url(/static/images/background.jpg);
-    opacity: 0.9;
+    background-color: var(--white);
     background-size: cover;
     background-position: center;
-    width: 100%;
     height: 100vh;
     object-fit: cover;
-    padding-top: 6rem;
 }
 
 .sidenav li > a {
-    color: white;
-    margin: 0rem 0rem 2rem 0rem;
-    font-size: 1.5rem;
+    color: var(--black);
+    font-size: 1rem;
     font-weight: 700;
 }
 
 .sm {
     text-align: center;
+}
+
+.background {
+    height: 234px;
+}
+
+.hamburger-lists {
+    padding-top: 234px;
 }
 
 /* ==================
@@ -190,10 +224,6 @@ nav .brand-logo.center {
     font-size: 1rem;
 }
 
-.flash-message {
-
-}
-
 .messages {
     color: white;
     background-color: #00000091;
@@ -208,10 +238,11 @@ nav .brand-logo.center {
 }
 
 .username-nav {
-    color: var(--yellow);
+    text-align: center;
+    color: var(--black);
     font-weight: 700;
     font-size: 2rem;
-    font-family: 'Ubuntu';
+    font-family: 'Lora';
     text-transform: capitalize;
 }
 /* ==================
@@ -233,11 +264,11 @@ nav .brand-logo.center {
 
 .btn-register,
 .btn-surprise {
-    color: white;
+    color: #0404047d;
     transform: scale(.8);
     transition: transform 250ms;
     justify-self: center;
-    margin: 0rem 0rem 1rem 0rem;
+    margin: 1rem 0rem;
 }
 
 .btn-register:hover,
@@ -245,7 +276,6 @@ nav .brand-logo.center {
 .btn-surprise:hover,
 .btn-surprise:focus {
     transform: scale(1);
-    color: var(--yellow);
     background-color: #6d3819;
 }
 
@@ -266,21 +296,27 @@ nav .brand-logo.center {
 .middle-section-subtitle,
 .middle-section-subtitle-text {
     text-align: center;
-    text-transform: capitalize;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    margin: 0;
 }
 
-.middle-section-subtitle {
-    font-weight: 700;
-    margin: 1em 0em;
+.middle-section-subtitle,
+.middle-section-subtitle-text {
+    text-transform: capitalize;
 }
 
 .middle-section-title {
+    text-transform: uppercase;
     grid-area: header;
-    font-size: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
+
+.middle-section-subtitle {
+    margin-top: 0;
+    margin-bottom: .75rem;
+    font-weight: 700;
+}
+
+
 
 /* ====================
     Random meal area
@@ -293,7 +329,6 @@ nav .brand-logo.center {
     padding: 0em .8em;
     grid-template-areas:
         "header"
-        "img-header"
         "img"
         "tags-header"    
         "tags"
@@ -308,15 +343,15 @@ nav .brand-logo.center {
 /* grid areas */
 .random-meal-name       { grid-area: header; }
 .img-food-parent        { grid-area: img; }
-.img-header-parent      { grid-area: img-header; }
 .tags-parent            { grid-area: tags-header; }
 .tags                   { grid-area: tags; }
 .ingredients            { grid-area: ingr; }
 .ingr-parent            { grid-area: ingr-header; }
 .meal-instr-parent      { grid-area: instr-header; }
 .instructions           { grid-area: instr; }
+.img-header-parent           { grid-area: video-header; }
 .video-parent           { grid-area: video; }
-.iframe                 { grid-area: video-header; }
+
 
 .img-food-parent,
 .random-meal-name,
@@ -328,33 +363,54 @@ nav .brand-logo.center {
 .video-parent,
 .video-header-div {
     display: grid;
-    text-transform: capitalize;
 }
 
 .image-header,
 .random-meal-name p,
 .tags-header,
 .tags-parent,
-.meal-info,
 .ingr-parent h2,
 .ingredients,
 .meal-instr-header,
 .instructions {
-    margin: 0;
     text-align: center;
 }
 
-.random-meal-name,
-.image-header,
 .tags-header,
-.ingr-header,
 .meal-instr-header,
-.video-parent {
-    border-top: 2px solid rgb(78, 78, 78);
+.ingr-header {
+    text-transform: uppercase;
+}
+
+
+.img-food-parent {
+    border-bottom: 2px solid rgb(78, 78, 78);
+}
+
+.img-food {
+    justify-self: center;
+    margin-bottom: 2rem;
+    max-height: 400px;
+    width: 60%;
+    object-fit: cover;
+    box-shadow: 3px 3px 5px 3px rgb(66, 66, 66);
+}
+
+.meal-info {
+    margin: 0;
+}
+
+.meal-info p {
+    text-align: start;
 }
 
 .random-meal-name {
+    border-top: 2px solid rgb(78, 78, 78);
     font-size: 2.5rem;
+}
+
+.random-meal-name p {
+    margin: 0;
 }
 
 .video-parent {
@@ -362,21 +418,15 @@ nav .brand-logo.center {
 }
 
 .tags,
-.meal-instr {
+.meal-instr,
+.ingredients {
     margin: 0em 2em;
 }
 
-.img-food {
-    margin: 0 auto;
-    max-height: 400px;
-    width: 60%;
-    object-fit: cover;
-    box-shadow: 3px 3px 5px 3px rgb(66, 66, 66);
-}
-
-.random-meal-name {
+.random-meal-name,
+.image-header {
     padding: .3em;
-    margin: 0;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -394,68 +444,17 @@ nav .brand-logo.center {
     margin: auto;
 }
 
-/*  Media Query - larger screens
-    Screens above 600 px */
-
-@media (min-width: 600px) {
-
-    .random-meal-section {
-        display: grid;
-        width: 100%;
-        row-gap: .5em;
-        column-gap: 2em;
-        padding: 0em 2em;
-        grid-template-areas:
-            "header         header          header"
-            "img            img             img"
-            "tags-header    tags-header     instr-header"
-            "tags           tags            instr"
-            "ingr-header    ingr-header     instr"
-            "ingr           ingr            instr"
-            "video          video           video";
-    }
-
-    .img-header-parent h2 {
-        display: none;
-    }
-
-    
-    .image-header,
-    .tags-header,
-    .ingr-header,
-    .meal-instr-header,
-    .meal-instr,
-    .video-parent {
-        border-top: none;
-    }
-
-    .ingr-parent h2,
-    .tags-header,
-    .meal-instr,
-    .meal-instr-header,
-    .meal-info,
-    .ingredients {
-        text-align: start;
-    }
-
-    .img-food {
-        justify-self: center;
-        margin-bottom: 2em;
-        margin-top: 1em;
-    }
-
-    .meal-instr {
-        width: 75%;
-    }
-}
-
 /* ==================
     footer
 ===================== */
 
+/* ==================
+    Media Queries
+===================== */
+
 /* Media queries bigger screens */
 
-@media (min-width: 600px) {
+@media (min-width: 525px) {
     .title {
         padding-top: .4em;
         font-size: 3rem;
@@ -488,5 +487,56 @@ nav .brand-logo.center {
     .title {
         padding-top: 0px;
         font-size: 3rem;
+    }
+}
+
+@media (min-width: 400px) {
+
+ /* random meal section*/
+
+    .random-meal-section {
+        display: grid;
+        width: 100%;
+        row-gap: .5em;
+        column-gap: 2em;
+        padding: 0em 2em;
+        grid-template-areas:
+            "header         header          header"
+            "img            img             img"
+            "tags-header    tags-header     instr-header"
+            "tags           tags            instr"
+            "ingr-header    ingr-header     instr"
+            "ingr           ingr            instr"
+            "video-header   video-header    video-header"
+            "video          video           video";
+    }
+
+    .img-header-parent h2 {
+        display: none;
+    }
+
+    
+    .image-header,
+    .tags-header,
+    .ingr-header,
+    .meal-instr-header,
+    .meal-instr,
+    .video-parent {
+        border-top: none;
+    }
+ 
+
+    .ingr-parent,
+    .tags-header,
+    .meal-instr,
+    .meal-instr-header,
+    .ingredients {
+        text-align: start;
+    }
+
+    
+
+    .meal-instr {
+        width: 75%;
     }
 }

@@ -7,31 +7,28 @@
 {% else %}
 <div class="main-content-forms">
     <div class="container">
-        <div class="content-section">
-            <form action="{{url_for('signin')}}" method="POST" class="form-register">
-                <h5>Login to access all your recipes!</h5>
-                <fieldset class="form-group">
-                    <legend class="legend-text">login</legend>
+        <form action="{{url_for('signin')}}" method="POST" class="form-register">
+            <h5>Login to access all your recipes!</h5>
+            <fieldset class="form-group">
+                <legend class="legend-text">login</legend>
 
-                    <div class="group">
-                        <label class="form-label" for="login-name">Type username:</label>
-                        <input class="form-input" type="text" value="" placeholder="Username" name="username" required>
+                <div class="group">
+                    <label class="form-label" for="login-name">Type your username:</label>
+                    <input class="form-input" type="text" value="" placeholder="" name="username" required>
 
-                        <label class="form-label" for="login-pass">Type password:</label>
-                        <input class="form-input" type="password" value="" placeholder="Password" name="password"
-                            required>
-                    </div>
-                </fieldset>
-                <div class="btn-group">
-                    <button type="submit" value="Log in" class="btn btn-forms btn-sign-up">log in</button>
+                    <label class="form-label" for="login-pass">Type your password:</label>
+                    <input class="form-input" type="password" value="" placeholder="" name="password" required>
                 </div>
-                <div class="bottom-text">
-                    need an account? <a class="sign-in-link" href="{{url_for('register')}}">register!</a>
-                </div>
-            </form>
-        </div>
-        <br>
+            </fieldset>
+            <div class="btn-group">
+                <button type="submit" value="Log in" class="btn btn-forms btn-sign-up">log in</button>
+            </div>
+            <div class="bottom-text">
+                need an account? <a class="sign-in-link" href="{{url_for('register')}}">register here!</a>
+            </div>
+        </form>
     </div>
+    <br>
 </div>
 {% endif %}
 {% endblock %}

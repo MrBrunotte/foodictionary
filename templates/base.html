@@ -14,8 +14,13 @@
     <!-- my css link -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/forms.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/toastr.css')}}" type="text/css" />
 
     <title>{{page_title}}</title>
+    <!-- Flask-Toastr -->
+    {{ toastr.include_jquery() }}
+    <!--{{ toastr.include_toastr_css() }}-->
+    {{ toastr.message() }}
 </head>
 
 <body>
@@ -28,17 +33,14 @@
                     <li><a href="{{url_for('home')}}" class="nav-link">home</a></li>
                     {% if session.logged_in %}
                     <li class="divider"></li>
-                    <li><a class="nav-link dropdown-button" href="#!" data-activates="dropdown2"><i
-                                class="material-icons left">account_circle</i>Account<i
+                    <li><a class="nav-link dropdown-button" href="#!" data-activates="dropdown2">Account<i
                                 class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="{{url_for('logout')}}" class="nav-link"><i
-                                class="material-icons left">account_circle</i>logout</a></li>
+                    <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
 
 
                     {% else %}
                     <li><a href="{{url_for('register')}}" class="nav-link">register</a></li>
-                    <li><a href="{{url_for('login')}}" class="nav-link"><i
-                                class="material-icons left">account_circle</i>login</a></li>
+                    <li><a href="{{url_for('login')}}" class="nav-link">login</a></li>
 
                     {% endif %}
                     <li><i id="search-btn" class="material-icons">search</i></li>
@@ -47,21 +49,23 @@
                 <!-- sidemenu smaller screens -->
                 <!--TODO center text!!-->
                 <ul class="sidenav" id="mobile-demo">
-                    {% if session.logged_in %}
-                    <li class="username-nav">Welcome back {{session.username|capitalize}}!</li>
-                    <li class="divider"></li>
-                    <li><a class="nav-link dropdown-button" href="#!" data-activates="dropdown2"><i
-                                class="material-icons left">account_circle</i>Account<i
-                                class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="{{url_for('logout')}}" class="nav-link"><i
-                                class="material-icons left">account_circle</i>logout</a></li>
-                    {% else %}
-                    <li><a href="{{url_for('register')}}" class="nav-link">register</a></li>
-                    <li><a href="{{url_for('login')}}" class="nav-link"><i
-                                class="material-icons left">account_circle</i>login</a></li>
-                    {% endif %}
-                    <li><i id="search-btn2" class="material-icons">search</i></li>
-
+                    <div class="background">
+                        <img class="mobile-background" src="/static/images/mobile_hamburger_300px.jpg">
+                    </div>
+                    <div class="hamburger-list">
+                        {% if session.logged_in %}
+                        <li class="username-nav">Welcome back {{session.username|capitalize}}!</li>
+                        <li><a href="{{url_for('home')}}" class="nav-link-mobile">home</a></li>
+                        <li class="divider"></li>
+                        <li><a class="nav-link-mobile dropdown-button" href="#!" data-activates="dropdown2">Account<i
+                                    class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a href="{{url_for('logout')}}" class="nav-link-mobile">logout</a></li>
+                        {% else %}
+                        <li><a href="{{url_for('register')}}" class="nav-link-mobile">register</a></li>
+                        <li><a href="{{url_for('login')}}" class="nav-link-mobile">login</a></li>
+                        {% endif %}
+                        <li><i id="search-btn2" class="material-icons">search</i></li>
+                    </div>
                 </ul>
 
             </div>
@@ -70,46 +74,14 @@
             <h1 class="title">FOODictionary</h1>
             <h2 class="subtitle">- Your personalized cookbook -</h2>
         </div>
-        <!--Flash Messages-->
-        <div class="flash-message">
-            <header class="center row flash-message">
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if error %}
-                <p class="error"><b>Error:</b> {{ error }} </p>
-                {% endif %}
-                {% if messages %}
-                {% for category, message in messages %}
-                <div class="alert {{ category }}">
-                    <div class="messages">
-                        {{ message }}
-                    </div>
-                </div>
-                {% endfor %}
-                {% endif %}
-                {% endwith %}
-            </header>
-        </div>
+        <!-- Flask-Toastr -->
+        {{ toastr.include_toastr_js() }}
     </section>
-
     <!--Main Body-->
     <div>
-
-
         {% block content %} {% endblock %}
     </div>
 
-
-
-
-    <!--! random meal section -->
-    <section class="middle-section middle-grid" id="rm">
-        <h2 class="middle-section-title">random meal generator</h2>
-        <p class="middle-section-subtitle">Don't know what to cook for dinner?</p>
-        <p class="middle-section-subtitle-text">Hit the button and get a random meal suggestion.</p>
-        <a id="get_meal" href="#meal" class="btn btn-surprise">Surprise me!</a>
-        <!-- Button to make the request to the API -->
-    </section>
-    <section class="random-meal-section" id="meal"></section> <!-- The API data is sent to this div container -->
 
 
     <footer>
@@ -125,6 +97,8 @@
     </script>
     <!-- script link to random-meal script file -->
     <script src="{{url_for('static', filename='script.js')}}"></script>
+    <!-- toastr.js -->
+    <script src="{{url_for('static', filename='toastr.js')}}"></script>
 </body>
 
 </html>

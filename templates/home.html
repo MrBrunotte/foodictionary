@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!--! random meal section -->
+<section class="middle-section middle-grid" id="rm">
+    <h4 class="middle-section-title">random meal generator</h4>
+    <p class="middle-section-subtitle">Don't know what to cook for dinner?</p>
+    <p class="middle-section-subtitle">Hit the button and get a random meal suggestion.</p>
+    <a id="get_meal" href="#meal" class="btn btn-surprise">Surprise me!</a>
+    <!-- Button to make the request to the API -->
+</section>
+<section class="random-meal-section" id="meal"></section> <!-- The API data is sent to this div container -->
+
+{% endblock %}

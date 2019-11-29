@@ -31,10 +31,10 @@ const createMeal = meal => {
 	}
 
 	const newInnerHTML = `
-			<h2 class="random-meal-name"><p>Your random dish is called:</p>"${meal.strMeal}"</h2>
+			<h4 class="random-meal-name"><p>Your random dish is called:</p>"${meal.strMeal}"</h4>
 			
 			<div class="img-header-parent">
-				<h2 class="image-header">${meal.strMeal}</h2>
+				<h4 class="image-header">${meal.strMeal}</h4>
 			</div>
 
 			<div class="tags">
@@ -53,13 +53,13 @@ const createMeal = meal => {
 			</div>
 
 			<div class="tags-parent">
-			<h2 class="tags-header">tags:</h2>
+			<h6 class="tags-header">tags:</h6>
 			</div>
 			<div class="img-food-parent">
 				<img class="img-food" src="${meal.strMealThumb}" alt="Meal Image">
 			</div>
 			<div class="ingr-parent">
-				<h2 class="ingr-header">Ingredients:</h2>
+				<h6 class="ingr-header">Ingredients:</h6>
 			</div>
 				<div class="ingredients">
 					<ul>
@@ -68,7 +68,7 @@ const createMeal = meal => {
 			</div>
 		
 			<div class="meal-instr-parent">
-				<h2 class="meal-instr-header">Cooking instructions:</h2>
+				<h6 class="meal-instr-header">Prepartions:</h6>
 			</div>
 				<div class="instructions">
 				<p class="meal-instr">${meal.strInstructions}</p>
