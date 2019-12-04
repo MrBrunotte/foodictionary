@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {% block content %}
+{% if session['logged_in'] %}
+
+<!-- top image -->
+<div class="top-section-add-recipe"></div>
+<!-- title of page-->
+<h5 class="title">add your recipe</h5>
+<!-- form -->
+<form class="recipe-grid" method="POST" action="{{ url_for('insert_recipe', author=session.get('username')) }}">
+
+    <h6 class="recipe-name">recipe name</h6>
+    <input class="recipe-input validate" id="recipe_name" name="recipe_name" type="text" value=""
+        placeholder="*Enter the Recipe Name" required>
+
+    <h6 class="description">description</h6>
+    <input class="description-input validate" id="recipe_description" name="recipe_description" type="text"
+        placeholder="*Enter a short description of your recipe" required>
+
+    <h6 class="category ">recipe category</h6>
+    <div class="input-field category-options">
+        <select id="recipe_category_name" name="recipe_category_name" required>
+            <option value="" disabled selected>*Choose your option</option>
+            {% set _stub = recipeCategory.rewind() %}
+            {% for category in recipeCategory %}
+            <option value="{{category.recipe_category_name}}">{{category.recipe_category_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <h6 class="allergens">allergens</h6>
+    <div class="input-field allergens-options">
+        <select multiple id="allergen_type" name="allergen_type">
+            <option value="" disabled selected>*Choose your option(s):</option>
+            {% set _stub = recipeCategory.rewind() %}
+            {% for allergen in allergens %}
+            <option value="{{allergen.allergen_type}}">{{allergen.allergen_type}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+
+    <h6 class="prep-time">Prep time</h6>
+    <input class="prep-time-input validate" id="recipe_prep_time" name="recipe_prep_time" type="text"
+        placeholder="*How long to prepare?" required>
+
+    <h6 class="cook-time">cook time</h6>
+    <input class="cook-time-input validate" id="recipe_cook_time" name="recipe_cook_time" type="text"
+        placeholder="*How long to cook?" required>
+
+    <h6 class="servs">servings</h6>
+    <input class="servs-input validate" id="recipe_serves" name="recipe_serves" type="text"
+        placeholder="*How long to prepare?" required>
+
+    <h6 class="difficulty">difficulty</h6>
+    <div class="input-field difficulty-option">
+        <select id="recipe_difficulty" name="recipe_difficulty" required>
+            <option value="" disabled selected>*Choose your option</option>
+            {% set _stub = skillLevel.rewind() %}
+            {% for skill in skillLevel %}
+            <option value="{{skill.recipe_difficulty}}">{{skill.recipe_difficulty}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <h6 class="recipe">add recipe image</h6>
+    <input class="recipe-image validate" id="recipe_image" name="recipe_image" type="text"
+        placeholder="*Image location should start with http(s)://">
+
+    <h6 class="ingredients-rec">ingredients</h6>
+    <input class="ingredients-input validate" id="recipe_ingredients" name="recipe_ingredients" type="text"
+        placeholder="A minimum of one ingredient required *Eg: 500 grams of Pasta" required>
+
+    <a class="btn btn-add ingredients-btn waves-effect waves-light" id="add_ingredient" id="add_ingredient">Add
+        another ingredient<i class="material-icons">add</i></a>
+
+    <h6 class="method">cooking method</h6>
+    <div id="steps">
+        <input class="method-input validate" id="recipe_method" name="recipe_method" type="text"
+            placeholder="*Step 1 - Boil pasta water with salt" required>
+    </div>
+
+    <a class="btn btn-add method-btn waves-effect waves-light" id="add_method_step">Add another step<i
+            class="material-icons">add</i></a>
+
+
+    <h6 class="recipe-tags">Recipe Tags</h6>
+    <input class="recipe-tags-input" name="recipe_tags" value="" type="hidden">
+    <!--<div class="chips chips-placeholder"></div>-->
+    <!--TODO what are these classes??-->
+
+
+
+    <div class="switch">
+        <h6 class="slider-header" for="featured_recipe">Featured on the Homepage Slider</h6>
+
+        <label>
+            No
+            <input type="checkbox" id="featured_recipe" name="featured_recipe">
+            <span class="lever"></span>
+            Yes
+        </label>
+    </div>
+    <button class="btn btn-recipe waves-effect waves-light" type="submit" name="action">Add Recipe
+        <i class="material-icons right">playlist_add</i>
+    </button>
+</form>
+{% else %}
+<h5 class="center">Login to Add a Recipe </h5>
+<p class="center"><a href="{{url_for('login')}}">Login</a></p>
+{% endif %}
+{% endblock %}

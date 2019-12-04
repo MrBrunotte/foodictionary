@@ -9,21 +9,22 @@
             <p class="alert-text">Go to <a class="sign-in-link" href="{{url_for('home')}}">Home</a></p>
             {% else %}
             <form action="{{url_for('signup')}}" method="POST" class="form-register">
-                <h5>Register to personalize your cookbook!</h5>
+                <h5 class="form-title">Register to personalize your cookbook!</h5>
                 <fieldset class="form-group">
                     <legend class="legend-text">Register</legend>
 
                     <div class="group">
-                        <label class="form-label" for="author_name">Type Your Full Name</label>
-                        <input class="form-input" id="author_name" name="author_name" type="text" value=""
+                        <h6 class="login-label">Type Your Full Name</h6>
+                        <input class="login-input" id="author_name" name="author_name" type="text" value=""
                             placeholder="" required>
 
-                        <label class="form-label" for="login-name">Choose a Username</label>
-                        <input class="form-input" id="login-name" name="username" type="text" value="" placeholder=""
+                        <h6 class="login-label">Choose a Username</h6>
+                        <input class="login-input" id="login-name" name="username" type="text" value="" placeholder=""
                             required>
 
-                        <label class="form-label" for="login-pass">Choose a Password</label>
-                        <input class="form-input" id="password" type="password" value="" placeholder="" name="password"
+
+                        <h6 class="login-label">Choose a Password</h6>
+                        <input class="login-input" id="password" type="password" value="" placeholder="" name="password"
                             required>
                     </div>
                 </fieldset>

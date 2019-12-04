@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
+<section class="top-section-home">
+    <div class="top-grid">
+        {% if session.logged_in %}
+        <h1 class="title">Welcome {{session.username|capitalize}}!</h1>
+        <h2 class="subtitle">- Your personalized cookbook -</h2>
+        {% else %}
+        <h1 class="title">FOODictionary</h1>
+        <h2 class="subtitle">- Your personalized cookbook -</h2>
+        {% endif %}
+    </div>
 
-<!--! random meal section -->
-<section class="middle-section middle-grid" id="rm">
-    <h4 class="middle-section-title">random meal generator</h4>
-    <p class="middle-section-subtitle">Don't know what to cook for dinner?</p>
-    <p class="middle-section-subtitle">Hit the button and get a random meal suggestion.</p>
-    <a id="get_meal" href="#meal" class="btn btn-surprise">Surprise me!</a>
-    <!-- Button to make the request to the API -->
 </section>
-<section class="random-meal-section" id="meal"></section> <!-- The API data is sent to this div container -->
+<!--! random meal section -->
+<section class="rm-grid" id="rm">
+    <h4 class="rm-title">random meal generator</h4>
+    <p class="rm-text">Don't know what to cook for dinner? <br>Find your random meal suggestion below.</p>
+    <a id="get_meal" href="#meal" class="button btn btn-surprise">Surprise me!</a>
+    <!-- Button to make the request to the API -->
+    <section class="random-meal-section" id="meal"></section> <!-- The API data is sent to this div container -->
+</section>
 
 {% endblock %}

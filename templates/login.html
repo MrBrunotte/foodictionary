@@ -8,16 +8,17 @@
 <div class="main-content-forms">
     <div class="container">
         <form action="{{url_for('signin')}}" method="POST" class="form-register">
-            <h5>Login to access all your recipes!</h5>
+            <h5 class="form-title">Login to access all your recipes!</h5>
             <fieldset class="form-group">
                 <legend class="legend-text">login</legend>
 
                 <div class="group">
-                    <label class="form-label" for="login-name">Type your username:</label>
-                    <input class="form-input" type="text" value="" placeholder="" name="username" required>
+                    <h6 class="login-label">Type your username:</h6>
+                    <input class="login-input validate" type="text" value="" placeholder="" name="username" required>
 
-                    <label class="form-label" for="login-pass">Type your password:</label>
-                    <input class="form-input" type="password" value="" placeholder="" name="password" required>
+                    <h6 class="login-label">Type your password:</h6>
+                    <input class="login-input validate" type="password" value="" placeholder="" name="password"
+                        required>
                 </div>
             </fieldset>
             <div class="btn-group">

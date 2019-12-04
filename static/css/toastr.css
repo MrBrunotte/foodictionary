@@ -6,6 +6,7 @@
     -ms-word-wrap: break-word;
     word-wrap: break-word;
     text-align: center;
+    background-color: #000000;
     font-size: 2rem;
     text-transform: capitalize;
   }

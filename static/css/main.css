@@ -14,6 +14,7 @@
     --yellow: #FFE600;
     --black: #464646;
     --white: #dcdace;
+    --gray: #848484;
 }
 
 *,
@@ -29,6 +30,7 @@ body {
     font-weight: 400;
     line-height: 1.6;           /* Its easier to read */
 }
+
 
 /* ==================
     Typography
@@ -62,6 +64,7 @@ h5 {
 h6 {
     margin: .7666666667rem 0 0rem 0;
     font-weight: 900;
+    text-transform: uppercase;
 }
 
 strong {
@@ -81,7 +84,9 @@ strong {
 
 /* navigation */
 nav {
-    background-color: transparent;
+    /*background-color: #0d0c0ce6;*/
+    background-image: linear-gradient(to bottom, #000, #1f1210, #2c1612, #35231d, #090707);
+    height: 32px;
 }
 
 i.right {
@@ -91,15 +96,15 @@ i.right {
 .nav-link,
 .nav-link-mobile {
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-family: 'Ubuntu', sans-serif;
-    font-weight: 900;
+    color: #9d9d9d;
 }
 
 
 .nav-link:hover,
 .nav-link:focus {
-    color: #9d9d9d;
+    color: whitesmoke;
 }
 
 .nav-link-mobile:hover,
@@ -159,17 +164,16 @@ nav .brand-logo.center {
 }
 
 /* ==================
-    top-section (main)
+    top-sections
 ===================== */
 
-.top-section {
+.top-section-home {
     background-image: url(/static/images/three_burgers.jpg);
     background-size: cover;
-    background-position: center top;
     color: #fff;
+    background-position: center top;
     height: 65vh;
 }
-
 
 .top-grid {
     display: grid;
@@ -186,7 +190,6 @@ nav .brand-logo.center {
 .subtitle       {grid-area: sub-header;}
 .btn-register   {grid-area: button;}
 .flash-message  {grid-area: flash-message;}
-.form-register  {grid-area: form-register;}
 
 .title,
 .subtitle {
@@ -203,40 +206,15 @@ nav .brand-logo.center {
 }
 
 .title {
-    grid-area: header;
     font-size: 2rem;
+    margin-top: 2rem;
 }
 
 .subtitle {
     font-size: 1rem;
 }
 
-/* class category for flash messages */
-
-.flash-message,
-.error,
-.message,
-.messages {
-    text-align: center;
-    text-transform: capitalize;
-    margin: 0 auto;
-    font-weight: 700;
-    font-size: 1rem;
-}
-
-.messages {
-    color: white;
-    background-color: #00000091;
-    padding: 10px 20px;
-    width: 45%;
-    border-radius: 10px;
-}
-
-.error,
-.alert {
-    color: red;
-}
-
+/* 
 .username-nav {
     text-align: center;
     color: var(--black);
@@ -244,17 +222,19 @@ nav .brand-logo.center {
     font-size: 2rem;
     font-family: 'Lora';
     text-transform: capitalize;
-}
+}*/
+
+
 /* ==================
     buttons
 ===================== */
 
 .btn {
     background-color: transparent !important;
+    padding: 0 2rem;
     font-size: 2rem;
     text-transform: capitalize;
     align-self: center;
-    font-weight: 700;
     letter-spacing: 1px;
     text-decoration: none;
     border-radius: 5px;
@@ -283,19 +263,28 @@ nav .brand-logo.center {
     middle section
 ===================== */
 
-.middle-grid {
+.rm-grid {
     display: grid;
     grid-template-areas: 
-        "header"
-        "sub-header"
-        "sub-header-text"
+        "rm-title"
+        "rm-text"
+        "rm-text"
         "button";
 }
 
-.middle-section-title,
-.middle-section-subtitle,
-.middle-section-subtitle-text {
+.rm-title        {grid-area: rm-title;}
+.rm-text        {grid-area: rm-text;}
+.button       {grid-area: button;}
+
+.rm-title {
+    text-transform: uppercase;
+    margin-top: 2rem;
+}
+
+.rm-title,
+.rm-text {
     text-align: center;
+    color: var(--gray);
 }
 
 .middle-section-subtitle,
@@ -305,7 +294,6 @@ nav .brand-logo.center {
 
 .middle-section-title {
     text-transform: uppercase;
-    grid-area: header;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
@@ -448,6 +436,58 @@ nav .brand-logo.center {
     footer
 ===================== */
 
+.footer {
+    display: grid;
+    color: whitesmoke;
+    background-color: #84848482;
+    column-gap: 3rem;
+    margin-top: 4rem;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+    "sidebar-left   sidebar-right"
+    "footer-bottom  footer-bottom";
+}
+
+.sidebar-left   {grid-area: sidebar-left;}
+
+.sidebar-right  {grid-area: sidebar-right;}
+
+.footer-bottom  {grid-area: footer-bottom;}
+
+.sidebar-left,
+.sidebar-right {
+    padding: .5rem 8rem 0rem;
+    margin: 0 auto;
+}
+
+.sidebar-right {
+    align-self: top;
+}
+
+.sidebar-right h5 {
+    padding-bottom: 1.5rem;
+    margin: 0;
+}
+
+.about {
+    font-size: .75rem;
+}
+
+.footer h5 {
+    color: whitesmoke;
+}
+
+.social {
+    padding-right: 1rem;
+}
+
+.footer-bottom {
+    background-color: #848484f0;
+    text-align: center;
+    padding: .4rem 0rem; 
+    width: 100%;
+}
+
 /* ==================
     Media Queries
 ===================== */
@@ -466,7 +506,7 @@ nav .brand-logo.center {
 }
 
 @media (min-width: 880px) {
-    .top-section {
+    .top-section-home {
         background-image: url(/static/images/three_burgers_less_background2.jpg);
     }
 
@@ -476,7 +516,7 @@ nav .brand-logo.center {
 }
 
 @media (min-width: 1200px) {
-    .top-section {
+    .top-section-home {
         background-image: url(/static/images/three_burgers_less_background3.jpg);
     }
 
@@ -538,5 +578,16 @@ nav .brand-logo.center {
 
     .meal-instr {
         width: 75%;
+    }
+}
+
+@media (min-width: 300px) {
+
+    /* Navigation */
+    nav, 
+    nav .nav-wrapper i, 
+    nav a.sidenav-trigger, 
+    nav a.sidenav-trigger i {
+        line-height: 30px;
     }
 }
