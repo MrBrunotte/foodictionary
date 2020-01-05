@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!-- my css link -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/forms.css')}}" type="text/css" />
@@ -31,9 +32,9 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="brand-logo center hide-on-med-and-down">
                 <li><a href="{{url_for('home')}}" class="nav-link">home</a></li>
-                <!--TODO fix the link to random meal nav and mob nav-->
+                <!--TODO fix the link to random recipe nav and mob nav-->
                 <!--TODO fix id cannot use the same ID on multiple places?? correct id is: "get_meal" -->
-                <li><a id="get_meal4" href="{{url_for('random_meal')}}" class="nav-link">random meal</a></li>
+                <li><a id="get_meal4" href="{{url_for('random_meal')}}" class="nav-link">random recipe</a></li>
                 {% if session.logged_in %}
                 <li class="divider"></li>
                 <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
@@ -55,9 +56,9 @@
                 </div>
                 <div class="hamburger-list">
                     <li><a href="{{url_for('home')}}" class="nav-link-mobile">home</a></li>
-                    <!--TODO fix the link to random meal nav and mob nav-->
+                    <!--TODO fix the link to random recipe nav and mob nav-->
                     <!--TODO fix id cannot use the same ID on multiple places?? correct id is: "get_meal" -->
-                    <li><a id="get_meal3" href="#" class="nav-link-mobile">random meal</a>
+                    <li><a id="get_meal3" href="#" class="nav-link-mobile">random recip</a>
                     </li>
                     {% if session.logged_in %}
                     <!--<li class="username-nav">Welcome back {{session.username|capitalize}}!</li>-->
@@ -116,19 +117,25 @@
             </div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
     <script type="text/javascript">
         $(document).ready(function () {
             $('.sidenav').sidenav();    // for the mobile hamburger menu
-            $('select').formSelect();   // for the alergens in add_recipe.html
+            $('select').formSelect();   // for the allergens in add_recipe.html
         });
     </script>
     <!-- script link to random-meal script file -->
-    <script src="{{url_for('static', filename='script.js')}}"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
     <!-- toastr.js -->
-    <script src="{{url_for('static', filename='toastr.js')}}"></script>
+    <script src="{{url_for('static', filename='js/toastr.js')}}"></script>
+    <script src="{{url_for('static', filename='js/uikit.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/uikit-icons.min.js')}}"></script>
+    <!-- custom.js -->
+    <script src="{{url_for('static', filename='js/custom.js')}}"></script>
 </body>
 
 </html>

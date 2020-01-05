@@ -6,14 +6,14 @@
 <!--! random meal section -->
 <section class="rm-grid" id="rm">
     {% if session.logged_in %}
-    <h4 class="rm-title">random meal generator</h4>
-    <p class="rm-text">Don't know what to cook for dinner? <br>Find your random meal suggestion below.</p>
-    <a id="get_meal" href="#meal" class="button btn btn-surprise">Surprise me!</a>
+    <h4 class="rm-title">random recipe generator</h4>
+    <p class="rm-text">Are you out of ideas? <br>Let the random recipe generator find one for you.</p>
+    <a id="get_meal" href="#meal" class="button btn btn-surprise">Generate recipe!</a>
     {% else %}
     <h4 class="middle-section-title">random meal generator</h4>
     <p class="rm-text">Don't know what to cook for dinner? <br>Find your random meal suggestion below.</p>
     <!--TODO fix id cannot use the same ID on multiple places?? correct id is: "get_meal" -->
-    <a id="get_meal2" href="#meal" class="button btn btn-surprise">Surprise me!</a>
+    <a id="get_meal2" href="#meal" class="button btn btn-surprise">Generate meal!</a>
     <!-- Button to make the request to the API -->
     {% endif %}
 </section>

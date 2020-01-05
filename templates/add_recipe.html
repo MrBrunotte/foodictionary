@@ -9,15 +9,15 @@
 <form class="recipe-grid" method="POST" action="{{ url_for('insert_recipe', author=session.get('username')) }}">
 
     <h6 class="recipe-name">recipe name</h6>
-    <input class="recipe-input validate" id="recipe_name" name="recipe_name" type="text" value=""
+    <input class="recipe-input " id="recipe_name" name="recipe_name" type="text" value=""
         placeholder="*Enter the Recipe Name" required>
 
     <h6 class="description">description</h6>
-    <input class="description-input validate" id="recipe_description" name="recipe_description" type="text"
+    <input class="description-input " id="recipe_description" name="recipe_description" type="text"
         placeholder="*Enter a short description of your recipe" required>
 
-    <h6 class="category ">recipe category</h6>
-    <div class="input-field category-options">
+    <h6 class="category">recipe category</h6>
+    <div class="category-options">
         <select id="recipe_category_name" name="recipe_category_name" required>
             <option value="" disabled selected>*Choose your option</option>
             {% set _stub = recipeCategory.rewind() %}
@@ -28,7 +28,7 @@
     </div>
 
     <h6 class="allergens">allergens</h6>
-    <div class="input-field allergens-options">
+    <div class="allergens-options">
         <select multiple id="allergen_type" name="allergen_type">
             <option value="" disabled selected>*Choose your option(s):</option>
             {% set _stub = recipeCategory.rewind() %}
@@ -40,19 +40,19 @@
 
 
     <h6 class="prep-time">Prep time</h6>
-    <input class="prep-time-input validate" id="recipe_prep_time" name="recipe_prep_time" type="text"
+    <input class="prep-time-input " id="recipe_prep_time" name="recipe_prep_time" type="text"
         placeholder="*How long to prepare?" required>
 
     <h6 class="cook-time">cook time</h6>
-    <input class="cook-time-input validate" id="recipe_cook_time" name="recipe_cook_time" type="text"
+    <input class="cook-time-input " id="recipe_cook_time" name="recipe_cook_time" type="text"
         placeholder="*How long to cook?" required>
 
     <h6 class="servs">servings</h6>
-    <input class="servs-input validate" id="recipe_serves" name="recipe_serves" type="text"
-        placeholder="*How long to prepare?" required>
+    <input class="servs-input " id="recipe_serves" name="recipe_serves" type="text" placeholder="*How long to prepare?"
+        required>
 
     <h6 class="difficulty">difficulty</h6>
-    <div class="input-field difficulty-option">
+    <div class="difficulty-option">
         <select id="recipe_difficulty" name="recipe_difficulty" required>
             <option value="" disabled selected>*Choose your option</option>
             {% set _stub = skillLevel.rewind() %}
@@ -63,35 +63,37 @@
     </div>
 
     <h6 class="recipe">add recipe image</h6>
-    <input class="recipe-image validate" id="recipe_image" name="recipe_image" type="text"
+    <input class="recipe-image " id="recipe_image" name="recipe_image" type="text"
         placeholder="*Image location should start with http(s)://">
 
     <h6 class="ingredients-rec">ingredients</h6>
-    <input class="ingredients-input validate" id="recipe_ingredients" name="recipe_ingredients" type="text"
-        placeholder="A minimum of one ingredient required *Eg: 500 grams of Pasta" required>
-
-    <a class="btn btn-add ingredients-btn waves-effect waves-light" id="add_ingredient" id="add_ingredient">Add
-        another ingredient<i class="material-icons">add</i></a>
-
-    <h6 class="method">cooking method</h6>
-    <div id="steps">
-        <input class="method-input validate" id="recipe_method" name="recipe_method" type="text"
-            placeholder="*Step 1 - Boil pasta water with salt" required>
+    <div id="ingredients" class="ingredients-input ">
+        <div class="input-field">
+            <input id="recipe_ingredients" name="recipe_ingredients" type="text"
+                placeholder="A minimum of one ingredient required *Eg: 500 grams of Pasta" required>
+        </div>
     </div>
 
-    <a class="btn btn-add method-btn waves-effect waves-light" id="add_method_step">Add another step<i
-            class="material-icons">add</i></a>
+    <a id="add_ingredient" class="btn btn-add ingredients-btn waves-effect waves-light">Add
+        another ingredient</a>
+
+    <h6 class="method">cooking method</h6>
+    <div id="steps" class="method-input ">
+        <input id="recipe_method" name="recipe_method" type="text" placeholder="*Step 1 - Boil pasta water with salt"
+            required>
+    </div>
+    <a class="btn btn-add method-btn waves-effect waves-light" id="add_method_step">Add another step</a>
 
 
     <h6 class="recipe-tags">Recipe Tags</h6>
     <input class="recipe-tags-input" name="recipe_tags" value="" type="hidden">
-    <!--<div class="chips chips-placeholder"></div>-->
-    <!--TODO what are these classes??-->
+    <div class="chips chips-placeholder"></div>
+    <!--see custom.js line 53 -->
 
 
 
     <div class="switch">
-        <h6 class="slider-header" for="featured_recipe">Featured on the Homepage Slider</h6>
+        <h6 class="slider-header" for="featured_recipe">Add to favourite meals?</h6>
 
         <label>
             No

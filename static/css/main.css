@@ -17,6 +17,10 @@
     --gray: #848484;
 }
 
+body {
+    scroll-behavior: smooth;
+}
+
 *,
 *:before,
 *:after {
@@ -29,6 +33,10 @@ body {
     font-size: 1rem;            /* 1rem = 16 px (default) */
     font-weight: 400;
     line-height: 1.6;           /* Its easier to read */
+}
+
+ul {
+    margin-top: 0;
 }
 
 
@@ -116,6 +124,10 @@ i.right {
 .hamburger-list li > a:hover {
     background-color: var(--black) !important;
     color: var(--white)
+}
+
+nav ul a {
+    padding: 0 14px;
 }
 
 nav.nav-center ul {
@@ -313,7 +325,6 @@ nav .brand-logo.center {
 .random-meal-section {
     display: grid;
     grid-template-rows: auto;
-    row-gap: 1em;
     padding: 0em .8em;
     grid-template-areas:
         "header"
@@ -337,7 +348,7 @@ nav .brand-logo.center {
 .ingr-parent            { grid-area: ingr-header; }
 .meal-instr-parent      { grid-area: instr-header; }
 .instructions           { grid-area: instr; }
-.img-header-parent           { grid-area: video-header; }
+.img-header-parent      { grid-area: video-header; }
 .video-parent           { grid-area: video; }
 
 
@@ -353,33 +364,18 @@ nav .brand-logo.center {
     display: grid;
 }
 
-.image-header,
-.random-meal-name p,
-.tags-header,
-.tags-parent,
-.ingr-parent h2,
-.ingredients,
-.meal-instr-header,
-.instructions {
-    text-align: center;
-}
-
 .tags-header,
 .meal-instr-header,
 .ingr-header {
     text-transform: uppercase;
-}
-
-
-.img-food-parent {
-    border-bottom: 2px solid rgb(78, 78, 78);
+    margin: 1em 0em .5em 2em;
 }
 
 .img-food {
     justify-self: center;
-    margin-bottom: 2rem;
+    margin: 1em 2em 0em 1em;
     max-height: 400px;
-    width: 60%;
+    width: 100%;
     object-fit: cover;
     box-shadow: 3px 3px 5px 3px rgb(66, 66, 66);
 }
@@ -393,8 +389,9 @@ nav .brand-logo.center {
 }
 
 .random-meal-name {
-    border-top: 2px solid rgb(78, 78, 78);
+    border-top: 2px solid rgb(216, 216, 216);
     font-size: 2.5rem;
+    width: 100%;
 }
 
 .random-meal-name p {
@@ -408,7 +405,7 @@ nav .brand-logo.center {
 .tags,
 .meal-instr,
 .ingredients {
-    margin: 0em 2em;
+    margin: 0em .75em;
 }
 
 .random-meal-name,
@@ -422,10 +419,14 @@ nav .brand-logo.center {
     margin: 0;
 }
 
-.ingredients,
+.ingredients {
+    overflow-y: auto;
+    max-height: 260px;
+}
+
 .meal-instr {
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 325px;
 }
 
 .videoWrapper {
@@ -534,12 +535,12 @@ nav .brand-logo.center {
 
  /* random meal section*/
 
-    .random-meal-section {
+   /* .random-meal-section {
         display: grid;
         width: 100%;
         row-gap: .5em;
-        column-gap: 2em;
         padding: 0em 2em;
+        grid-template-rows: auto auto 1fr;
         grid-template-areas:
             "header         header          header"
             "img            img             img"
@@ -549,23 +550,30 @@ nav .brand-logo.center {
             "ingr           ingr            instr"
             "video-header   video-header    video-header"
             "video          video           video";
+    }*/
+
+    .random-meal-section {
+        display: grid;
+        width: 100%;
+        padding: 0em 2em;
+        grid-template-areas:
+            "header         header          header"
+            "img            tags-header     instr-header"
+            "img            tags            instr"
+            "img            ingr-header     instr"
+            "img            ingr            instr"
+            "video-header   video-header    video-header"
+            "video          video           video";
     }
 
     .img-header-parent h2 {
         display: none;
     }
 
-    
-    .image-header,
-    .tags-header,
-    .ingr-header,
-    .meal-instr-header,
-    .meal-instr,
-    .video-parent {
-        border-top: none;
+    .image-header {
+        margin-top: .5em;
     }
- 
-
+    
     .ingr-parent,
     .tags-header,
     .meal-instr,
@@ -574,10 +582,9 @@ nav .brand-logo.center {
         text-align: start;
     }
 
-    
 
     .meal-instr {
-        width: 75%;
+        width: 95%;
     }
 }
 
