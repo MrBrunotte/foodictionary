@@ -21,10 +21,8 @@ body {
     scroll-behavior: smooth;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
+*, *:before, *:after {
+    box-sizing: border-box;
 }
 
 body {
@@ -91,10 +89,35 @@ strong {
 
 
 /* navigation */
+/*
+.nav-wrapper {
+    display: grid;
+    grid-template-areas:
+    "navigation"
+}
+
+.nav-wrapper    {grid-area: navigation;}
+*/
 nav {
     /*background-color: #0d0c0ce6;*/
     background-image: linear-gradient(to bottom, #000, #1f1210, #2c1612, #35231d, #090707);
     height: 32px;
+}
+
+.brand-logo {
+    color: var(--yellow) !important;
+}
+
+.dropdown-content {
+    width: max-content !important;
+    height:auto !important;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #78766a;
+    text-transform: capitalize;
+    font-size:14px;
+    letter-spacing: 1px;
 }
 
 i.right {
@@ -123,7 +146,6 @@ i.right {
 
 .hamburger-list li > a:hover {
     background-color: var(--black) !important;
-    color: var(--white)
 }
 
 nav ul a {
@@ -145,6 +167,10 @@ nav .brand-logo.center {
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
+}
+
+.divider {
+    background-color: var(--black);
 }
 
 /* Navigation smaller screens*/
@@ -179,29 +205,43 @@ nav .brand-logo.center {
     top-sections
 ===================== */
 
+/* Top section images */
 .top-section-home {
     background-image: url(/static/images/three_burgers.jpg);
     background-size: cover;
     color: #fff;
     background-position: center top;
     height: 65vh;
+    width: 100%;
+}
+
+.top-section-image-add-recipes,
+.top-section-image-my-recipes {
+    background-size: cover;
+    color: #fff;
+    background-position: center;
+    height: 35vh;
+}
+
+.top-section-image-add-recipes {
+    background-image: url(/static/images/add_recipe.jpg);
+}
+
+.top-section-image-my-recipes {
+    background-image: url(/static/images/my_recipies_plate.jpg);
 }
 
 .top-grid {
     display: grid;
+    width: 100%;
     grid-template-areas:
-        "navigation" 
         "header"
         "sub-header"
-        "button"
-        "flash-message";
 }
 
-.nav            {grid-area: navigation;}
+
 .title          {grid-area: header;}
 .subtitle       {grid-area: sub-header;}
-.btn-register   {grid-area: button;}
-.flash-message  {grid-area: flash-message;}
 
 .title,
 .subtitle {
@@ -219,22 +259,17 @@ nav .brand-logo.center {
 
 .title {
     font-size: 2rem;
-    margin-top: 2rem;
 }
 
 .subtitle {
     font-size: 1rem;
 }
 
-/* 
 .username-nav {
-    text-align: center;
     color: var(--black);
-    font-weight: 700;
-    font-size: 2rem;
-    font-family: 'Lora';
-    text-transform: capitalize;
-}*/
+    text-align: center !important;
+    padding: 14px 16px;
+}
 
 
 /* ==================
@@ -284,8 +319,8 @@ nav .brand-logo.center {
         "button";
 }
 
-.rm-title        {grid-area: rm-title;}
-.rm-text        {grid-area: rm-text;}
+.rm-title     {grid-area: rm-title;}
+.rm-text      {grid-area: rm-text;}
 .button       {grid-area: button;}
 
 .rm-title {
@@ -306,8 +341,7 @@ nav .brand-logo.center {
 
 .middle-section-title {
     text-transform: uppercase;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem auto;
 }
 
 .middle-section-subtitle {
@@ -368,7 +402,7 @@ nav .brand-logo.center {
 .meal-instr-header,
 .ingr-header {
     text-transform: uppercase;
-    margin: 1em 0em .5em 2em;
+    margin: 1em 0em .5em .7em;
 }
 
 .img-food {

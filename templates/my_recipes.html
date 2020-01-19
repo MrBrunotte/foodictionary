@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block content %}
+{% if session['logged_in'] %}
+
+<!-- top image -->
+<div class="top-section-image-my-recipes"></div>
+<!-- title of page-->
+<h5 class="title">My recipe's</h5>
+{% if count_recipes == 0 %}
+<p>You currently have no recipes in your Personilized Cookbook. Why don't you start now and <a
+        href="{{url_for('add_recipe')}}">add a recipe?</a>.</p>
+{% else %}
+<!-- Total number of recipes and pagination -->
+<!--
+<div class="row">
+    <div class="col s12 m6">
+        <p>Displaying {{count_recipes}} Recipe(s). Page {{ page }} of {{total_no_of_pages}}</p>
+    </div>
+    {% if total_no_of_pages <= 1 %}
+    <div class="col s12 m6">
+    </div>
+    {% else %}
+    <div class="col s12 m6">
+        <ul class="pagination right-align">
+            <li id="prev-page-url" {% if page|int > 1 %} class="" {% else %} class="disabled" {% endif %}
+                <a {% if page|int > 1 %} href="{{url_for('my_recipes', author_name=author_name, page=page|int-1)}}"
+                    {% endif %}<i class="material-icons">chevron_left</i>Prev</a>
+            </li>
+            <li id="next-page-url" {% if page|int != total_no_of_pages|int %} class="" {% else %} class="disabled"
+                {% endif %}> <a {% if page|int != total_no_of_pages|int %}
+                    href="{{url_for('my_recipes', author_name=author_name, page=page|int+1)}}" {% endif %}>Next<i
+                        class="material-icons">chevron_right</i></a>
+            </li>
+        </ul>
+    </div>
+    {% endif %}
+</div>
+-->
+
+<!-- Recipe cards -->
+<div class="row">
+    <div class="col s12 m12">
+        {% for recipe in recipes %}
+
+        <div class="col s12 m6 l4">
+            <div class="card medium">
+                <div class="card-image">
+                    <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_image}}"
+                            alt="{{recipe.recipe_name}}"></a>
+                </div>
+                <div class="card-title">
+                    <div class="card-content">
+                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">
+                            <h6>{{recipe.recipe_name}}</h6>
+                        </a>
+                        <p>{{recipe.recipe_description}}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif%}
+{% else %}
+<p>You must be logged in to edit a recipe </p>
+{% endif %}
+{% endblock %}

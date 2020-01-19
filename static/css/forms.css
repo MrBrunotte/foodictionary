@@ -243,7 +243,6 @@ input:active {
 
 [type="checkbox"]:checked + span:not(.lever)::before,
 .dropdown-content li > a, .dropdown-content li > span {
-    border-right: 2px solid #e79b50 !important;
     border-bottom: 2px solid #e79b50 !important;
     color: var(--black) !important;
 }
@@ -254,14 +253,6 @@ input:active {
     border-bottom: 1px solid #e79b50 !important;
     -webkit-box-shadow: 0 1px 0 0 #e79b50 !important;
     box-shadow: 0 1px 0 0 #e79b50 !important;
-}
-
-.top-section-add-recipe {
-    background-image: url(/static/images/add_recipe.jpg);
-    background-size: cover;
-    color: #fff;
-    background-position: center;
-    height: 35vh;
 }
 
 .input-wrapper {
@@ -299,7 +290,7 @@ input:active {
 }
 
 .icon-color {
-    background-color: #e79b50 !important;  
+    background-color: #df2626 !important;
     border-radius: 3px !important;
 }
 

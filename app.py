@@ -1,6 +1,4 @@
-#----------------#
-# DEPENDENCIES
-#----------------#
+# DEPENDENCIES --------------------------------------------#
 import os
 import pymongo
 import math  # remove?
@@ -12,9 +10,7 @@ from bson.objectid import ObjectId
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
-#-----------------------------#
-# CONNECT TO MONGODB DATABASE
-#-----------------------------#
+# CONNECT TO MONGODB DATABASE -----------------------------#
 
 app = Flask(__name__)
 toastr = Toastr(app)
@@ -26,140 +22,27 @@ app.secret_key = '9893869affbf35907d0e7f0f20a72bc9'
 
 mongo = PyMongo(app)
 
-#-----------#
-# VARIABLES
-#-----------#
+# VARIABLES -----------------------------------------------#
 recipes = mongo.db.recipes
 recipeCategory = mongo.db.recipeCategory
 allergens = mongo.db.allergens
 skillLevel = mongo.db.skillLevel
 userDB = mongo.db.users
 
-#----------#
-# HOMEPAGE
-#----------#
 
-# base.html and root route
+# HOMEPAGE ------------------------------------------------#
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html')
 
-#------------------#
-# RANDOM MEAL PAGE
-#------------------#
+
+# RANDOM MEAL PAGE ----------------------------------------#
 @app.route('/random_meal')
 def random_meal():
     return render_template('random_meal.html')
 
-#--------------#
-# ADD RECIPE's
-#--------------#
-
-
-@app.route('/add_recipe')
-def add_recipe():
-    return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=recipeCategory.find(),
-                           skillLevel=skillLevel.find(), allergens=allergens.find(), userDB=userDB.find())
-
-
-@app.route('/insert_recipe', methods=['POST'])
-def insert_recipe():
-    username = session.get('username')
-    user = userDB.find_one({'username': username})
-    # Request Recipe tags and split into array based on comma
-    recipe_tags = request.form.get('recipe_tags')
-    recipe_tags_split = [x.strip() for x in recipe_tags.split(',')]
-    complete_recipe = {
-        'recipe_name': request.form.get('recipe_name'),
-        'recipe_description': request.form.get('recipe_description'),
-        'recipe_category_name': request.form.get('recipe_category_name'),
-        'allergen_type': request.form.getlist('allergen_type'),
-        'recipe_prep_time': request.form.get('recipe_prep_time'),
-        'recipe_cook_time': request.form.get('recipe_cook_time'),
-        'recipe_serves': request.form.get('recipe_serves'),
-        'recipe_difficulty': request.form.get('recipe_difficulty'),
-        'recipe_image': request.form.get('recipe_image'),
-        'recipe_ingredients':  request.form.getlist('recipe_ingredients'),
-        'recipe_method':  request.form.getlist('recipe_method'),
-        'date_time': datetime.now(),
-        'author_name': user['username'],
-        'ratings': [
-            {'overall_ratings': 0.0,
-             'total_ratings': 0,
-             'no_of_ratings': 0
-             }
-        ],
-        'recipe_tags': recipe_tags_split
-    }
-    recipes.insert_one(complete_recipe)
-    return redirect(url_for('my_recipes'))
-
-
-#--------------#
-# ADD RECIPE's
-#--------------#
-
-@app.route('/edit_recipe/<recipe_id>')
-def edit_recipe(recipe_id):
-    return render_template('edit_recipe.html', recipeCategory=recipeCategory.find(),
-                           allergens=allergens.find(), skillLevel=skillLevel.find(),
-                           recipes=recipes.find_one({'_id': ObjectId(recipe_id)}))
-
-
-@app.route('/update_recipe/<recipe_id>', methods=['POST'])
-def update_recipe(recipe_id):
-    recipe_tags = request.form.get('recipe_tags')
-    recipe_tags_split = [x.strip() for x in recipe_tags.split(',')]
-    recipes.update({'_id': ObjectId(recipe_id)},
-                   {
-        '$set': {
-            'recipe_name': request.form.get('recipe_name'),
-            'recipe_description': request.form.get('recipe_description'),
-            'recipe_category_name': request.form.get('recipe_category_name'),
-            'allergen_type': request.form.getlist('allergen_type'),
-            'recipe_prep_time': request.form.get('recipe_prep_time'),
-            'recipe_cook_time': request.form.get('recipe_cook_time'),
-            'recipe_serves': request.form.get('recipe_serves'),
-            'recipe_difficulty': request.form.get('recipe_difficulty'),
-            'recipe_image': request.form.get('recipe_image'),
-            'recipe_ingredients':  request.form.getlist('recipe_ingredients'),
-            'recipe_method':  request.form.getlist('recipe_method'),
-            'featured_recipe':  request.form.get('featured_recipe'),
-            'recipe_tags': recipe_tags_split
-        }
-    })
-    return redirect(url_for('my_recipes'))
-
-#--------------#
-# ADD RECIPE's
-#--------------#
-
-@app.route('/my_recipes/<page>', methods=['GET'])
-def my_recipes(page):
-    username = session.get('username')
-    user = userDB.find_one({'username': username})
-
-    # Count the number of recipes in the Database
-    all_recipes = recipes.find({'author_name': username}).sort(
-        [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
-    count_recipes = all_recipes.count()
-    # Variables for Pagination
-    offset = (int(page) - 1) * 6
-    limit = 6
-    total_no_of_pages = int(math.ceil(count_recipes/limit))
-    recipe_pages = recipes.find({'author_name': username}).sort([("date_time", pymongo.DESCENDING),
-                                                                 ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
-
-    return render_template('my_recipes.html',
-                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
-                           total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=recipeCategory.find())
-
-#-----------------------------#
-# USER LOGIN AND REGISTRATION
-#-----------------------------#
-
-
+# USER LOGIN AND REGISTRATION -----------------------------#
 @app.route('/register')
 def register():
     return render_template('register.html')
@@ -229,20 +112,108 @@ def logout():
     flash('You are now logged out!', 'success')
     return render_template('home.html')
 
+
+# RECIPES SECTION #
+
+# BROWSE RECIPE CATEGORIES --------------------------------#
+# To find the different categories in the nav menu. #
+@app.route('/browse_recipes/<recipe_category_name>/<page>', methods=['GET'])
+def browse_recipes(recipe_category_name, page):
+    tags = recipes.distinct("recipe_tags")
+    random.shuffle(tags)    
+    #Count the number of recipes in the Database
+    all_recipes = recipes.find({'recipe_category_name': recipe_category_name}).sort([('date_time', pymongo.DESCENDING), 
+    ('_id', pymongo.ASCENDING)]) 
+    count_recipes = all_recipes.count()
+    
+    #Variables for Pagination
+    offset = (int(page) - 1) * 6
+    limit = 6
+    
+    recipe_pages = recipes.find({'recipe_category_name': recipe_category_name}).sort([("date_time", pymongo.DESCENDING), 
+                    ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
+    total_no_of_pages = int(math.ceil(count_recipes/limit))
+   
+    return render_template('browse_recipes.html',
+    recipes=recipe_pages, recipeCategory=recipeCategory.find(),count_recipes=count_recipes, total_no_of_pages=total_no_of_pages, 
+    page=page, recipe_category_name=recipe_category_name, tags=tags)
+
+
+
+# ADD RECIPE's --------------------------------------------#
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=recipeCategory.find(),
+                           skillLevel=skillLevel.find(), allergens=allergens.find(), userDB=userDB.find())
+
+
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+    username = session.get('username')
+    user = userDB.find_one({'username': username})
+    # Request Recipe tags and split into array based on comma
+    recipe_tags = request.form.get('recipe_tags')
+    recipe_tags_split = [x.strip() for x in recipe_tags.split(',')]
+    complete_recipe = {
+        'recipe_name': request.form.get('recipe_name'),
+        'recipe_description': request.form.get('recipe_description'),
+        'recipe_category_name': request.form.get('recipe_category_name'),
+        'allergen_type': request.form.getlist('allergen_type'),
+        'recipe_prep_time': request.form.get('recipe_prep_time'),
+        'recipe_cook_time': request.form.get('recipe_cook_time'),
+        'recipe_serves': request.form.get('recipe_serves'),
+        'recipe_difficulty': request.form.get('recipe_difficulty'),
+        'recipe_image': request.form.get('recipe_image'),
+        'recipe_ingredients':  request.form.getlist('recipe_ingredients'),
+        'recipe_method':  request.form.getlist('recipe_method'),
+        'date_time': datetime.now(),
+        'author_name': user['username'],
+        'ratings': [
+            {'overall_ratings': 0.0,
+             'total_ratings': 0,
+             'no_of_ratings': 0
+             }
+        ],
+        'recipe_tags': recipe_tags_split
+    }
+    recipes.insert_one(complete_recipe)
+    return redirect(url_for('add_recipe'))
+
+
+# MY RECIPE's (see my recipes.html) --------------------------------------------#
+# Collects my recipes from DB #
+
+@app.route('/my_recipes/<page>', methods=['GET'])
+def my_recipes(page):
+    username = session.get('username')
+    user = userDB.find_one({'username': username})
+
+    # Count the number of recipes in the Database
+    all_recipes = recipes.find({'author_name': username}).sort(
+        [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
+    count_recipes = all_recipes.count()
+    # Variables for Pagination
+    offset = (int(page) - 1) * 6
+    limit = 6
+    total_no_of_pages = int(math.ceil(count_recipes/limit))
+    recipe_pages = recipes.find({'author_name': username}).sort([("date_time", pymongo.DESCENDING),
+                                                                 ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
+
+    return render_template('my_recipes.html',
+                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
+                           total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=recipeCategory.find())
+
 #-------------#
 # Error Pages
 #-------------#
 
+
 # @app.errorhandler(404)
 # def page_not_found(error):
 #    return render_template('404.html',recipeCategory=recipeCategory.find(), page=1, page_title='404 Error Page, FOODictionary'), 404
-
-
 # @app.errorhandler(500)
 # def something_wrong(error):
     # return render_template('500.html',recipeCategory=recipeCategory.find(), page=1, page_title='500 Error Page, FOODictionary'), 500
-
-
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),

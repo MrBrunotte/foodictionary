@@ -39,13 +39,13 @@ const createMeal = meal => {
 
 			<div class="tags">
 				${meal.strCategory
-			? `<p class="meal-info"><strong>Category:</strong> ${meal.strCategory}</p>`
+			? `<p class="meal-info">Category: ${meal.strCategory}</p>`
 			: ''
 		}
-						${meal.strArea ? `<p class="meal-info"><strong>Area:</strong> ${meal.strArea}</p>` : ''}
+						${meal.strArea ? `<p class="meal-info">Origin: ${meal.strArea}</p>` : ''}
 						${
 		meal.strTags
-			? `<p class="meal-info"><strong>Tags:</strong> ${meal.strTags
+			? `<p class="meal-info">Dish: ${meal.strTags
 				.split(',')
 				.join(', ')}</p>`
 			: ''

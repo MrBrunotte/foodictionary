@@ -26,8 +26,9 @@ $('.button-collapse').sideNav({
 });
 
 // Code for Adding and Removing Ingredients and Steps on Add Recipe Page
-var ingredientField = '<div class="new-ingredient"><div class="input-field col s11"><input placeholder="Add another ingredient" type="text" name="recipe_ingredients" class="validate" required></div><div class="col s1"><a class="btn-floating waves-effect waves-light" id="remove_ingredient"> <i class="material-icons icon-color">remove</i></a></div></div>';
-var stepField = '<div class="new-method-step"><div class="input-field col s11"><input placeholder="Next step" type="text" name="recipe_method" class="validate" required></div><div class="col s1"><a class="btn-floating waves-effect waves-light" id="remove_method_step"> <i class="material-icons icon-color">remove</i></a></div></div>';
+var ingredientField = '<div class="new-ingredient"><div class="input-field"><input placeholder="Next ingredient" type="text" name="recipe_ingredients" class="validate" required></div><div><a class="btn-floating waves-effect waves-light" id="remove_ingredient"> <i class="material-icons icon-color">remove</i></a></div></div>';
+
+var stepField = '<div class="new-method-step"><div class="input-field"><input placeholder="Next step" type="text" name="recipe_method" class="validate" required></div><div><a class="btn-floating waves-effect waves-light" id="remove_method_step"> <i class="material-icons icon-color">remove</i></a></div></div>';
 
 // Add Ingredient to Recipe
 $("#add_ingredient").click(function () {
@@ -65,7 +66,7 @@ $(document).ready(function () {
             data: data
         });
         $('.chips-placeholder').material_chip({
-            placeholder: 'Add tag + enter',
+            placeholder: 'Tag and hit enter',
             secondaryPlaceholder: 'Next Tag',
         });
         $('.chips').on('chip.add', function (e, chip) {

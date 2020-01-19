@@ -11,13 +11,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!-- my css link -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/forms.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/toastr.css')}}" type="text/css" />
 
-    <title>{{page_title}}</title>
+    <title>FOODictionary</title>
     <!-- Flask-Toastr -->
     {{ toastr.include_jquery() }}
     <!--{{ toastr.include_toastr_css() }}-->
@@ -25,117 +24,129 @@
 </head>
 
 <body>
-    <!--Navigation for Desktop and Mobile-->
+    <!-- Dropdown structure for recipes -->
+    <ul id="dropdown1" class="dropdown-content">
+        {% for category in recipeCategory %}
+        <li><a
+                href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- Dropdown structure for My Account -->
+    <ul id="dropdown2" class="dropdown-content">
+        <li class="username-nav">Hello {{session.username|capitalize}}</li>
+        <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
+        <li><a href="#" class="nav-link">my recipes</a></li>
+        <!-- <li><a href="{{url_for('my_recipes', page=1)}}">My Recipes</a></li> -->
+        <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
+    </ul>
 
+    <!--Navigation for Desktop-->
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="brand-logo center hide-on-med-and-down">
+            <a href="{{url_for('home')}}" class="brand-logo">FOODictionary</a>
+            <ul class="right hide-on-med-and-down">
                 <li><a href="{{url_for('home')}}" class="nav-link">home</a></li>
-                <!--TODO fix the link to random recipe nav and mob nav-->
-                <!--TODO fix id cannot use the same ID on multiple places?? correct id is: "get_meal" -->
-                <li><a id="get_meal4" href="{{url_for('random_meal')}}" class="nav-link">random recipe</a></li>
+                <li><a id="get_meal_desktop" href="{{url_for('random_meal')}}" class="nav-link">random recipe</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger nav-link" href="#!" data-target="dropdown1">recipe's<i
+                            class="material-icons right">arrow_drop_down</i></a></li>
+
                 {% if session.logged_in %}
-                <li class="divider"></li>
-                <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
-                <li><a href="#" class="nav-link">my recipe's</a></li>
-                <li><a class="nav-link dropdown-button" href="#!" data-activates="dropdown2">my profile
-                        <!--<i
-                                class="material-icons right">arrow_drop_down</i>--></a></li>
-                <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
+                <li><a class="dropdown-trigger nav-link" href="#!" data-target="dropdown2">my account<i
+                            class="material-icons right">arrow_drop_down</i></a></li>
                 {% else %}
-                <li><a href="{{url_for('register')}}" class="nav-link">register</a></li>
                 <li><a href="{{url_for('login')}}" class="nav-link">login</a></li>
                 {% endif %}
             </ul>
-
-            <!-- sidemenu smaller screens -->
+            <!-- sidemenu Mobile -->
             <ul class="sidenav" id="mobile-demo">
                 <div class="background">
                     <img class="mobile-background" src="/static/images/mobile_hamburger_300px.jpg">
                 </div>
                 <div class="hamburger-list">
                     <li><a href="{{url_for('home')}}" class="nav-link-mobile">home</a></li>
-                    <!--TODO fix the link to random recipe nav and mob nav-->
-                    <!--TODO fix id cannot use the same ID on multiple places?? correct id is: "get_meal" -->
-                    <li><a id="get_meal3" href="#" class="nav-link-mobile">random recip</a>
+                    <li><a id="get_meal_mobile" href="{{url_for('random_meal')}}" class="nav-link-mobile">random
+                            recipe</a>
                     </li>
-                    {% if session.logged_in %}
-                    <!--<li class="username-nav">Welcome back {{session.username|capitalize}}!</li>-->
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown1">recipe's<i
+                                class="material-icons right">arrow_drop_down</i></a></li>
                     <li class="divider"></li>
-                    <li><a href="#" class="nav-link-mobile">add recipe</a></li>
-                    <li><a href="#" class="nav-link-mobile">my recipe's</a></li>
+                    {% if session.logged_in %}
+                    <li class="username-nav">Hello {{session.username|capitalize}}</li>
+                    <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
+                    <li><a href="#" class="nav-link">my recipes</a></li>
+                    <!-- <li><a href="{{url_for('my_recipes', page=1)}}">My Recipes</a></li> -->
+                    <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
 
-                    <li><a class="nav-link-mobile dropdown-button" href="#!" data-activates="dropdown2">my profile
-                            <!--<i
-                                class="material-icons right">arrow_drop_down</i>--></a></li>
-                    <li><a href="{{url_for('logout')}}" class="nav-link-mobile">logout</a></li>
+
                     {% else %}
-                    <li><a href="{{url_for('register')}}" class="nav-link-mobile">register</a></li>
                     <li><a href="{{url_for('login')}}" class="nav-link-mobile">login</a></li>
                     {% endif %}
                 </div>
             </ul>
-
         </div>
-    </nav>
-
-
-    <!--Main Body-->
-    <div>
-        <!-- Flask-Toastr -->
-        {{ toastr.include_toastr_js() }}
-        {% block content %} {% endblock %}
-    </div>
 
 
 
-    <footer>
-        <!-- TODO add footer section -->
-        <div class="footer">
-            <div class="sidebar-left">
-                <h5>About FOODictionary</h5>
-                <p class="about">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt quas eveniet velit
-                    expedita
-                    ducimus
-                    earum similique, tempore officia rerum delectus porro commodi, quisquam inventore error. Sequi
-                    consequatur repellat veritatis sint.</p>
-            </div>
-            <div class="sidebar-right">
-                <h5>I'm social</h5>
-                <a class="social" href="https://www.facebook18px.com/" target="_blank"><img
-                        src="/static/images/facebook18px.png" alt="Facebook"></a>
-                <a class="social" href="https://www.instagram.com/" target="_blank"><img
-                        src="/static/images/instagram18px.png" alt="Instagram"></a>
-                <a class="social" href="https://www.twitter.com/" target="_blank"><img
-                        src="/static/images/twitter18px.png" alt="Twitter"></a>
-                <a class="social" href="https://www.linkedin.com/" target="_blank"><img
-                        src="/static/images/linkedin18px.png" alt="Linkedin"></a>
-            </div>
-            <div class="footer-bottom">
-                @ 2020 Stefan Brunotte for Code Institute
-            </div>
+        <!--Main Body-->
+        <div>
+            <!-- Flask-Toastr -->
+            {{ toastr.include_toastr_js() }}
+            {% block content %} {% endblock %}
         </div>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.sidenav').sidenav();    // for the mobile hamburger menu
-            $('select').formSelect();   // for the allergens in add_recipe.html
-        });
-    </script>
-    <!-- script link to random-meal script file -->
-    <script src="{{url_for('static', filename='js/script.js')}}"></script>
-    <!-- toastr.js -->
-    <script src="{{url_for('static', filename='js/toastr.js')}}"></script>
-    <script src="{{url_for('static', filename='js/uikit.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/uikit-icons.min.js')}}"></script>
-    <!-- custom.js -->
-    <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+
+
+
+        <footer>
+            <!-- TODO add footer section -->
+            <div class="footer">
+                <div class="sidebar-left">
+                    <h5>About FOODictionary</h5>
+                    <p class="about">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt quas eveniet
+                        velit
+                        expedita
+                        ducimus
+                        earum similique, tempore officia rerum delectus porro commodi, quisquam inventore error. Sequi
+                        consequatur repellat veritatis sint.</p>
+                </div>
+                <div class="sidebar-right">
+                    <h5>I'm social</h5>
+                    <a class="social" href="https://www.facebook18px.com/" target="_blank"><img
+                            src="/static/images/facebook18px.png" alt="Facebook"></a>
+                    <a class="social" href="https://www.instagram.com/" target="_blank"><img
+                            src="/static/images/instagram18px.png" alt="Instagram"></a>
+                    <a class="social" href="https://www.twitter.com/" target="_blank"><img
+                            src="/static/images/twitter18px.png" alt="Twitter"></a>
+                    <a class="social" href="https://www.linkedin.com/" target="_blank"><img
+                            src="/static/images/linkedin18px.png" alt="Linkedin"></a>
+                </div>
+                <div class="footer-bottom">
+                    @ 2020 Stefan Brunotte for Code Institute
+                </div>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.sidenav').sidenav();            // for the mobile hamburger menu
+                $('select').formSelect();           // for the allergens in add_recipe.html
+                $(".dropdown-trigger").dropdown();  // for the dropdown menu
+            });
+        </script>
+        <!-- script link to random-meal script file -->
+        <script src="{{url_for('static', filename='js/script.js')}}"></script>
+        <!-- toastr.js -->
+        <script src="{{url_for('static', filename='js/toastr.js')}}"></script>
+        <script src="{{url_for('static', filename='js/uikit.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/uikit-icons.min.js')}}"></script>
+        <!-- custom.js -->
+        <script src="{{url_for('static', filename='js/custom.js')}}"></script>
 </body>
 
 </html>

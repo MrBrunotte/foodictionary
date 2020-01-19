@@ -2,9 +2,10 @@
 {% if session['logged_in'] %}
 
 <!-- top image -->
-<div class="top-section-add-recipe"></div>
+<div class="top-section-image-add-recipes"></div>
 <!-- title of page-->
 <h5 class="title">add your recipe</h5>
+
 <!-- form -->
 <form class="recipe-grid" method="POST" action="{{ url_for('insert_recipe', author=session.get('username')) }}">
 
@@ -64,12 +65,12 @@
 
     <h6 class="recipe">add recipe image</h6>
     <input class="recipe-image " id="recipe_image" name="recipe_image" type="text"
-        placeholder="*Image location should start with http(s)://">
+        placeholder="* Copy image location and paste here, the image location should start with http(s)://">
 
     <h6 class="ingredients-rec">ingredients</h6>
-    <div id="ingredients" class="ingredients-input ">
+    <div id="ingredients" class="ingredients-input">
         <div class="input-field">
-            <input id="recipe_ingredients" name="recipe_ingredients" type="text"
+            <input id="recipe_ingredients" name="recipe_ingredients" type="text" class="validate"
                 placeholder="A minimum of one ingredient required *Eg: 500 grams of Pasta" required>
         </div>
     </div>
