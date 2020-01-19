@@ -81,27 +81,12 @@ strong {
     header
 ===================== */
 
-.header-home{
-    background: transparent;
-    position: absolute;
-    width: 100%;
-}
-
-
 /* navigation */
-/*
-.nav-wrapper {
-    display: grid;
-    grid-template-areas:
-    "navigation"
-}
 
-.nav-wrapper    {grid-area: navigation;}
-*/
 nav {
-    /*background-color: #0d0c0ce6;*/
-    background-image: linear-gradient(to bottom, #000, #1f1210, #2c1612, #35231d, #090707);
-    height: 32px;
+    background-color: #0d0c0ce6;
+    background-image: linear-gradient(to bottom, #1f0e07, #441f0c, #31190d, #472613, #4a2713) !important;
+    height: 40px;
 }
 
 .brand-logo {
@@ -204,6 +189,11 @@ nav .brand-logo.center {
 /* ==================
     top-sections
 ===================== */
+.header-home{
+    background: transparent;
+    position: absolute;
+    width: 100%;
+}
 
 /* Top section images */
 .top-section-home {
@@ -211,7 +201,7 @@ nav .brand-logo.center {
     background-size: cover;
     color: #fff;
     background-position: center top;
-    height: 65vh;
+    height: 50vh;
     width: 100%;
 }
 
@@ -289,6 +279,20 @@ nav .brand-logo.center {
     z-index: 2;
 } 
 
+.view-it {
+    grid-column: span 2;
+    background-color: transparent !important;
+    color: #0404047d;
+    justify-self: center;
+    padding: 1 2rem;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
 .btn-register,
 .btn-surprise {
     color: #0404047d;
@@ -306,9 +310,9 @@ nav .brand-logo.center {
     background-color: #6d3819;
 }
 
-/* ==================
-    middle section
-===================== */
+/* =======================
+    random meal section
+======================== */
 
 .rm-grid {
     display: grid;
@@ -467,6 +471,11 @@ nav .brand-logo.center {
     margin: auto;
 }
 
+/* ======================
+    middle section HOME
+======================= */
+
+
 /* ==================
     footer
 ===================== */
@@ -560,7 +569,7 @@ nav .brand-logo.center {
     }
 
     .title {
-        padding-top: 0px;
+        padding-top: 10px;
         font-size: 3rem;
     }
 }

@@ -34,6 +34,9 @@ userDB = mongo.db.users
 @app.route('/')
 @app.route('/home')
 def home():
+    tags = recipes.distinct('recipe_tags')
+    random.shuffle(tags)
+    username = session.get('username')
     return render_template('home.html')
 
 
@@ -120,24 +123,23 @@ def logout():
 @app.route('/browse_recipes/<recipe_category_name>/<page>', methods=['GET'])
 def browse_recipes(recipe_category_name, page):
     tags = recipes.distinct("recipe_tags")
-    random.shuffle(tags)    
-    #Count the number of recipes in the Database
-    all_recipes = recipes.find({'recipe_category_name': recipe_category_name}).sort([('date_time', pymongo.DESCENDING), 
-    ('_id', pymongo.ASCENDING)]) 
+    random.shuffle(tags)
+    # Count the number of recipes in the Database
+    all_recipes = recipes.find({'recipe_category_name': recipe_category_name}).sort([('date_time', pymongo.DESCENDING),
+                                                                                     ('_id', pymongo.ASCENDING)])
     count_recipes = all_recipes.count()
-    
-    #Variables for Pagination
+
+    # Variables for Pagination
     offset = (int(page) - 1) * 6
     limit = 6
-    
-    recipe_pages = recipes.find({'recipe_category_name': recipe_category_name}).sort([("date_time", pymongo.DESCENDING), 
-                    ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
-    total_no_of_pages = int(math.ceil(count_recipes/limit))
-   
-    return render_template('browse_recipes.html',
-    recipes=recipe_pages, recipeCategory=recipeCategory.find(),count_recipes=count_recipes, total_no_of_pages=total_no_of_pages, 
-    page=page, recipe_category_name=recipe_category_name, tags=tags)
 
+    recipe_pages = recipes.find({'recipe_category_name': recipe_category_name}).sort([("date_time", pymongo.DESCENDING),
+                                                                                      ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
+    total_no_of_pages = int(math.ceil(count_recipes/limit))
+
+    return render_template('browse_recipes.html',
+                           recipes=recipe_pages, recipeCategory=recipeCategory.find(), count_recipes=count_recipes, total_no_of_pages=total_no_of_pages,
+                           page=page, recipe_category_name=recipe_category_name, tags=tags)
 
 
 # ADD RECIPE's --------------------------------------------#

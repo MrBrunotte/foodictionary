@@ -1,3 +1,10 @@
+/* Materilize overwrite */
+
+.material-icons {
+    height: 0px !important;
+    line-height: 30px !important;
+}
+
 .top-section-form {
     background-image: url(/static/images/three_burgers.jpg);
     background-size: cover;
@@ -61,6 +68,7 @@
 .legend-text {
     font-weight: 700;
     text-transform: capitalize;
+    color: var(--black);
 }
 
 .group {
@@ -132,6 +140,7 @@
     font-family: 'Ubuntu', sans-serif;
     font-size: .8rem;
     text-transform: capitalize;
+    color: var(--black);
 }
 
 input {
