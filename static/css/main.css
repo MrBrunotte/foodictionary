@@ -224,7 +224,7 @@ nav .brand-logo.center {
 }
 
 .chip:hover {
-    background-color: var(--black) !important;
+    background-color: var(--gray) !important;
 }
 
 .chip a:hover {
@@ -379,7 +379,12 @@ input:active {
 }
 
 .search-background {
-    background: var(--gray)
+    background: var(--gray);
+    border-radius: 50px;
+}
+
+.radius {
+    border-radius: 50px !important;
 }
 
 input[type="text"]:not(.browser-default),
@@ -400,6 +405,10 @@ input[type="password"]:not(.browser-default) {
     margin: 0 !important;
     padding: 0 !important;
 
+}
+
+.search-whitespace {
+    margin-left: 10px;
 }
 
 .tags-whitespace {
@@ -616,10 +625,6 @@ input[type="password"]:not(.browser-default) {
 .recipe-name::after,
 .search-keyword::after {
     content: close-quote;
-}
-
-.body-search {
-    height: 90vh;
 }
 
 .search-keyword {
@@ -868,7 +873,7 @@ a .img-card {
     margin-top: 2em;
 }
 
-.center a {
+.return {
     font-size: 2rem;
     font-weight: 900;
 }

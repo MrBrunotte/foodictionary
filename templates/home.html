@@ -44,9 +44,10 @@
                 <h3>Search Recipes</h3>
                 <div class="input-field">
                     <form action="{{url_for('receive_keyword', page=1)}}" id="search-form" method="post" target="_top">
-                        <input class="white grey-text autocomplete" id="search-text" name="keyword"
+                        <input class="radius white grey-text autocomplete" id="search-text" name="keyword"
                             placeholder="Search for desserts, chicken, snack etc..." type="text" />
-                        <button class="waves-effect waves-light btn-small" id="search-button" type="submit">
+                        <button class="search-whitespace waves-effect waves-light btn-small" id="search-button"
+                            type="submit">
                             <i class="material-icons no-margin right">search</i>
                         </button>
                     </form>
