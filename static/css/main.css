@@ -420,9 +420,117 @@ input[type="password"]:not(.browser-default) {
     height: 88vh;
 }
 
-/* ==================
-    Random_meal.html 
-===================== */
+/* ====================
+    Random meal area
+======================= */
+
+
+/* grid areas */
+.random-meal-name       { grid-area: header; }
+.img-food-parent        { grid-area: img; }
+.tags-parent            { grid-area: tags-header; }
+.tags                   { grid-area: tags; }
+.ingredients            { grid-area: ingr; }
+.ingr-parent            { grid-area: ingr-header; }
+.meal-instr-parent      { grid-area: instr-header; }
+.instructions           { grid-area: instr; }
+.img-header-parent      { grid-area: video-header; }
+.video-parent           { grid-area: video; }
+
+
+.img-food-parent,
+.random-meal-name,
+.tags-parent,
+.img-header-parent,
+.tags,
+.meal-instr-parent,
+.ingredients,
+.video-parent,
+.video-header-div {
+    display: grid;
+}
+
+.tags-header,
+.meal-instr-header,
+.ingr-header {
+    text-transform: uppercase;
+    margin: 1em 0em .5em .7em;
+}
+
+.img-food {
+    justify-self: center;
+    margin: 1em 2em 0em 1em;
+    max-height: 400px;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 3px 3px 5px 3px rgb(66, 66, 66);
+}
+
+.meal-info {
+    margin: 0;
+}
+
+.meal-info p {
+    text-align: start;
+}
+
+.random-meal-name {
+    border-top: 2px solid rgb(216, 216, 216);
+    font-size: 2.5rem;
+    width: 100%;
+}
+
+.random-meal-name p {
+    margin: 0;
+}
+
+.video-parent {
+    padding: 1em;
+}
+
+.tags,
+.meal-instr,
+.ingredients {
+    margin: 0em .75em;
+}
+
+.random-meal-name,
+.image-header {
+    padding: .3em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.meal-instr-parent {
+    margin: 0;
+}
+
+.ingredients {
+    overflow-y: auto;
+    max-height: 260px;
+}
+
+.meal-instr {
+    overflow-y: auto;
+    max-height: 325px;
+}
+
+.videoWrapper {
+    margin: auto;
+}
+
+
+
+/* =================================
+    Random_meal.html from themealDB 
+==================================== */
+.random-meal-body{
+    height: 109vh;
+}
+
+.random-meal-section {
+    padding: 0em .8em;
+}
 
 /* <!-- top image --> */
 .top-image-random-meal{
@@ -431,7 +539,7 @@ input[type="password"]:not(.browser-default) {
     color: #fff;
     background-position: center;
     border-radius: 25px 25px 0px 0px;
-    height: 35vh;
+    height: 70vh;
     margin-bottom: 15px !important;
 }
 
@@ -449,11 +557,7 @@ input[type="password"]:not(.browser-default) {
 .margin-bottom {
     margin-bottom: 15px;
 }
-
-
-
-
-
+/*
 .middle-section-subtitle,
 .middle-section-subtitle-text {
     text-transform: capitalize;
@@ -468,7 +572,7 @@ input[type="password"]:not(.browser-default) {
     margin-top: 0;
     margin-bottom: .75rem;
     font-weight: 700;
-}
+}*/
 
 /* =============
     Recipe.html 
@@ -697,12 +801,6 @@ a .img-card {
 
 
 
-
-
-
-
-
-
 .title,
 .subtitle {
     text-align: center;
@@ -727,168 +825,18 @@ a .img-card {
 
 
 
-
-
-
-
-
-
-
-/* ====================
-    Random meal area
-======================= */
-
-.random-meal-section {
-    display: grid;
-    grid-template-rows: auto;
-    padding: 0em .8em;
-    grid-template-areas:
-        "header"
-        "img"
-        "tags-header"    
-        "tags"
-        "ingr-header"    
-        "ingr"
-        "instr-header"   
-        "instr"
-        "video-header"
-        "video";
-}
-
-/* grid areas */
-.random-meal-name       { grid-area: header; }
-.img-food-parent        { grid-area: img; }
-.tags-parent            { grid-area: tags-header; }
-.tags                   { grid-area: tags; }
-.ingredients            { grid-area: ingr; }
-.ingr-parent            { grid-area: ingr-header; }
-.meal-instr-parent      { grid-area: instr-header; }
-.instructions           { grid-area: instr; }
-.img-header-parent      { grid-area: video-header; }
-.video-parent           { grid-area: video; }
-
-
-.img-food-parent,
-.random-meal-name,
-.tags-parent,
-.img-header-parent,
-.tags,
-.meal-instr-parent,
-.ingredients,
-.video-parent,
-.video-header-div {
-    display: grid;
-}
-
-.tags-header,
-.meal-instr-header,
-.ingr-header {
-    text-transform: uppercase;
-    margin: 1em 0em .5em .7em;
-}
-
-.img-food {
-    justify-self: center;
-    margin: 1em 2em 0em 1em;
-    max-height: 400px;
-    width: 100%;
-    object-fit: cover;
-    box-shadow: 3px 3px 5px 3px rgb(66, 66, 66);
-}
-
-.meal-info {
-    margin: 0;
-}
-
-.meal-info p {
-    text-align: start;
-}
-
-.random-meal-name {
-    border-top: 2px solid rgb(216, 216, 216);
-    font-size: 2.5rem;
-    width: 100%;
-}
-
-.random-meal-name p {
-    margin: 0;
-}
-
-.video-parent {
-    padding: 1em;
-}
-
-.tags,
-.meal-instr,
-.ingredients {
-    margin: 0em .75em;
-}
-
-.random-meal-name,
-.image-header {
-    padding: .3em;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.meal-instr-parent {
-    margin: 0;
-}
-
-.ingredients {
-    overflow-y: auto;
-    max-height: 260px;
-}
-
-.meal-instr {
-    overflow-y: auto;
-    max-height: 325px;
-}
-
-.videoWrapper {
-    margin: auto;
-}
-
-/* ======================
-    middle section HOME
-======================= */
-
-
 /* ==================
     footer
 ===================== */
 
 .footer {
-    display: grid;
     color: whitesmoke;
     background-color: #84848482;
-    column-gap: 3rem;
-    margin-top: 4rem;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: 
-    "sidebar-left   sidebar-right"
-    "footer-bottom  footer-bottom";
+  
 }
 
-.sidebar-left   {grid-area: sidebar-left;}
-
-.sidebar-right  {grid-area: sidebar-right;}
-
-.footer-bottom  {grid-area: footer-bottom;}
-
-.sidebar-left,
-.sidebar-right {
-    padding: .5rem 8rem 0rem;
-    margin: 0 auto;
-}
-
-.sidebar-right {
-    align-self: top;
-}
-
-.sidebar-right h5 {
-    padding-bottom: 1.5rem;
-    margin: 0;
+.footer-padding {
+    padding-top: .5em;
 }
 
 .about {
@@ -909,6 +857,26 @@ a .img-card {
     padding: .4rem 0rem; 
     width: 100%;
 }
+
+/* =============
+    Error pages
+================ */
+.error-header {
+    font-size: 5rem;
+    color: var(--gray);
+    margin: 0 auto;
+    margin-top: 2em;
+}
+
+.center a {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+
+
+
+
 
 /* ==================
     Media Queries

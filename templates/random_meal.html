@@ -3,16 +3,19 @@
 
 
 <!-- random meal section -->
-<div class="top-image-random-meal container"></div>
-<div class="" id="rm">
+<div class="random-meal-body">
+    <div class="top-image-random-meal container"></div>
+    <div class="" id="rm">
 
-    <h4 class="rm-title">random recipe generator</h4>
-    <p class="rm-text">Are you out of ideas? <br>Let the random recipe generator find one for you.</p>
-    <div class="center">
-        <a id="get_meal" href="#meal" class="waves-effect waves-light btn-small margin-bottom">Generate meal!</a>
-        <!-- Button to make the request to the API -->
+        <h4 class="rm-title">random recipe generator</h4>
+        <p class="rm-text">Are you out of ideas? <br>Let the random recipe generator find one for you.</p>
+        <div class="center">
+            <a id="get_meal" href="#meal" class="waves-effect waves-light btn-small margin-bottom">Generate meal!</a>
+            <!-- Button to make the request to the API -->
+        </div>
     </div>
 </div>
-<section class="random-meal-section" id="meal"></section> <!-- The API data is sent to this div container -->
+<section class="random-meal-section random-meal-body" id="meal"></section>
+<!-- The API data is sent to this div container -->
 
 {% endblock %}

@@ -112,7 +112,7 @@ def signin():
     else:
         session['logged_in'] = True
         flash('Welcome back ' +
-              user['author_name'].capitalize() + '!', 'success')
+        user['author_name'].capitalize() + '!', 'success')
         return render_template('home.html')  # if login ok redirect to home
 
 
@@ -332,13 +332,17 @@ def search_tag(tag, page):
 # Error Pages
 #-------------#
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html',recipeCategory=recipeCategory.find(), page=1, page_title='404 Error Page, FOODictionary'), 404
 
-# @app.errorhandler(404)
-# def page_not_found(error):
-#    return render_template('404.html',recipeCategory=recipeCategory.find(), page=1, page_title='404 Error Page, FOODictionary'), 404
-# @app.errorhandler(500)
-# def something_wrong(error):
-# return render_template('500.html',recipeCategory=recipeCategory.find(), page=1, page_title='500 Error Page, FOODictionary'), 500
+
+@app.errorhandler(500)
+def something_wrong(error):
+    return render_template('500.html',recipeCategory=recipeCategory.find(), page=1, page_title='500 Error Page, FOODictionary'), 500
+
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),

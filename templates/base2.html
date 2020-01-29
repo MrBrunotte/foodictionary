@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- Parent HTML-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- google fonts: Lora & Ubuntu -->
+    <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- my css link -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/toastr.css')}}" type="text/css" />
+
+    <title>FOODictionary</title>
+    <!-- Flask-Toastr -->
+    {{ toastr.include_jquery() }}
+    <!--{{ toastr.include_toastr_css() }}-->
+    {{ toastr.message() }}
+</head>
+
+<body>
+    <!-- Dropdown structure for recipes -->
+    <ul id="dropdown1" class="dropdown-content">
+        {% for category in recipeCategory %}
+        <li class="divider"></li>
+        <li><a
+                href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- Dropdown structure for My Account -->
+    <ul id="dropdown2" class="dropdown-content">
+        <li class="username-nav">Hello {{session.username|capitalize}}</li>
+        <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
+        <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
+        <!-- <li><a href="{{url_for('my_recipes', page=1)}}">My Recipes</a></li> -->
+        <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
+    </ul>
+
+    <!--Navigation for Desktop-->
+
+
+
+    <!--Main Body-->
+    <div>
+
+        {% block content %} {% endblock %}
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.sidenav').sidenav();            // for the mobile hamburger menu
+            $('select').formSelect();           // for the allergens in add_recipe.html
+            $(".dropdown-trigger").dropdown();  // for the dropdown menu
+
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- script link to random-meal script file -->
+    <script src="/static/js/script.js"></script>
+    <!-- toastr.js -->
+    <script src="/static/js/toastr.js"></script>
+    <script src="/static/js/uikit.min.js"></script>
+    <script src="/static/js/uikit-icons.min.js"></script>
+    <!-- custom.js -->
+    <script src="/static/js/custom.js"></script>
+</body>
+
+</html>
