@@ -1,22 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!--TODO fix the link to random meal..does not work!-->
-<!--TODO fix the @app.route too -->
-<!--! random meal section -->
-<section class="rm-grid" id="rm">
-    {% if session.logged_in %}
+
+<!-- random meal section -->
+<div class="top-image-random-meal container"></div>
+<div class="" id="rm">
+
     <h4 class="rm-title">random recipe generator</h4>
     <p class="rm-text">Are you out of ideas? <br>Let the random recipe generator find one for you.</p>
-    <a id="get_meal" href="#meal" class="button btn btn-surprise">Generate recipe!</a>
-    {% else %}
-    <h4 class="middle-section-title">random recipe generator</h4>
-    <p class="rm-text">Are you out of ideas? <br>Let the random recipe generator find one for you.</p>
-    <!--TODO fix id cannot use the same ID on multiple places?? correct id is: "get_meal" -->
-    <a id="get_meal2" href="#meal" class="button btn btn-surprise">Generate meal!</a>
-    <!-- Button to make the request to the API -->
-    {% endif %}
-</section>
+    <div class="center">
+        <a id="get_meal" href="#meal" class="waves-effect waves-light btn-small margin-bottom">Generate meal!</a>
+        <!-- Button to make the request to the API -->
+    </div>
+</div>
 <section class="random-meal-section" id="meal"></section> <!-- The API data is sent to this div container -->
 
 {% endblock %}

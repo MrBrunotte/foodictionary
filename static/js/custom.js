@@ -1,4 +1,6 @@
-// Code for Search Overlay
+/* =================
+	Search overlay
+====================*/
 var search_screen = document.getElementById('search-overlay');
 
 $(document).ready(function () {
@@ -15,26 +17,19 @@ window.onclick = function (event) {
     }
 };
 
-// Materialize Code
-$(document).ready(function () {
-    $('.button-collapse').sideNav();
-    $('select').material_select();
-});
+/* ========================================================
+	New ingredients field and Anther step field in Method
+===========================================================*/
+var ingredientField = '<div class="new-ingredient"><div class="input-field col s11"><input placeholder="Next ingredient" type="text" name="recipe_ingredients" class="validate" required></div><div class="col s1"><a class="btn-floating waves-teal btn-flat" id="remove_ingredient"> <i class="material-icons icon-color">remove</i></a></div></div>';
 
-$('.button-collapse').sideNav({
-    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-});
+var stepField = '<div class="new-method-step"><div class="input-field col s11"><input placeholder="Next step" type="text" name="recipe_method" class="validate" required></div><div class="col s1"><a class="btn-floating waves-teal btn-flat" id="remove_method_step"> <i class="material-icons icon-color">remove</i></a></div></div>';
 
-// Code for Adding and Removing Ingredients and Steps on Add Recipe Page
-var ingredientField = '<div class="new-ingredient"><div class="input-field"><input placeholder="Next ingredient" type="text" name="recipe_ingredients" class="validate" required></div><div><a class="btn-floating waves-effect waves-light" id="remove_ingredient"> <i class="material-icons icon-color">remove</i></a></div></div>';
-
-var stepField = '<div class="new-method-step"><div class="input-field"><input placeholder="Next step" type="text" name="recipe_method" class="validate" required></div><div><a class="btn-floating waves-effect waves-light" id="remove_method_step"> <i class="material-icons icon-color">remove</i></a></div></div>';
-
-// Add Ingredient to Recipe
+// Add Ingredient to Recipe function
 $("#add_ingredient").click(function () {
     $("#ingredients").append(ingredientField);
     Materialize.updateTextFields();
 });
+
 // Remove the Ingredient from Recipe
 $("body").on("click", "#remove_ingredient", function () {
     $(this).parents(".new-ingredient").remove();
@@ -51,7 +46,10 @@ $("body").on("click", "#remove_method_step", function () {
     $(this).parents(".new-method-step").remove();
 });
 
-//Code to bind chip input to hidden input field
+
+/* ===============
+	Tags (chips)
+==================*/
 function updateChipInput(chip) {
     var newval = "";
     newval = $(chip).material_chip('data').reduce(function (result, val) { result.push(val.tag); return result; }, []).join(",");

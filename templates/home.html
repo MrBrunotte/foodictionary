@@ -1,20 +1,79 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="top-section-home">
-    <div class="top-grid">
-        {% if session.logged_in %}
-        <h1 class="title">Welcome {{session.username|capitalize}}!</h1>
-        <h2 class="subtitle">- Your personalized cookbook -</h2>
-        {% else %}
-        <h1 class="title">FOODictionary</h1>
-        <h2 class="subtitle">- Your personalized cookbook -</h2>
-        {% endif %}
+<!-- top image -->
+<div class="top-image-home container"></div>
+<!-- text section home -->
+<div class="container background-light-gray">
+    <div class="row">
+        <div class="col s12">
+            {% if session.logged_in %}
+            <h1 class="title-home">welcome {{session.username|capitalize}}!</h1>
+            <h2 class="subtitle-home">- Your personalized cookbook -</h2>
+            {% else %}
+            <h1 class="title-home">FOODictionary</h1>
+            <h2 class="subtitle-home">- Your personalized cookbook -</h2>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- Section: Search -->
+<section id="search" class=" container section section-search search-background darken-1 white-text center scrollspy">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h3>Search Recipes</h3>
+                <div class="input-field">
+                    <form action="{{url_for('receive_keyword', page=1)}}" id="search-form" method="post" target="_top">
+                        <input class="white grey-text autocomplete" id="search-text" name="keyword"
+                            placeholder="Search for desserts, chicken, snack etc..." type="text" />
+                        <button class="waves-effect waves-light btn-small" id="search-button" type="submit">
+                            <i class="material-icons no-margin right">search</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- middle section -->
+<!--
+<li class="no-padding">
+    <form action="{{url_for('receive_keyword', page=1)}}" id='search-form' method='post' target='_top'>
+        <input id='search-text' name='keyword' placeholder='Search' type='text' />
+        <button id='search-button' type='submit'>
+            <i class="material-icons right">search</i>
+        </button>
+    </form>
+</li>-->
 
-
-
-
+<!--! Why is this not visible in home.html?? -->
+<div class="container">
+    <div class="row">
+        {% for recipe in recipes %}
+        <div class="col s12 m4">
+            <div class="card medium">
+                <div class="card-image">
+                    <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_name}}"
+                            alt="{{recipe.recipe_name}}"></a>
+                </div>
+                <div class="card-title">
+                    <div class="card-content">
+                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">
+                            <h6 class="recipe-headers">
+                                {{recipe.recipe_name}}
+                            </h6>
+                        </a>
+                        <p>
+                            {{recipe.recipe_description}}
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

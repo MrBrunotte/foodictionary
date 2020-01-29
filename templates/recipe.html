@@ -1,0 +1,135 @@
+{% extends 'base.html' %} {% block content %}
+<!-- top image -->
+<!-- TODO image is to big for smaller screens -->
+<div class="top-image-my-recipes"></div>
+<div class="container container-width">
+    <!-- title of page-->
+    <h5 class="form-title recipe-name">{{recipe.recipe_name}}</h5>
+
+    <!-- Recipe info-->
+    <div class="row recipe-info">
+
+        <!-- Go to Edit my recipe page -->
+        <div class="col s12 m2 center">
+            {% if (session['logged_in'] and user.username == recipe.author_name) %}
+            <a href="{{url_for('edit_recipe', recipe_id = recipe._id)}}">
+                <p><i class="material-icons small edit-recipe">edit</i></p>
+                <div class="info-fonts edit-recipe">edit recipe</div>
+            </a>
+            {% endif %}
+        </div>
+
+        <!-- Recipe image from DB -->
+        <div class="col s12 m8">
+            <img class="recipe-img" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
+        </div>
+
+        <!-- Delete this recipe -->
+        <div class="col s12 m2 center">
+            {% if (session['logged_in'] and user.username == recipe.author_name) %}
+            <form action="{{ url_for('delete_recipe', recipe_id = recipe._id) }}" method="post">
+
+                <p><i class="material-icons small delete_recipe">delete</i>
+                </p>
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="submit" class="info-fonts delete_recipe" value="Delete Recipe" />
+            </form>
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="cols12 s1 info-row">
+            <div class="row ">
+                <!-- Prep time -->
+                <div class="col s12 m2 center">
+                    <div>
+                        <i class="material-icons">timer</i>
+                    </div>
+                    <div class="info-fonts">Prep Time:</div>
+                    <div class="info-rec">{{recipe.recipe_prep_time}}</div>
+                </div>
+                <!-- Cook time -->
+                <div class="col s12 m2 center">
+                    <div>
+                        <i class="material-icons">watch_later</i>
+                    </div>
+                    <div class="info-fonts">Cook Time:</div>
+                    <div class="info-rec">{{recipe.recipe_cook_time}}</div>
+                </div>
+                <!-- Servs -->
+                <div class="col s12 m2 center">
+                    <div>
+                        <i class="material-icons">local_dining</i>
+                    </div>
+                    <div class="info-fonts">Servs:</div>
+                    <div class="info-rec">{{recipe.recipe_serves}}</div>
+                </div>
+                <!-- Servs -->
+                <div class="col s12 m2 center">
+                    <div>
+                        <i class="material-icons">trending_up</i>
+                    </div>
+                    <div class="info-fonts">Difficulty:</div>
+                    <div class="info-rec">{{recipe.recipe_difficulty}}</div>
+                </div>
+                <!-- Allergens -->
+                <div class="col s12 m2 center">
+                    <div>
+                        <i class="material-icons">priority_high</i>
+                    </div>
+                    <div class="info-fonts">Allergens:</div>
+                    <div class="info-rec">{% for items in recipe.allergen_type %}
+                        {{items}},
+                        {% endfor %}</div>
+                </div>
+                <!-- Category -->
+                <div class="col s12 m2 center">
+                    <div>
+                        <i class="material-icons">menu</i>
+                    </div>
+                    <div class="info-fonts">Category:</div>
+                    <div class="info-rec">{{recipe.recipe_category_name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--{% for rating in recipe.ratings %}
+    <div class="star-ratings-sprite"><span style="width:{{((rating.overall_ratings / 5)*100)}}%"
+            class="star-ratings-sprite-rating"></span></div>
+    {% endfor%}-->
+    <div class="row text-background">
+        <!-- Recipe tags -->
+        <div class="col s12 center">
+            <h5 class="form-subtitle">Recipe Tags </h5>
+            {% for items in recipe.recipe_tags %}
+            {% if items !="" %}
+            <div class="chip">
+                <a href="{{url_for('search_tag',tag=items, page=1)}}">{{items}}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- Recipe ingredients -->
+        <div class="col s12 m6 recipe-padding">
+            <h5 class="form-subtitle position">Ingredients</h5>
+            <ul>
+                {% for items in recipe.recipe_ingredients %}
+                <li>{{items}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Recipe method -->
+        <div class="col s12 m6 recipe-padding">
+            <h5 class="form-subtitle position">Method</h5>
+            <ol class="ol-recipe">
+                {% for items in recipe.recipe_method %}
+                <li>{{items}}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}

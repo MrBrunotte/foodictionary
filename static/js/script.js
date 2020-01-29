@@ -1,4 +1,7 @@
-/* random meal API script */
+/* ========================
+	random meal API script
+===========================*/
+//Variables
 const get_meal_btn = document.getElementById('get_meal');
 const meal_container = document.getElementById('meal');
 
