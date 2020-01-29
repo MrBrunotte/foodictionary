@@ -41,22 +41,6 @@
         <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
     </ul>
 
-    <!-- Dropdown structure sidenav for My Account -->
-    <ul id="dropdown3" class="dropdown-content">
-        {% for category in recipeCategory %}
-        <li><a
-                href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    <ul id="dropdown4" class="dropdown-content">
-        <li class="username-nav">Hello {{session.username|capitalize}}</li>
-        <li><a href="{{url_for('add_recipe')}}" class="nav-link-mobile">add recipe</a></li>
-        <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link-mobile">my recipes</a></li>
-        <!-- <li><a href="{{url_for('my_recipes', page=1)}}">My Recipes</a></li> -->
-        <li><a href="{{url_for('logout')}}" class="nav-link-mobile">logout</a></li>
-    </ul>
-
     <!--Navigation for Desktop-->
     <nav>
         <div class="nav-wrapper">
@@ -88,12 +72,12 @@
                             recipe</a>
                     </li>
                     <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown3">recipe's<i
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown1">recipe's<i
                                 class="material-icons right">arrow_drop_down</i></a></li>
                     <li class="divider"></li>
                     {% if session.logged_in %}
                     <li class="username-nav">Hello {{session.username|capitalize}}</li>
-                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown4">my account<i
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown2">my account<i
                                 class="material-icons right">arrow_drop_down</i></a></li>
                     % else %}
                     <li><a href="{{url_for('login')}}" class="nav-link-mobile">login</a></li>
@@ -124,6 +108,8 @@
                     ducimus
                     earum similique, tempore officia rerum delectus porro commodi, quisquam inventore error. Sequi
                     consequatur repellat veritatis sint.</p>
+                Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+                    href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
             </div>
             <div class="sidebar-right">
                 <h5>I'm social</h5>

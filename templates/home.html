@@ -16,8 +16,28 @@
         </div>
     </div>
 </div>
+
+
+<!-- Section: Tags -->
+<div class="container">
+    <div class="row">
+        <div class="col s12 center tags-whitespace">
+            <h6 class="tags-header-whitespace">Popular tags</h6>
+            {% set _stub = recipes.rewind() %}
+            <!--Limit no of Tags displayed -->
+            {% for items in tags[0:20] %}
+            {% if items !="" %}
+            <div class="chip">
+                <a href="{{url_for('search_tag', tag=items, page=1)}}">{{items}}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 <!-- Section: Search -->
-<section id="search" class=" container section section-search search-background darken-1 white-text center scrollspy">
+<div id="search" class=" container section section-search search-background darken-1 white-text center scrollspy">
     <div class="container">
         <div class="row">
             <div class="col s12">
@@ -34,46 +54,56 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<!--
-<li class="no-padding">
-    <form action="{{url_for('receive_keyword', page=1)}}" id='search-form' method='post' target='_top'>
-        <input id='search-text' name='keyword' placeholder='Search' type='text' />
-        <button id='search-button' type='submit'>
-            <i class="material-icons right">search</i>
-        </button>
-    </form>
-</li>-->
-
-<!--! Why is this not visible in home.html?? -->
+<!-- Section: Categories -->
 <div class="container">
     <div class="row">
-        {% for recipe in recipes %}
-        <div class="col s12 m4">
-            <div class="card medium">
-                <div class="card-image">
-                    <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_name}}"
-                            alt="{{recipe.recipe_name}}"></a>
+        <div class="col s12 center tags-whitespace">
+
+            <div class="row">
+                <div class="col s2">
+                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Starter', page=1)}}"><img
+                            src="/static/images/canape.png" alt="Starters">
+                        <p class="uppercase">STARTER</p>
+                    </a>
                 </div>
-                <div class="card-title">
-                    <div class="card-content">
-                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">
-                            <h6 class="recipe-headers">
-                                {{recipe.recipe_name}}
-                            </h6>
-                        </a>
-                        <p>
-                            {{recipe.recipe_description}}
-                        </p>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>
-                    </div>
+                <div class="col s2">
+                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Breakfast', page=1)}}"><img
+                            src="/static/images/breakfast.png" alt="Breakfast">
+                        <p class="uppercase">BREAKFAST</p>
+                    </a>
                 </div>
+                <div class="col s2">
+                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Lunch', page=1)}}"><img
+                            src="/static/images/lunch.png" alt="Lunch">
+                        <p class="uppercase">LUNCH</p>
+                    </a>
+                </div>
+                <div class="col s2">
+                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Main', page=1)}}"><img
+                            src="/static/images/dinner.png" alt="Main">
+                        <p class="uppercase">Main course</p>
+                    </a>
+                </div>
+                <div class="col s2">
+                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Dessert', page=1)}}"><img
+                            src="/static/images/pancakes.png" alt="Dessert">
+                        <p class="uppercase">DESSERT</p>
+                    </a>
+                </div>
+                <div class="col s2">
+                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Snack', page=1)}}"><img
+                            src="/static/images/nut.png" alt="Snack">
+                        <p class="uppercase">SNACK</p>
+                    </a>
+                </div>
+
             </div>
         </div>
-        {% endfor %}
+
+
     </div>
 </div>
+
 {% endblock %}

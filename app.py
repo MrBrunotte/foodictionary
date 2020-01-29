@@ -37,7 +37,14 @@ def home():
     tags = recipes.distinct('recipe_tags')
     random.shuffle(tags)
     username = session.get('username')
-    return render_template('home.html')
+    return render_template('home.html', recipes=recipes.find().sort('date_time',pymongo.DESCENDING), 
+    recipeCategory=recipeCategory.find(), page=1, tags=tags)
+
+
+@app.route('/get_recipes')
+def get_recipes():
+    return render_template('get_recipes.html', recipes = recipes.find().sort('date_time',pymongo.DESCENDING), 
+                            recipeCategory=recipeCategory.find())
 
 
 # RANDOM MEAL PAGE ----------------------------------------#
@@ -184,29 +191,6 @@ def insert_recipe():
 
 # MY RECIPE's (see my recipes.html) --------------------------------------------#
 # Collects my recipes from DB #
-"""
-@app.route('/my_recipes/<page>', methods=['GET'])
-def my_recipes(page):
-    username = session.get('username')
-    user = userDB.find_one({'username': username})
-
-    # Count the number of recipes in the Database
-    all_recipes = recipes.find({'author_name': username}).sort(
-        [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
-    count_recipes = all_recipes.count()
-    # Variables for Pagination
-    offset = (int(page) - 1) * 6
-    limit = 6
-    total_no_of_pages = int(math.ceil(count_recipes/limit))
-    recipe_pages = recipes.find({'author_name': username}).sort([("date_time", pymongo.DESCENDING),
-                                                                 ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
-
-    return render_template('my_recipes.html',
-                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
-                           total_no_of_pages=total_no_of_pages, page=page, author_name=username,
-                           page_title='My Recipes at Lemon & Ginger, Recipe Finder', recipeCategory=recipeCategory.find())
-"""
-
 
 @app.route('/my_recipes/<page>', methods=['GET'])
 def my_recipes(page):
@@ -311,7 +295,7 @@ def search_keyword(keyword, page):
     recipe_pages = recipes.find({'$text': {'$search': keyword}}).sort([("date_time", pymongo.DESCENDING), 
                     ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
                     
-    return render_template('search_by_keyword.html', keyword=keyword, 
+    return render_template('keyword_search.html', keyword=keyword, 
         search_results = recipe_pages.sort('date_time',pymongo.DESCENDING), 
         recipeCategory=recipeCategory.find(), count_recipes=count_recipes, 
         total_no_of_pages=total_no_of_pages, page=page, page_title='Search Results, Lemon & Ginger, Recipe Finder')
@@ -339,10 +323,10 @@ def search_tag(tag, page):
     recipe_pages = recipes.find({'recipe_tags': tag}).sort([("date_time", pymongo.DESCENDING), 
                     ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
                     
-    return render_template('search_by_tag.html', tag=tag, 
+    return render_template('tag_search.html', tag=tag, 
         search_results = recipe_pages.sort('date_time',pymongo.DESCENDING), 
         recipeCategory=recipeCategory.find(), count_recipes=count_recipes, 
-        total_no_of_pages=total_no_of_pages, page=page, page_title='Tag Results, Lemon & Ginger, Recipe Finder')  
+        total_no_of_pages=total_no_of_pages, page=page)  
 
 #-------------#
 # Error Pages

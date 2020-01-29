@@ -40,6 +40,13 @@ ul {
     margin-top: 0;
 }
 
+a {
+    color: var(--orange);
+}
+
+.container {
+    width: 85% !important;
+}
 .row {
     margin-bottom: 0 !important;
 }
@@ -211,6 +218,19 @@ nav .brand-logo.center {
     color: var(--white);
 }
 
+.chip {
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.chip:hover {
+    background-color: var(--black) !important;
+}
+
+.chip a:hover {
+    color: var(--white);
+}
+
 .btn-floating {
     background-color: #e79b50 !important;
     border-radius: 5px !important;
@@ -329,10 +349,11 @@ input:active {
     background-size: cover;
     background-position: center top;
     height: 55vh;
-    width: 100%;
+    width: 85%;
 }
 
 /* <!-- text section home --> */
+
 .background-light-gray {
     background: rgb(190, 190, 190, 0.3);
     color: var(--black);
@@ -361,9 +382,11 @@ input:active {
     background: var(--gray)
 }
 
-input[type="text"]:not(.browser-default) {
+input[type="text"]:not(.browser-default),
+input[type="password"]:not(.browser-default) {
     padding: 0 10px;
-    border-radius: 10px;
+    border-radius: 0px;
+    width: 90%;
 }
 
 .btn-small {
@@ -377,6 +400,24 @@ input[type="text"]:not(.browser-default) {
     margin: 0 !important;
     padding: 0 !important;
 
+}
+
+.tags-whitespace {
+    margin: 2em;
+}
+
+.tags-header-whitespace {
+    margin-bottom: 1em;
+}
+
+.uppercase {
+    text-transform: uppercase;
+    color: var(--black);
+    margin-top: 0;
+}
+
+.empty {
+    height: 88vh;
 }
 
 /* ==================
@@ -490,9 +531,24 @@ input[type="text"]:not(.browser-default) {
     margin-bottom: 0;
 }
 
+a .img-card {
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
 .img-card {
     height: 300px !important;
     width: auto;
+}
+
+
+.card-title {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    text-transform: uppercase;
+    height: 64px;
 }
 
 .card-action {
@@ -503,6 +559,9 @@ input[type="text"]:not(.browser-default) {
     min-height: 7em;
     max-height: 7em;
     overflow-y: auto;
+    padding: 1em;
+
+}
 }
 
 /* <!-- Recipe info --> */
@@ -566,6 +625,10 @@ input[type="text"]:not(.browser-default) {
 /* <!-- Recipe tags --> */
 .text-background {
     background: rgb(190, 190, 190, 0.3);
+}
+
+.chip {
+    background-color: var(--orange) !important;
 }
 
 .chip a{

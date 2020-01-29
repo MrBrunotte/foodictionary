@@ -1,126 +1,70 @@
 {% extends 'base.html' %} {% block content %}
-<h3>{{recipe_category_name}}</h3>
-{% if session['logged_in'] and count_recipes == 0 %}
-<p>You currently have no recipes in your Personilized Cookbook. Why don't you start now and <a
-        href="{{url_for('add_recipe')}}">add a recipe?</a>.</p>
-{% elif count_recipes == 0 %}
-<p>You currently have no recipes in your Personilized Cookbook. Why don't you start now and <a
-    href="{{url_for('add_recipe')}}">add a recipe?</a>.</p>
-{% else %}
-<div class="row">
-    <div class="col s12 m6 l4">
-        <p>Displaying {{count_recipes}} Recipe(s). Page {{ page }} of {{total_no_of_pages}}</p>
-    </div>
-    {% if total_no_of_pages <= 1 %}
-    <div class="col s12 m6 l4">
-
+<div class="container">
+    <div class="empty">
+        <h3>{{recipe_category_name}}</h3>
+        {% if session['logged_in'] and count_recipes == 0 %}
+        <p>You don't have any recipes for this category. Why don't you <a href="{{url_for('add_recipe')}}">add a
+                recipe?</a>
+            now.</p>
+        {% elif count_recipes == 0 %}
+        <p>There are no recipes for this category. Why don't you <a href="{{url_for('register')}}">register</a> or <a
+                href="{{url_for('login')}}">log in</a> and add a
+            recipe for this category.</p>
     </div>
     {% else %}
-    <div class="col s12 m6 l4">
-        <ul class="pagination right-align">
-            <li id="prev-page-url" {% if page|int > 1 %} class="" {% else %} class="disabled" {% endif %}>
-                <a {% if page|int > 1 %}
-                    href="{{url_for('browse_recipes',recipe_category_name = recipe_category_name, page=page|int-1)}}"
-                    {% endif %}><i class="material-icons">chevron_left</i>Prev</a>
-            </li>
-            <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="" {% else %} class="disabled"
-                {% endif %}>
-                <a {% if page|int != total_no_of_pages|int %}
-                    href="{{url_for('browse_recipes',recipe_category_name = recipe_category_name, page=page|int+1)}}"
-                    {% endif %}>Next<i class="material-icons">chevron_right</i></a>
-            </li>
-        </ul>
+    <div class="row">
+        <div class="col s12 m6 l4">
+            <p>Displaying {{count_recipes}} Recipe(s). Page {{ page }} of {{total_no_of_pages}}</p>
+        </div>
+        {% if total_no_of_pages <= 1 %}
+        <div class="col s12 m6 l4">
+
+        </div>
+        {% else %}
+        <div class="col s12 m6 l4">
+            <ul class="pagination right-align">
+                <li id="prev-page-url" {% if page|int > 1 %} class="" {% else %} class="disabled" {% endif %}>
+                    <a {% if page|int > 1 %}
+                        href="{{url_for('browse_recipes',recipe_category_name = recipe_category_name, page=page|int-1)}}"
+                        {% endif %}><i class="material-icons">chevron_left</i>Prev</a>
+                </li>
+                <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="" {% else %} class="disabled"
+                    {% endif %}>
+                    <a {% if page|int != total_no_of_pages|int %}
+                        href="{{url_for('browse_recipes',recipe_category_name = recipe_category_name, page=page|int+1)}}"
+                        {% endif %}>Next<i class="material-icons">chevron_right</i></a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
-</div>
-<!--Main Section-->
-<div class="row">
-    <!--Left Area - Recipes-->
-    <div class="col s12 m12 l8">
-        {% for recipe in recipes %}
-        <div class="col s12 m6">
-            <div class="card medium">
-                <div class="card-image">
-                    <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_image}}"
-                            alt="{{recipe.recipe_name}}"></a>
-                </div>
-                <div class="card-title">
-                    <div class="card-content">
-                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">
-                            <h6>{{recipe.recipe_name}}</h6>
+
+    <!-- card -->
+    <div class="row">
+        <div class="col s12">
+            {% for recipe in recipes %}
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img class="img-card"
+                                src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"></a>
+                        <!-- TODO add the href to favorites -->
+                        <a href="#" class="halfway-fab btn-floating pink pulse">
+                            <i class="material-icons">favorite</i>
                         </a>
-                        <p>{{recipe.recipe_description}}</p>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title card-span">{{recipe.recipe_name}}</span>
+                        <p class="description-size">
+                            {{recipe.recipe_description}}
+                        </p>
                     </div>
                     <div class="card-action">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>
                     </div>
                 </div>
             </div>
-        </div>
-        {% endfor %}
-    </div>
 
-    <!--Right Sidebar-->
-    <div class="col s12 m12 l3 offset-l1">
-        <div class="row center homepage-categories">
-            <h6 class="fancy" style="margin-bottom:30px;">
-                <span>Categories</span>
-            </h6>
-            <div class="row margin-30">
-                <div class="col s6 m6">
-                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Starter', page=1)}}"><img
-                            src="/static/images/starter-icon.png" alt="Starters">
-                        <p>STARTER</p>
-                    </a>
-                </div>
-                <div class="col s6 m6">
-                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Breakfast', page=1)}}"><img
-                            src="/static/images/breakfast-icon.png" alt="Breakfast">
-                        <p>BREAKFAST</p>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s6 m6">
-                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Lunch', page=1)}}"><img
-                            src="/static/images/lunch-icon.png" alt="Lunch">
-                        <p>LUNCH</p>
-                    </a>
-                </div>
-                <div class="col s6 m6">
-                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Main', page=1)}}"><img
-                            src="/static/images/mains-icon.png" alt="Main">
-                        <p>Main</p>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s6 m6">
-                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Dessert', page=1)}}"><img
-                            src="/static/images/desserts-icon.png" alt="Dessert">
-                        <p>DESSERT</p>
-                    </a>
-                </div>
-                <div class="col s6 m6">
-                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Snack', page=1)}}"><img
-                            src="/static/images/snack-icon.png" alt="Snack">
-                        <p>SNACK</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row center">
-            <h6 class="fancy" style="margin-bottom:30px;">
-                <span>Popular Tags</span>
-            </h6>
-            {% set _stub = recipes.rewind() %}
-            <!--Limit no of Tags displayed -->
-            {% for items in tags[0:20] %}
-            {% if items !="" %}
-            <div class="chip">
-                <a href="{{url_for('search_tag',tag=items,page=1)}}">{{items}}</a>
-            </div>
-            {% endif %}
             {% endfor %}
         </div>
     </div>
