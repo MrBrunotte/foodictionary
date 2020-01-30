@@ -37,7 +37,22 @@
         <li class="username-nav">Hello {{session.username|capitalize}}</li>
         <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
         <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
-        <!-- <li><a href="{{url_for('my_recipes', page=1)}}">My Recipes</a></li> -->
+        <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
+    </ul>
+
+    <ul id="dropdown3" class="dropdown-content">
+        {% for category in recipeCategory %}
+        <li><a
+                href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Dropdown structure for My Account -->
+    <ul id="dropdown4" class="dropdown-content">
+        <li class="username-nav">Hello {{session.username|capitalize}}</li>
+        <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
+        <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
         <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
     </ul>
 
@@ -72,12 +87,12 @@
                             recipe</a>
                     </li>
                     <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown1">recipe's<i
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown3">recipe's<i
                                 class="material-icons right">arrow_drop_down</i></a></li>
                     <li class="divider"></li>
                     {% if session.logged_in %}
                     <li class="username-nav">Hello {{session.username|capitalize}}</li>
-                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown2">my account<i
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown4">my account<i
                                 class="material-icons right">arrow_drop_down</i></a></li>
                     % else %}
                     <li><a href="{{url_for('login')}}" class="nav-link-mobile">login</a></li>
@@ -137,7 +152,7 @@
         $(document).ready(function () {
             $('.sidenav').sidenav();            // for the mobile hamburger menu
             $('select').formSelect();           // for the allergens in add_recipe.html
-            $(".dropdown-trigger").dropdown({ hover: true });  // for the dropdown menu
+            $(".dropdown-trigger").dropdown();  // for the dropdown menu
 
         });
     </script>

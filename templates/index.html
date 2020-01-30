@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- Parent HTML-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- google fonts: Lora & Ubuntu -->
+    <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS from Materilized -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- my css link -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/forms.css')}}" type="text/css" />
+
+    <title>{{page_title}}</title>
+</head>
+
+<body>
+    <!-- Dropdown structure for recipes -->
+    <ul id="dropdown1" class="dropdown-content">
+        {% for category in recipeCategory %}
+        <li><a
+                href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Dropdown structure for My Account -->
+    <ul id="dropdown2" class="dropdown-content">
+        <li class="username-nav">Hello {{session.username|capitalize}}</li>
+        <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
+        <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
+        <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
+    </ul>
+    <!--Navigation for Desktop-->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger mobile-color"><i
+                    class="material-icons">menu</i></a>
+            <a href="{{url_for('home')}}" class="brand-logo"></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{url_for('home')}}" class="nav-link">home</a></li>
+                <li><a id="get_meal_desktop" href="{{url_for('random_meal')}}" class="nav-link">random recipe</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger nav-link" href="#!" data-target="dropdown1">recipe's<i
+                            class="material-icons right">arrow_drop_down</i></a></li>
+
+                {% if session.logged_in %}
+                <li><a class="dropdown-trigger nav-link" href="#!" data-target="dropdown2">my account<i
+                            class="material-icons right">arrow_drop_down</i></a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}" class="nav-link">login</a></li>
+                {% endif %}
+            </ul>
+            <!-- sidemenu Mobile -->
+            <ul class="sidenav" id="mobile-demo">
+                <div class="background">
+                    <img src="/static/images/mobile_hamburger_300px.jpg">
+                </div>
+                <div class="hamburger-list">
+                    <li><a href="{{url_for('home')}}" class="nav-link-mobile">home</a></li>
+                    <li><a id="get_meal_desktop" href="{{url_for('random_meal')}}" class="nav-link-mobile">random
+                            recipe</a>
+                    </li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown1">recipe's<i
+                                class="material-icons right">arrow_drop_down</i></a></li>
+                    <li class="divider"></li>
+                    {% if session.logged_in %}
+                    <li class="username-nav">Hello {{session.username|capitalize}}</li>
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown2">my account<i
+                                class="material-icons right">arrow_drop_down</i></a></li>
+                    % else %}
+                    <li><a href="{{url_for('login')}}" class="nav-link-mobile">login</a></li>
+                    {% endif %}
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Main Body-->
+    <main>
+        <!--Flash Messages-->
+        <div class="flash-message">
+            <header class="center row flash-message">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if error %}
+                <p class="error"><b>Error:</b> {{ error }} </p>
+                {% endif %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert {{ category }}">
+                    <div class="messages">
+                        {{ message }}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </header>
+        </div>
+        <div>
+            {% block content %} {% endblock %}
+        </div>
+
+
+
+
+        <!--! random meal section -->
+        <section class="middle-section middle-grid" id="rm">
+            <h2 class="middle-section-title">random meal generator</h2>
+            <p class="middle-section-subtitle">Don't know what to cook for dinner?</p>
+            <p class="middle-section-subtitle-text">Hit the button and get a random meal suggestion.</p>
+            <a id="get_meal" href="#meal" class="btn btn-surprise">Surprise me!</a>
+            <!-- Button to make the request to the API -->
+        </section>
+        <section class="random-meal-section" id="meal"></section> <!-- The API data is sent to this div container -->
+    </main>
+
+    <footer>
+        <!-- TODO add footer section -->
+    </footer>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- script link to random-meal script file -->
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.sidenav').sidenav();            // for the mobile hamburger menu
+            $(".dropdown-trigger").dropdown();  // for the dropdown menu
+
+        });
+    </script>
+
+</body>
+
+</html>

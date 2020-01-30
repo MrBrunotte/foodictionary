@@ -88,7 +88,7 @@ def login():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
-        return render_template('base.html')
+        return redirect('home')
 
 
 @app.route('/signin', methods=['POST'])
@@ -113,14 +113,14 @@ def signin():
         session['logged_in'] = True
         flash('Welcome back ' +
         user['author_name'].capitalize() + '!', 'success')
-        return render_template('home.html')  # if login ok redirect to home
+        return redirect('home')  # if login ok redirect to home
 
 
 @app.route('/logout', methods=['GET'])
 def logout():
     session['logged_in'] = False
     flash('You are now logged out!', 'success')
-    return render_template('home.html')
+    return redirect('home')
 
 
 # RECIPES SECTION #

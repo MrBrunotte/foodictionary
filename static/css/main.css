@@ -93,9 +93,9 @@ nav {
 .dropdown-content {
     width: max-content !important;
     height:auto !important;
-    left: 140px !important;
+    /*left: 140px !important;
     top: 378px !important;
-    background-color: var(--dark-gray);
+    background-color: var(--dark-gray);*/
 }
 
 .dropdown-content li > a, .dropdown-content li > span {
