@@ -88,6 +88,7 @@ nav {
     height: 40px;
     -webkit-box-shadow: none;
     box-shadow: none;
+    line-height: 35px !important;
 }
 
 .dropdown-content {
@@ -107,6 +108,10 @@ nav {
 
 .dropdown-content li:hover, .dropdown-content li.active {
     background-color: rgb(232, 232, 223);
+}
+
+.line-height {
+    line-height: 35px !important;
 }
 
 .username-nav {
@@ -197,14 +202,6 @@ nav .brand-logo.center {
 .hamburger-lists {
     padding-top: 234px;
 }
-
-/* ==============
-    Search field 
-================= */
-
-
-
-
 
 /* ==========
     Buttons 
@@ -389,6 +386,10 @@ input:active {
     border-radius: 50px;
 }
 
+.character-counter {
+    font-size: 0px !important;
+}
+
 .radius {
     border-radius: 50px !important;
 }
@@ -427,120 +428,11 @@ input[type="password"]:not(.browser-default) {
     margin-top: 0;
 }
 
-.empty {
-    height: 88vh;
-}
-
-/* ====================
-    Random meal area
-======================= */
-
-
-/* grid areas */
-.random-meal-name       { grid-area: header; }
-.img-food-parent        { grid-area: img; }
-.tags-parent            { grid-area: tags-header; }
-.tags                   { grid-area: tags; }
-.ingredients            { grid-area: ingr; }
-.ingr-parent            { grid-area: ingr-header; }
-.meal-instr-parent      { grid-area: instr-header; }
-.instructions           { grid-area: instr; }
-.img-header-parent      { grid-area: video-header; }
-.video-parent           { grid-area: video; }
-
-
-.img-food-parent,
-.random-meal-name,
-.tags-parent,
-.img-header-parent,
-.tags,
-.meal-instr-parent,
-.ingredients,
-.video-parent,
-.video-header-div {
-    display: grid;
-}
-
-.tags-header,
-.meal-instr-header,
-.ingr-header {
-    text-transform: uppercase;
-    margin: 1em 0em .5em .7em;
-}
-
-.img-food {
-    justify-self: center;
-    margin: 1em 2em 0em 1em;
-    max-height: 400px;
-    width: 100%;
-    object-fit: cover;
-    box-shadow: 3px 3px 5px 3px rgb(66, 66, 66);
-}
-
-.meal-info {
-    margin: 0;
-}
-
-.meal-info p {
-    text-align: start;
-}
-
-.random-meal-name {
-    border-top: 2px solid rgb(216, 216, 216);
-    font-size: 2.5rem;
-    width: 100%;
-}
-
-.random-meal-name p {
-    margin: 0;
-}
-
-.video-parent {
-    padding: 1em;
-}
-
-.tags,
-.meal-instr,
-.ingredients {
-    margin: 0em .75em;
-}
-
-.random-meal-name,
-.image-header {
-    padding: .3em;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.meal-instr-parent {
-    margin: 0;
-}
-
-.ingredients {
-    overflow-y: auto;
-    max-height: 260px;
-}
-
-.meal-instr {
-    overflow-y: auto;
-    max-height: 325px;
-}
-
-.videoWrapper {
-    margin: auto;
-}
-
-
-
 /* =================================
     Random_meal.html from themealDB 
 ==================================== */
 .random-meal-body{
-    height: 109vh;
-}
-
-.random-meal-section {
-    padding: 0em .8em;
+    min-height: calc(100vh - 215px);
 }
 
 /* <!-- top image --> */
@@ -554,36 +446,10 @@ input[type="password"]:not(.browser-default) {
     margin-bottom: 15px !important;
 }
 
-.rm-title {
-    text-transform: uppercase;
-    margin: 0 auto;
-}
-
-.rm-title,
-.rm-text {
-    text-align: center;
+.color {
     color: var(--gray);
 }
 
-.margin-bottom {
-    margin-bottom: 15px;
-}
-/*
-.middle-section-subtitle,
-.middle-section-subtitle-text {
-    text-transform: capitalize;
-}
-
-.middle-section-title {
-    text-transform: uppercase;
-    margin: 1rem auto;
-}
-
-.middle-section-subtitle {
-    margin-top: 0;
-    margin-bottom: .75rem;
-    font-weight: 700;
-}*/
 
 /* =============
     Recipe.html 
@@ -651,9 +517,7 @@ a .img-card {
 
 .img-card {
     height: 300px !important;
-    width: auto;
 }
-
 
 .card-title {
     font-size: 14px !important;
@@ -666,14 +530,31 @@ a .img-card {
     background-color: var(--gray) !important;
 }
 
+.card-content {
+    padding: 24px 24px 0 !important;
+}
+
+.card-content p {
+    height: 11em;
+    overflow-y: auto;
+}
+
+.recipe-author {
+    text-transform: capitalize;
+    font-weight: 900;
+    font-size: .9rem;
+    color: var(--orange);
+    height: 5px;
+}
+
+/*
 .description-size {
     min-height: 7em;
     max-height: 7em;
     overflow-y: auto;
     padding: 1em;
-
 }
-}
+*/
 
 /* <!-- Recipe info --> */
 .recipe-info {
@@ -766,7 +647,8 @@ a .img-card {
 /* =================
     Add_recipe.html 
 ==================== */
-.top-image-add-form {
+.top-image-add-form,
+.top-image-edit-form {
     background-image: url(/static/images/add_recipe.jpg);
     background-size: cover;
     color: #fff;
@@ -836,10 +718,15 @@ a .img-card {
     footer
 ===================== */
 
+.wrapper-browse-recipes {
+    min-height: calc(100vh - 215px);
+}
+
 .footer {
     color: whitesmoke;
     background-color: #84848482;
     margin-top: 10px;
+    height: 160px;
 }
 
 .footer-padding {
@@ -885,34 +772,22 @@ a .img-card {
 
 
 
-/* ==================
-    Media Queries
-===================== */
+/* =================================================================
+                          Media Queries
+    Breakpoints: <== .s 600px, > .m 600px, < .l 992px, < .xl 1200px
+==================================================================== */
 
-/* Media queries bigger screens */
+/* Class previx .s */
 
-@media (min-width: 525px) {
-    .title {
-        padding-top: .4em;
-        font-size: 3rem;
-    }
-
-    .subtitle {
-        font-size: 2rem;
-    }
+@media screen and (max-width: 600px) {
+   
 }
 
-@media (min-width: 880px) {
-    .top-image-home {
-        background-image: url(/static/images/three_burgers_cropped.jpg);
-    }
-
-    .messages {
-        width: 40%;
-    }
+@media screen and (min-width: 600px) and (max-width: 992px) {
+    
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
     .top-image-home {
         background-image: url(/static/images/three_burgers_cropped.jpg);
     }
@@ -930,23 +805,6 @@ a .img-card {
 @media (min-width: 400px) {
 
  /* random meal section*/
-
-   /* .random-meal-section {
-        display: grid;
-        width: 100%;
-        row-gap: .5em;
-        padding: 0em 2em;
-        grid-template-rows: auto auto 1fr;
-        grid-template-areas:
-            "header         header          header"
-            "img            img             img"
-            "tags-header    tags-header     instr-header"
-            "tags           tags            instr"
-            "ingr-header    ingr-header     instr"
-            "ingr           ingr            instr"
-            "video-header   video-header    video-header"
-            "video          video           video";
-    }*/
 
     .random-meal-section {
         display: grid;
@@ -981,16 +839,5 @@ a .img-card {
 
     .meal-instr {
         width: 95%;
-    }
-}
-
-@media (min-width: 300px) {
-
-    /* Navigation */
-    nav, 
-    nav .nav-wrapper i, 
-    nav a.sidenav-trigger, 
-    nav a.sidenav-trigger i {
-        line-height: 30px;
     }
 }

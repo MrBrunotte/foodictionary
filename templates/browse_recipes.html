@@ -1,9 +1,12 @@
 {% extends 'base.html' %} {% block content %}
+<!-- top image -->
+<div class="top-image-my-recipes container"></div>
 <div class="container">
-    <div class="empty">
-        <h3>{{recipe_category_name}}</h3>
+    <div class="wrapper-browse-recipes">
+        <h4 class="center search-result">{{recipe_category_name}}</h4>
         {% if session['logged_in'] and count_recipes == 0 %}
-        <p>You don't have any recipes for this category. Why don't you <a href="{{url_for('add_recipe')}}">add a
+        <p class="center">You don't have any recipes for this category. Why don't you <a
+                href="{{url_for('add_recipe')}}">add a
                 recipe?</a>
             now.</p>
         {% elif count_recipes == 0 %}
@@ -12,9 +15,11 @@
             recipe for this category.</p>
     </div>
     {% else %}
+    <!-- Total number of Recipes and Pagination -->
     <div class="row">
-        <div class="col s12 m6 l4">
-            <p>Displaying {{count_recipes}} Recipe(s). Page {{ page }} of {{total_no_of_pages}}</p>
+        <div class="col s12">
+            <p class="center num-of-recipes">Displaying {{count_recipes}} Recipe(s). Page {{ page }} of
+                {{total_no_of_pages}}</p>
         </div>
         {% if total_no_of_pages <= 1 %}
         <div class="col s12 m6 l4">
@@ -58,6 +63,7 @@
                         <p class="description-size">
                             {{recipe.recipe_description}}
                         </p>
+                        <span class="recipe-author">Recipe added by: {{recipe.author_name}}</span>
                     </div>
                     <div class="card-action">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>

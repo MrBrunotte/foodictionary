@@ -3,7 +3,6 @@
 
 <!-- top image -->
 <div class="top-image-my-recipes container"></div>
-
 <div class="container">
     <!-- title of page-->
     <h5 class="form-title">my recipes</h5>
@@ -15,13 +14,13 @@
 
     <!--Details on Total number of Recipes and Pagination-->
     <div class="row">
-        <div class="col s12 m6">
-            <p>
+        <div class="col s12">
+            <p class="center num-of-recipes">
                 My {{count_recipes}} Recipe(s). Page {{ page }} of {{total_no_of_pages}}
             </p>
         </div>
         {% if total_no_of_pages <= 1 %}
-        <div class="col s12 m6">
+        <div class="col s12">
         </div>
         {% else %}
         <div class="col s12 m6">
@@ -40,41 +39,43 @@
             </ul>
         </div>
         {% endif %}
+    </div>
 
+    <!-- Recipe cards (Materilize) -->
 
-        <!-- Recipe cards (Materilize) -->
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m6 l4">
-                    {% for recipe in recipes %}
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img
-                                    src="{{recipe.recipe_name}}" alt="{{recipe.recipe_name}}"></a>
-                            <a href="#" class="halfway-fab btn-floating pink pulse">
-                                <i class="material-icons">favorite</i>
-                            </a>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title card-span">{{recipe.recipe_name}}</span>
-                            <p>
-                                {{recipe.recipe_description}}
-                            </p>
-                        </div>
-                        <div class="card-action">
-                            <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>
-                        </div>
+    <div class="row">
+        <div class="col s12 m12">
+            {% for recipe in recipes %}
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_image}}"
+                                alt="{{recipe.recipe_name}}"></a>
+                        <a href="#" class="halfway-fab btn-floating pink pulse">
+                            <i class="material-icons">favorite</i>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title card-span">{{recipe.recipe_name}}</span>
+                        <p>
+                            {{recipe.recipe_description}}
+                        </p>
+                        <span class="recipe-author">Recipe added by: {{recipe.author_name}}</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
-        <!-- This belongs to the if-statement above the cards! -->
-        {% endif%}
-
-        {% else %}
-
-        {% endif %}
     </div>
+
 </div>
+<!-- This belongs to the if-statement above the cards! -->
+{% endif%}
+{% else %}
+<p>You must be logged in to edit a recipe </p>
+{% endif %}
+
 {% endblock %}

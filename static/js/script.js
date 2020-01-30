@@ -34,62 +34,58 @@ const createMeal = meal => {
 	}
 
 	const newInnerHTML = `
-			<h4 class="random-meal-name"><p>Your random dish is called:</p>"${meal.strMeal}"</h4>
-			
-			<div class="img-header-parent">
-				<h4 class="image-header">${meal.strMeal}</h4>
-			</div>
-
-			<div class="tags">
-				${meal.strCategory
-			? `<p class="meal-info">Category: ${meal.strCategory}</p>`
+	<div class="row text-background">
+	<div class="col s12">
+		<h5 class="form-title recipe-name">
+			<p>Your random dish is called:</p>"${meal.strMeal}"
+		</h5>
+	</div>
+	<div class="col s12">
+                <img class="recipe-img" src="${meal.strMealThumb}" alt="Meal Image">
+            </div>
+	<div class="col s12 center">
+		<h5 class="form-subtitle">Recipe Tags </h5>
+		${meal.strCategory
+			? `<p class="chip">${meal.strCategory}</p>`
 			: ''
 		}
-						${meal.strArea ? `<p class="meal-info">Origin: ${meal.strArea}</p>` : ''}
-						${
+		${meal.strArea ? `<p class="chip">${meal.strArea}</p>` : ''}
+		${
 		meal.strTags
-			? `<p class="meal-info">Dish: ${meal.strTags
+			? `<p class="chip">${meal.strTags
 				.split(',')
 				.join(', ')}</p>`
 			: ''
 		}
-			</div>
+	</div>
 
-			<div class="tags-parent">
-			<h6 class="tags-header">tags:</h6>
-			</div>
-			<div class="img-food-parent">
-				<img class="img-food" src="${meal.strMealThumb}" alt="Meal Image">
-			</div>
-			<div class="ingr-parent">
-				<h6 class="ingr-header">Ingredients:</h6>
-			</div>
-				<div class="ingredients">
-					<ul>
-						${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
-					</ul>
-			</div>
-		
-			<div class="meal-instr-parent">
-				<h6 class="meal-instr-header">Prepartions:</h6>
-			</div>
-				<div class="instructions">
-				<p class="meal-instr">${meal.strInstructions}</p>
-			</div>
-		</div>
-		${
+
+	<div class="col s12 m6 recipe-padding">
+		<h5 class="form-subtitle position">Ingredients</h5>
+		<ul>
+			${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+		</ul>
+	</div>
+
+
+	<div class="col s12 m6 recipe-padding">
+		<h5 class="form-subtitle position">Method</h5>
+		<ul class="meal-instr">${meal.strInstructions}</p>
+	</div>
+
+<div class="col s12 recipe-padding center-align">
+${
 		meal.strYoutube
 			? `
-		<div class="video-parent">
-		<div class="videoWrapper">
-			<iframe width="320" height="215"
-				src="https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}" alt="No video available">
-			</iframe>
-		</div>
-		</div>`
+			
+            <iframe width="320" height="215"
+			src="https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}" alt="No video available">
+		</iframe>
+        `
 			: ''
 		}
-	`;
+		</div>
+		</div>`;
 
 	meal_container.innerHTML = newInnerHTML;
 };

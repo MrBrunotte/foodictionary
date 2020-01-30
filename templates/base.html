@@ -67,11 +67,11 @@
                 <li><a id="get_meal_desktop" href="{{url_for('random_meal')}}" class="nav-link">random recipe</a></li>
                 <!-- Dropdown Trigger -->
                 <li><a class="dropdown-trigger nav-link" href="#!" data-target="dropdown1">recipe's<i
-                            class="material-icons right">arrow_drop_down</i></a></li>
+                            class="material-icons right line-height">arrow_drop_down</i></a></li>
 
                 {% if session.logged_in %}
                 <li><a class="dropdown-trigger nav-link" href="#!" data-target="dropdown2">my account<i
-                            class="material-icons right">arrow_drop_down</i></a></li>
+                            class="material-icons right line-height">arrow_drop_down</i></a></li>
                 {% else %}
                 <li><a href="{{url_for('login')}}" class="nav-link">login</a></li>
                 {% endif %}
@@ -88,12 +88,12 @@
                     </li>
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown3">recipe's<i
-                                class="material-icons right">arrow_drop_down</i></a></li>
+                                class="material-icons right line-height">arrow_drop_down</i></a></li>
                     <li class="divider"></li>
                     {% if session.logged_in %}
                     <li class="username-nav">Hello {{session.username|capitalize}}</li>
                     <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown4">my account<i
-                                class="material-icons right">arrow_drop_down</i></a></li>
+                                class="material-icons right line-height">arrow_drop_down</i></a></li>
                     {% else %}
                     <li><a href="{{url_for('login')}}" class="nav-link-mobile">login</a></li>
                     {% endif %}
@@ -158,7 +158,8 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
+    <!-- Compiled and minified JavaScript   -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!-- script link to random-meal script file -->

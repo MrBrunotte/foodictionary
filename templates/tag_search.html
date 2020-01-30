@@ -4,7 +4,7 @@
     <!-- TODO image is to big for smaller screens -->
     <div class="top-image-my-recipes"></div>
     <div class="container container-width">
-        <h4 class="center search-result">Tag: {{tag}}</h4>
+        <h5 class="form-title center search-result">Tag: {{tag}}</h5>
         {% if count_recipes == 0 %}
         <p class="center">Your search for <span class="search-keyword">{{keyword}}</span> did not generate a recipe!</p>
         <p class="center">Why don't you <a href="{{url_for('login')}}">Log in</a>
@@ -54,16 +54,16 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title card-span">{{recipe.recipe_name}}</span>
-                            <p class="description-size">
+                            <p>
                                 {{recipe.recipe_description}}
                             </p>
+                            <span class="recipe-author">Recipe added by: {{recipe.author_name}}</span>
                         </div>
                         <div class="card-action">
                             <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>
                         </div>
                     </div>
                 </div>
-
                 {% endfor %}
             </div>
         </div>
