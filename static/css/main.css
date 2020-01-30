@@ -409,10 +409,6 @@ input[type="password"]:not(.browser-default) {
 
 }
 
-.search-whitespace {
-    margin-left: 10px;
-}
-
 .tags-whitespace {
     margin: 2em;
 }
