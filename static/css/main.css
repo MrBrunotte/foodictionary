@@ -105,9 +105,13 @@ nav {
     letter-spacing: 1px;
 }
 
+.dropdown-content li:hover, .dropdown-content li.active {
+    background-color: rgb(232, 232, 223);
+}
+
 .username-nav {
     color: var(--black);
-    background-color: #fafaee;;
+    background-color: #fafaee;
     text-align: center !important;
     padding: 14px 16px;
 }
@@ -117,7 +121,7 @@ nav {
     text-decoration: none;
     text-transform: capitalize;
     font-family: 'Ubuntu', sans-serif;
-    color: #9d9d9d;
+    color: var(--black);
     background-color: #fafaee;
 }
 
