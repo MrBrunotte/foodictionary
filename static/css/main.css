@@ -839,7 +839,7 @@ a .img-card {
 .footer {
     color: whitesmoke;
     background-color: #84848482;
-  
+    margin-top: 10px;
 }
 
 .footer-padding {

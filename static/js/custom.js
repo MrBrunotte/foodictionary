@@ -52,7 +52,7 @@ $("body").on("click", "#remove_method_step", function () {
 ==================*/
 function updateChipInput(chip) {
     var newval = "";
-    newval = $(chip).material_chip('data').reduce(function (result, val) { result.push(val.tag); return result; }, []).join(",");
+    newval = $(chip).chips('data').reduce(function (result, val) { result.push(val.tag); return result; }, []).join(",");
     $('input[name="recipe_tags"]').val(newval);
 }
 $(document).ready(function () {
@@ -60,12 +60,12 @@ $(document).ready(function () {
         var data = $('input[name="recipe_tags"]').val().split(',').map(function (tag) {
             return { tag: tag }
         })
-        $('.chips').material_chip({
+        $('.chips').chips({
             data: data
         });
-        $('.chips-placeholder').material_chip({
-            placeholder: 'Tag and hit enter',
-            secondaryPlaceholder: 'Next Tag',
+        $('.chips-placeholder').chips({
+            placeholder: 'Enter a tag',
+            secondaryPlaceholder: '+Tag',
         });
         $('.chips').on('chip.add', function (e, chip) {
             updateChipInput(this);
