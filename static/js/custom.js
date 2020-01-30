@@ -41,7 +41,7 @@ $("#add_method_step").click(function () {
     Materialize.updateTextFields();
 });
 
-// Remove the Ingredient from Recipe
+// Remove step from Method
 $("body").on("click", "#remove_method_step", function () {
     $(this).parents(".new-method-step").remove();
 });

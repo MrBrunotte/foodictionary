@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- Parent HTML-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- google fonts: Lora & Ubuntu -->
+    <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:400,700&display=swap" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- my css link -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css" />
+
+    <title>Error page</title>
+</head>
+
+<body>
+    <!--Main Body-->
+    <div>{% block content %} {% endblock %}</div>
+</body>
+
+</html>

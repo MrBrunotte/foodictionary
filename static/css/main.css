@@ -93,6 +93,9 @@ nav {
 .dropdown-content {
     width: max-content !important;
     height:auto !important;
+    left: 140px !important;
+    top: 378px !important;
+    background-color: var(--dark-gray);
 }
 
 .dropdown-content li > a, .dropdown-content li > span {
@@ -127,7 +130,6 @@ nav {
 
 [type="checkbox"]:checked + span:not(.lever)::before,
 .dropdown-content li > a, .dropdown-content li > span {
-    border-bottom: 1px solid var(--black) !important;
     color: var(--black) !important;
 }
 
