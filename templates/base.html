@@ -94,7 +94,7 @@
                     <li class="username-nav">Hello {{session.username|capitalize}}</li>
                     <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown4">my account<i
                                 class="material-icons right">arrow_drop_down</i></a></li>
-                    % else %}
+                    {% else %}
                     <li><a href="{{url_for('login')}}" class="nav-link-mobile">login</a></li>
                     {% endif %}
                 </div>
