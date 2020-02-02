@@ -640,9 +640,10 @@ a .img-card {
     text-align: left;
 }
 
-.ol-recipe {
+.ol-recipe a {
     padding-left: 1rem;
 }
+
 
 /* =================
     Add_recipe.html 

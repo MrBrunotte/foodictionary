@@ -272,6 +272,9 @@ def recipe_page(recipe_id):
                                user=user, page=1, page_title='FOODictionary - Recipe')
 
 
+# ADD TO FAVORITE MEAL SECTION  --------------------------------------------#
+#TODO set the function() for favorites here and in app.py 
+
 
 # SEARCH KEYWORD  --------------------------------------------#
 
