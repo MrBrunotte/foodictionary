@@ -682,14 +682,6 @@ margin-bottom {
     padding-left: 1rem;
 }
 
-ul:not(.browser-default) {
-    padding-left: 2rem;
-}
-
-ul:not(.browser-default) > li {
-    list-style-type: circle;
-}
-
 
 /* =================
     Add_recipe.html 
