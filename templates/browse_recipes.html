@@ -5,14 +5,15 @@
     <div class="wrapper-browse-recipes">
         <h4 class="center search-result">{{recipe_category_name}}</h4>
         {% if session['logged_in'] and count_recipes == 0 %}
-        <p class="center">You don't have any recipes for this category. Why don't you <a
-                href="{{url_for('add_recipe')}}">add a
-                recipe?</a>
-            now.</p>
+        <p class="center font-size">You don't have any recipes for this category. Why don't you <a
+                href="{{url_for('add_recipe')}}">add</a>
+            a "{{recipe_category_name}}"
+            recipe now.</p>
         {% elif count_recipes == 0 %}
-        <p>There are no recipes for this category. Why don't you <a href="{{url_for('register')}}">register</a> or <a
-                href="{{url_for('login')}}">log in</a> and add a
-            recipe for this category.</p>
+        <p class="center font-size">There are no recipes for this category. Why don't you <a
+                href="{{url_for('register')}}">register</a> or <a href="{{url_for('login')}}">log in</a> and add a
+            "{{recipe_category_name}}"
+            recipe!</p>
     </div>
     {% else %}
     <!-- Total number of Recipes and Pagination -->

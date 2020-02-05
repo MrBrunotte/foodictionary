@@ -23,7 +23,7 @@
         <div class="col s12">
         </div>
         {% else %}
-        <div class="col s12 m6">
+        <div class="col s12">
             <ul class="pagination right-align">
                 <li id="prev-page-url" {% if page|int > 1 %} class="" {% else %} class="disabled" {% endif %}>
                     <a {% if page|int > 1 %} href="{{url_for('my_recipes', author_name=author_name, page=page|int-1)}}"
@@ -45,7 +45,7 @@
     <!-- Recipe cards (Materilize) -->
 
     <div class="row">
-        <div class="col s12 m12">
+        <div class="col s12">
             {% for recipe in recipes %}
             <!--TODO Some of the image sizes are off -->
             <div class="col s12 m6 l4">
@@ -53,14 +53,21 @@
                     <div class="card-image">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_image}}"
                                 alt="{{recipe.recipe_name}}"></a>
-                                <!--TODO set the function() for favorites here and in app.py -->
-                        <a href="#" class="halfway-fab btn-floating pink pulse">
+                        <!--TODO set the function() for favorites here and in app.py -->
+                        <form action="{{url_for('recipe_favorite', recipe_id = recipe._id)}}" method="POST"
+                            class="col s12">
+                            <a href="" class="halfway-fab btn-floating pink pulse">
+                                <i class="material-icons">favorite</i>
+                            </a>
+                        </form>
+                        <!-- <a href="{{url_for('recipe_favorite', recipe_id = recipe._id)}}"
+                            class="halfway-fab btn-floating pink pulse">
                             <i class="material-icons">favorite</i>
-                        </a>
+                        </a>-->
                     </div>
                     <div class="card-content">
                         <span class="card-title card-span">{{recipe.recipe_name}}</span>
-                        <p>
+                        <p class="description-size">
                             {{recipe.recipe_description}}
                         </p>
                         <span class="recipe-author">Recipe added by: {{recipe.author_name}}</span>

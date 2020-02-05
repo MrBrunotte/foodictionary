@@ -37,7 +37,7 @@ const createMeal = meal => {
 	<div class="row text-background">
 	<div class="col s12">
 		<h5 class="form-title recipe-name">
-			<p>Your random dish is called:</p>"${meal.strMeal}"
+			Your random dish is called: "${meal.strMeal}"
 		</h5>
 	</div>
 	<div class="col s12">
@@ -59,20 +59,20 @@ const createMeal = meal => {
 		}
 	</div>
 
+	<div class="container">
+		<div class="col s12 m6 recipe-padding">
+			<h5 class="form-subtitle position">Ingredients</h5>
+			<ul>
+				${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+			</ul>
+		</div>
 
-	<div class="col s12 m6 recipe-padding">
-		<h5 class="form-subtitle position">Ingredients</h5>
-		<ul>
-			${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
-		</ul>
+
+		<div class="col s12 m6 recipe-padding">
+			<h5 class="form-subtitle position">Method</h5>
+			<ul class="meal-instr">${meal.strInstructions}</p>
+		</div>
 	</div>
-
-
-	<div class="col s12 m6 recipe-padding">
-		<h5 class="form-subtitle position">Method</h5>
-		<ul class="meal-instr">${meal.strInstructions}</p>
-	</div>
-
 <div class="col s12 recipe-padding center-align">
 ${
 		meal.strYoutube

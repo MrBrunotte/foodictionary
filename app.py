@@ -177,12 +177,7 @@ def insert_recipe():
         'recipe_method':  request.form.getlist('recipe_method'),
         'date_time': datetime.now(),
         'author_name': user['username'],
-        'ratings': [
-            {'overall_ratings': 0.0,
-             'total_ratings': 0,
-             'no_of_ratings': 0
-             }
-        ],
+        'favorite': request.form.get('favorite'),
         'recipe_tags': recipe_tags_split
     }
     recipes.insert_one(complete_recipe)
@@ -216,7 +211,8 @@ def update_recipe(recipe_id):
             'recipe_ingredients':  request.form.getlist('recipe_ingredients'),
             'recipe_method':  request.form.getlist('recipe_method'),
             'featured_recipe':  request.form.get('featured_recipe'),
-            'recipe_tags': recipe_tags_split
+            'recipe_tags': recipe_tags_split,
+            'favorite': request.form.get('favorite')
             }
         })    
     return redirect(url_for('my_recipes',page=1))      
@@ -231,8 +227,23 @@ def delete_recipe(recipe_id):
     return redirect(url_for('my_recipes',page=1))
 
 
+# MY RECIPE (see my individual recipe in recipe.html) --------------------------------------------#
+# Collects my individual recipe from DB #
 
-# MY RECIPE's (see my recipes.html) --------------------------------------------#
+@app.route('/recipe_page/<recipe_id>', methods=['GET'])
+def recipe_page(recipe_id):
+    username = session.get('username')
+    logged_in = session.get('logged_in')
+    user = userDB.find_one({'username': username})
+    if not user:
+        return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}), recipeCategory=recipeCategory.find(), recipe_id=recipe_id,  page=1)
+    else:
+        return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}),
+                               recipeCategory=recipeCategory.find(), recipe_id=recipe_id,
+                               user=user, page=1, page_title='FOODictionary - Recipe')
+
+
+# MY RECIPE's (see my my_recipes.html) --------------------------------------------#
 # Collects my recipes from DB #
 
 @app.route('/my_recipes/<page>', methods=['GET'])
@@ -255,25 +266,87 @@ def my_recipes(page):
                            recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
                            total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=recipeCategory.find())
 
-
-# MY RECIPE (see my individual recipe in recipe.html) --------------------------------------------#
-# Collects my individual recipe from DB #
-
-@app.route('/recipe_page/<recipe_id>', methods=['GET'])
-def recipe_page(recipe_id):
+#TODO - Look into this and see what is wrong!! This is ALL my favorite recipes from my_favorite_recipes.html
+# MY FAVORITE RECIPE's (see my my_favorite_recipes.html) --------------------------------------------#
+# Collects my favorite recipes from DB #
+@app.route('/my_favorite_recipes/<page>', methods=['GET'])
+def my_favorite_recipes(page):
     username = session.get('username')
-    logged_in = session.get('logged_in')
     user = userDB.find_one({'username': username})
-    if not user:
-        return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}), recipeCategory=recipeCategory.find(), recipe_id=recipe_id,  page=1)
-    else:
-        return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}),
-                               recipeCategory=recipeCategory.find(), recipe_id=recipe_id,
-                               user=user, page=1, page_title='FOODictionary - Recipe')
+
+    # Count the number of recipes in the Database
+    all_favorite_recipes = recipes.find({'author_name': username}).sort(
+        [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
+    count_favorite_recipes = all_recipe_favorite.count()
+    # Variables for Pagination
+    offset = (int(page) - 1) * 6
+    limit = 6
+    total_no_of_pages = int(math.ceil(count_favorite_recipes/limit))
+    recipe_pages = recipes.find({'author_name': username}).sort([("date_time", pymongo.DESCENDING),
+                                                                 ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
+
+    return render_template('my_favorite_recipes.html',
+                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_favorite_recipes=count_favorite_recipes,
+                           total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=recipeCategory.find())
 
 
 # ADD TO FAVORITE MEAL SECTION  --------------------------------------------#
 #TODO set the function() for favorites here and in app.py 
+
+@app.route('/recipe_favorite/<recipe_id>', methods=['POST'])
+def recipe_favorite(recipe_id):
+    username=session.get('username')
+    user = userDB.find_one({'username' : username}) 
+    new_favorite = request.form['favorite']
+    recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
+
+    for favorite in recipe['favorite']:
+        overall_favorite = rating['overall_ratings']
+    
+    recipes.update( {'_id': ObjectId(recipe_id)},
+        {'$set':{
+            'favorite': 'test1'
+        }})
+        
+    userDB.update({"username": username},
+                {'$addToSet': 
+                {'favorite' : recipe_id}}) 
+    return redirect(url_for('recipe_page', recipe_id = recipe_id))
+
+#TODO -remove this!!
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Ratings                                                                                                  #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
+@app.route('/recipe_rating/<recipe_id>', methods=['POST'])
+def recipe_rating(recipe_id):
+    username=session.get('username')
+    user = userDB.find_one({'username' : username}) 
+    new_rating = request.form['new_rating']
+    recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
+
+    for rating in recipe['ratings']:
+        overall_rating = rating['overall_ratings']
+        total_rating = rating['total_ratings']
+        no_of_ratings = rating['no_of_ratings']
+        #Calculation for figuring out weighted rating
+        rating = (((int(overall_rating * total_rating) + int(new_rating)) / (int(total_rating)+1)))
+        rating = (round(rating,1))
+    
+    recipes.update( {'_id': ObjectId(recipe_id)},
+        {'$set':{
+            'ratings': [
+                {
+                    'total_ratings': int(total_rating) + int(new_rating),
+                    'overall_ratings': rating,
+                    'no_of_ratings': no_of_ratings + 1
+                }
+            ]}
+        })
+        
+    userDB.update({"username": username},
+                {'$addToSet': 
+                {'recipes_rated' : recipe_id}}) 
+    return redirect(url_for('recipe_page', recipe_id = recipe_id, page_title='Recipe at Lemon & Ginger, Recipe Finder'))
 
 
 # SEARCH KEYWORD  --------------------------------------------#

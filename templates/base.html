@@ -37,7 +37,7 @@
         <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
         <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
         <!--TODO add url_for 'my_favorite_recipes-->
-        <li><a href="#" class="nav-link">my favorite recipes</a></li>
+        <li><a href="{{url_for('my_favorite_recipes', page=1)}}" class="nav-link">my favorite recipes</a></li>
         <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
     </ul>
 
@@ -56,7 +56,7 @@
         <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
         <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
         <!--TODO add url_for 'my_favorite_recipes-->
-        <li><a href="#" class="nav-link">my favorite recipes</a></li>
+        <li><a href="{{url_for('my_favorite_recipes', page=1)}}" class="nav-link">my favorite recipes</a></li>
         <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
     </ul>
 

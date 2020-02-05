@@ -19,6 +19,10 @@
     --orange: #e79b508f;
 }
 
+.gray {
+    color: var(--gray) !important;
+}
+
 body {
     scroll-behavior: smooth;
     background-image: url(/static/images/restaurant_icons.png);
@@ -243,7 +247,7 @@ nav .brand-logo.center {
     width: inherit;
     display: block !important;
     text-align: center;
-    color: var(--black) !important;
+    color: var(--gray) !important;
     font-size: 1.6rem;
     line-height: 40px;
 }
@@ -450,6 +454,12 @@ input[type="password"]:not(.browser-default) {
     color: var(--gray);
 }
 
+/* =============
+    Broecipe.html 
+================ */
+.font-size {
+    font-size: 1.3rem;
+}
 
 /* =============
     Recipe.html 
@@ -583,6 +593,18 @@ a .img-card {
     text-align: center;
     border: 0;
     background: none;
+    margin-top: 2em;
+    letter-spacing: .2em;
+}
+
+.add-to-favorite {
+    color: var(--gray);
+    font-weight: 900;
+    text-align: center;
+    border: none;
+    background: none;
+    margin-top: 1em;
+    letter-spacing: .2em;
 }
 
 .edit-recipe {
@@ -591,6 +613,15 @@ a .img-card {
 
 .delete_recipe {
     color: #ff2a00;
+    cursor: pointer;
+}
+
+.letter-spacing {
+    letter-spacing: .2em;
+}
+
+margin-bottom {
+    margin-bottom: 2em !important;
 }
 
 .info-fonts {
@@ -604,14 +635,16 @@ a .img-card {
 }
 
 /* <!-- Recipe image from DB --> */
+
+/*TODO set a fixed with and hieght to the image */
 .recipe-img {
     display: flex;
     justify-content: flex-start;
     margin: 0 auto;
-    padding: 1.3em 1.3em 0em;
+    padding: 1.3em 1.3em 2em;
     border-top-left-radius: 45px;
     border-top-right-radius: 45px;
-    width: 50%
+    width: 70%
 }
 
 /* <!-- Recipe tags --> */
@@ -640,8 +673,21 @@ a .img-card {
     text-align: left;
 }
 
+.ol-recipe {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
 .ol-recipe a {
     padding-left: 1rem;
+}
+
+ul:not(.browser-default) {
+    padding-left: 2rem;
+}
+
+ul:not(.browser-default) > li {
+    list-style-type: circle;
 }
 
 
@@ -677,6 +723,13 @@ a .img-card {
 }
 
 
+/* ==================
+    My_recipe.html 
+===================== */
+
+.pagination li a .material-icons {
+    vertical-align: top;
+}
 
 
 

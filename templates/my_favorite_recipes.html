@@ -23,14 +23,13 @@
         <div class="col s12">
         </div>
         {% else %}
-        <div class="col s12 m6">
+        <div class="col s12">
             <ul class="pagination right-align">
                 <li id="prev-page-url" {% if page|int > 1 %} class="" {% else %} class="disabled" {% endif %}>
                     <a {% if page|int > 1 %} href="{{url_for('my_recipes', author_name=author_name, page=page|int-1)}}"
                         {% endif %}>
                         <i class="material-icons">chevron_left</i>Prev</a>
                 </li>
-                <!--TODO fix the lineheight -->
                 <!-- TODO set the correct url_for 'my_favorite_recipes.html -->
                 <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="" {% else %} class="disabled"
                     {% endif %}>
