@@ -212,7 +212,6 @@ def update_recipe(recipe_id):
             'recipe_image' : request.form.get('recipe_image'),            
             'recipe_ingredients':  request.form.getlist('recipe_ingredients'),
             'recipe_method':  request.form.getlist('recipe_method'),
-            'featured_recipe':  request.form.get('featured_recipe'),
             'recipe_tags': recipe_tags_split,
             'favorite': request.form.get('favorite')
             }

@@ -42,7 +42,7 @@ The "guest" navigation consists of:
 1) Home
 2) Random Recipe
 3) Recipe Category
-4) Login
+4) Login/Register
 
 When the user logs in, the "Login" navigation changes to "My Account" where the logged in user can reach:
 
@@ -52,7 +52,7 @@ When the user logs in, the "Login" navigation changes to "My Account" where the 
 8) Logout
 
 
-##### **Home**
+#### **Home**
 
 The "home" navigation takes the user to the landing page:
 
@@ -60,7 +60,7 @@ The "home" navigation takes the user to the landing page:
 
 When the user is on the landing page they can search for recipes by tags, keywords or categories.
 
-##### **Random Recipe**
+#### **Random Recipe**
 
 The "Random Recipe" navigation takes the user to the "Random Recipe Generator": 
 
@@ -68,16 +68,16 @@ The "Random Recipe" navigation takes the user to the "Random Recipe Generator":
 
 The user clicks on the "Generate Meal" button and is taken to a random recipe with written instructions and a video on how to prepare the meal. If the user wants another recipe they just click on the button again and a new random recipe will load.
 
-##### **Recipe Category**
+#### **Recipe Category**
 
 The "Recipe Category" navigation lets the user click on one of the six categories:
 
-1) **Breakfast**
-2) **Starter**
-3) **Lunch**
-4) **Main-Course**
-5) **Dessert**
-6) **Snack**
+1) **[Brakfast](https://foodictionary.herokuapp.com/browse_recipes/Breakfast/1)**
+2) **[Starter](https://foodictionary.herokuapp.com/browse_recipes/Starter/1)**
+3) **[Lunch](http://foodictionary.herokuapp.com/browse_recipes/Lunch/1)**
+4) **[MainCourse](https://foodictionary.herokuapp.com/browse_recipes/Main-Course/1)**
+5) **[Dessert](https://foodictionary.herokuapp.com/browse_recipes/Dessert/1)**
+6) **[Snack](https://foodictionary.herokuapp.com/browse_recipes/Snack/1)**
 
 If the user clicks on [Lunch](http://foodictionary.herokuapp.com/browse_recipes/Lunch/1) the user is redirected to the "Lunch" page where the user can browse all the "lunch" recipes. The recipes are paginated and up to six recipes are displayed on each page, the user can easily navigate through the pages by clicking on "prev" or "next".
 
@@ -87,6 +87,28 @@ The user can also click on the different recipe tags to get redirected to recipe
 
 There is also an "ADD TO FAVORITE'S" button. If the user is a guest and not logged in the user will be directed to a page where the user is asked to either log in or register to add the recipe to their favorites.
 
-##### Login
+#### Login
 
-The user is directed to a login page where
+If the user clicks on [Login/Register](https://foodictionary.herokuapp.com/login) the user is directed to a login page where the user is able to log in or register as a new user.
+
+When the user is logged in or Registered he/she is redirected back to the landing page and greated with a "toast" message that welcomes the user back.
+
+#### My Account
+
+When the user is logged in or registered the user is able to access the "My Account" section where the user is able to navigate to:
+
+1) Add Recipe
+2) My Recipes
+3) My Favorite Recipes
+4) Logout
+
+In this section the user is able to manage their own recipes. The user can add, update och delete a specific recipe. The user can also add a recipe to its list of favorite recipes that is located in the subsection "My Favorite Recipes"
+
+This is also where the user logs out from the website.
+
+### **Planning**
+
+#### **MongoDB**
+
+MongoDB is the database used in this project. 
+I have created a database called "foodictionary" with the collections:
