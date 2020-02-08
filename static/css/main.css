@@ -210,6 +210,10 @@ nav .brand-logo.center {
 /* ==========
     Buttons 
 ============= */
+.btn-margin {
+    margin: 2em !important;
+}
+
 .bts {
     line-height: 0 !important;
 }
@@ -494,8 +498,11 @@ input[type="password"]:not(.browser-default) {
 }
 
 .recipe-headers::before,
-.recipe-name::before,
 .search-keyword::before {
+    content: open-quote;
+}
+
+.recipe-name strong::before {
     content: open-quote;
 }
 
@@ -644,7 +651,7 @@ margin-bottom {
     padding: 1.3em 1.3em 2em;
     border-top-left-radius: 45px;
     border-top-right-radius: 45px;
-    width: 70%
+    width: 30%
 }
 
 /* <!-- Recipe tags --> */
@@ -674,12 +681,16 @@ margin-bottom {
 }
 
 .ol-recipe {
-    max-height: 300px;
+    max-height: 310px;
     overflow-y: auto;
 }
 
 .ol-recipe a {
     padding-left: 1rem;
+}
+
+.ul-style {
+    padding-left: 1rem !important;
 }
 
 
