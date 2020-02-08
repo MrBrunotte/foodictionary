@@ -5,10 +5,11 @@
 <div class="top-image-my-recipes container"></div>
 <div class="container">
     <!-- title of page-->
-    <h5 class="form-title">my recipes</h5>
+    <h5 class="form-title">my favorite recipes</h5>
 
     {% if count_recipes == 0 %}
-    <p class="center">You don't have any recipes yet. Why don't you <a href="{{url_for('add_recipe')}}">add one</a> now!
+    <p class="center">You don't have any favorite recipes yet. Why don't you <a href="{{url_for('add_recipe')}}">add
+            one</a> now!
     </p>
     {% else %}
 
@@ -16,7 +17,7 @@
     <div class="row">
         <div class="col s12">
             <p class="center num-of-recipes">
-                My {{count_recipes}} Recipe(s). Page {{ page }} of {{total_no_of_pages}}
+                My {{count_favorite_recipes}} Favorite Recipe(s). Page {{ page }} of {{total_no_of_pages}}
             </p>
         </div>
         {% if total_no_of_pages <= 1 %}
@@ -30,7 +31,6 @@
                         {% endif %}>
                         <i class="material-icons">chevron_left</i>Prev</a>
                 </li>
-                <!-- TODO set the correct url_for 'my_favorite_recipes.html -->
                 <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="" {% else %} class="disabled"
                     {% endif %}>
                     <a {% if page|int != total_no_of_pages|int %}
@@ -51,8 +51,8 @@
                 <div class="card">
                     <div class="card-image">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_image}}"
-                                alt="{{recipe.recipe_name}}"></a>
-                        <!--TODO set the function() for favorites here and in app.py -->
+                                class="img-card" alt="{{recipe.recipe_name}}"></a>
+                       <!--TODO add url_for "recipe_favorite" see app.py line 295 -->
                         <a href="#" class="halfway-fab btn-floating pink pulse">
                             <i class="material-icons">favorite</i>
                         </a>

@@ -457,21 +457,26 @@ input[type="password"]:not(.browser-default) {
     margin-bottom: 15px !important;
 }
 
+.image-random-meal { display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 1.3em 1.3em 2em;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    width: 35%;
+}
+
 .color {
     color: var(--gray);
 }
 
 /* =============
-    Broecipe.html 
+    Recipe.html 
 ================ */
 .font-size {
     font-size: 1.3rem;
 }
 
-/* =============
-    Recipe.html 
-================ */
-/* <!-- top image --> */
 .top-image-my-recipes {
     background-image: url(/static/images/silhouette_cropped.png);
     background-size: 100% 100%;
@@ -480,7 +485,7 @@ input[type="password"]:not(.browser-default) {
     height: 35vh;
     margin: 0 auto;
 }
-/* <!-- title of page--> */
+
 .form-title {
     font-size: 3rem;
     font-weight: 700;
@@ -543,7 +548,7 @@ a .img-card {
     font-size: 14px !important;
     font-weight: 900 !important;
     text-transform: uppercase;
-    height: 64px;
+    height: auto;
 }
 
 .card-action {
@@ -557,6 +562,7 @@ a .img-card {
 .card-content p {
     height: 11em;
     overflow-y: auto;
+    padding: 1em;
 }
 
 .recipe-author {
@@ -567,14 +573,9 @@ a .img-card {
     height: 5px;
 }
 
-/*
-.description-size {
-    min-height: 7em;
-    max-height: 7em;
-    overflow-y: auto;
-    padding: 1em;
+.category-margin {
+    padding-top: .8em;
 }
-*/
 
 /* <!-- Recipe info --> */
 .recipe-info {
@@ -659,12 +660,13 @@ a .img-card {
 
 /* <!-- Recipe method --> */
 .recipe-padding{
-    padding-left: 4em !important;
-    padding-right: 4em !important;
+    padding-left: 1.5em !important;
+    padding-right: 1.5em !important;
 }
 
-.position {
-    text-align: left;
+.position-ingredients,
+.position-method {
+    text-align: center;
 }
 
 .ol-recipe {
@@ -677,7 +679,7 @@ a .img-card {
 }
 
 .ul-style {
-    padding-left: 1rem !important;
+    padding-left: 2rem !important;
 }
 
 
@@ -836,7 +838,7 @@ a .img-card {
     Breakpoints: <== col s.. 600px, > col m.. 600px, < col l.. 992px, < col xl.. 1200px
 ==================================================================== */
 
-/* Class previx .s */
+/* Class previx .s, .m, .l */
 
 @media screen and (max-width: 600px) {
     .top-image-home         { height: 30vh;}
@@ -848,10 +850,27 @@ a .img-card {
     .smaller-scr-size       { font-size: .6rem;}
     .sidenav-img            { width: 50%;}
     .background             { height: 130px;}
-
-
+    .edit-recipe, 
+    .delete_recipe          { margin-top: 0;}
+    .info-fonts             { font-size: .6rem;}
+    
     input[type="text"]:not(.browser-default) { font-size: .85rem;}
 
+    /* random meal section*/
+    .form-title             { font-size: 1.5rem;}
+    .recipe-name            { margin: 1em 0 0;}
+    .btn-margin             { margin: 0 0 1em !important;}
+    .image-random-meal      { display: flex;
+                              justify-content: flex-start;
+                              margin: 0 auto;
+                              padding: 1.3em 1.3em 2em;
+                              border-top-left-radius: 45px;
+                              border-top-right-radius: 45px;
+                              width: 95%;
+    }
+    .meal-instr             { padding: 0 1em 0 0;}
+    iframe                  { width: 95%;
+                              margin-top: 1em;}
 
     /* footer */
     .footer-padding         { font-size: 1.2rem;}
@@ -862,59 +881,17 @@ a .img-card {
 
 @media screen and (min-width: 600px) and (max-width: 992px) {
     .top-image-home         { height: 45vh;}
+    .image-random-meal      { width: 60%;}
+    .ol-recipe              { max-height: 1500px;
+                              overflow-y: auto;}
+    .ul-style               { max-height: 500px;
+                              overflow-y: auto;}
+    .info-fonts             { font-size: .6rem;}
 }
 
 @media screen and (min-width: 1200px) {
-    .top-image-home {
-        background-image: url(/static/images/three_burgers_cropped.jpg);
-    }
-
-    .messages {
-        width: 30%;
-    }
-
-    .title {
-        padding-top: 10px;
-        font-size: 3rem;
-    }
-}
-
-@media (min-width: 400px) {
-
- /* random meal section*/
-
-    .random-meal-section {
-        display: grid;
-        width: 100%;
-        padding: 0em 2em;
-        grid-template-areas:
-            "header         header          header"
-            "img            tags-header     instr-header"
-            "img            tags            instr"
-            "img            ingr-header     instr"
-            "img            ingr            instr"
-            "video-header   video-header    video-header"
-            "video          video           video";
-    }
-
-    .img-header-parent h2 {
-        display: none;
-    }
-
-    .image-header {
-        margin-top: .5em;
-    }
-    
-    .ingr-parent,
-    .tags-header,
-    .meal-instr,
-    .meal-instr-header,
-    .ingredients {
-        text-align: start;
-    }
-
-
-    .meal-instr {
-        width: 95%;
-    }
+    .top-image-home         { background-image: url(/static/images/three_burgers_cropped.jpg);}
+    .messages               { width: 30%;}
+    .title                  { padding-top: 10px;
+                              font-size: 3rem;}
 }

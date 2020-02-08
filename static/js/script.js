@@ -41,7 +41,7 @@ const createMeal = meal => {
 		</h5>
 	</div>
 	<div class="col s12">
-                <img class="recipe-img" src="${meal.strMealThumb}" alt="Meal Image">
+                <img class="image-random-meal" src="${meal.strMealThumb}" alt="Meal Image">
             </div>
 	<div class="col s12 center">
 		<h5 class="form-subtitle">Recipe Tags </h5>
@@ -60,7 +60,7 @@ const createMeal = meal => {
 	</div>
 
 	<div class="container">
-		<div class="col s12 m4 offset-m2 recipe-padding">
+		<div class="col s12 m4 offset-m1 recipe-padding">
 			<h5 class="form-subtitle position">Ingredients</h5>
 			<ul class="ul-style">
 				${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}

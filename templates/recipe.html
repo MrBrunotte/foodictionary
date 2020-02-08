@@ -22,7 +22,8 @@
         <div class="col s12 m6">
             <img class="recipe-img margin-bottom" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
             <div class="col s12 center">
-                <a href="#" class="btn-floating pink pulse">
+                <!--TODO add url_for "recipe_favorite" see app.py line 295 -->
+                <a href="" class="btn-floating pink pulse">
                     <i class="material-icons">favorite</i>
                 </a>
                 <div class="info-fonts add-to-favorite">add to favorite's</div>
@@ -43,44 +44,44 @@
 
     </div>
     <div class="row">
-        <div class="cols12 s1 info-row">
+        <div class="col s12 info-row">
             <div class="row ">
                 <!-- Prep time -->
-                <div class="col s12 m2 center">
+                <div class="col s4 m2 center">
                     <div>
-                        <i class="material-icons">timer</i>
+                        <i class="material-icons category-margin">timer</i>
                     </div>
                     <div class="info-fonts letter-spacing">Prep Time:</div>
                     <div class="info-rec">{{recipe.recipe_prep_time}}</div>
                 </div>
                 <!-- Cook time -->
-                <div class="col s12 m2 center">
+                <div class="col s4 m2 center">
                     <div>
-                        <i class="material-icons">watch_later</i>
+                        <i class="material-icons category-margin">watch_later</i>
                     </div>
                     <div class="info-fonts letter-spacing">Cook Time:</div>
                     <div class="info-rec">{{recipe.recipe_cook_time}}</div>
                 </div>
                 <!-- Servs -->
-                <div class="col s12 m2 center">
+                <div class="col s4 m2 center">
                     <div>
-                        <i class="material-icons">local_dining</i>
+                        <i class="material-icons category-margin">local_dining</i>
                     </div>
                     <div class="info-fonts letter-spacing">Servs:</div>
                     <div class="info-rec">{{recipe.recipe_serves}}</div>
                 </div>
                 <!-- Servs -->
-                <div class="col s12 m2 center">
+                <div class="col s4 m2 center">
                     <div>
-                        <i class="material-icons">trending_up</i>
+                        <i class="material-icons category-margin">trending_up</i>
                     </div>
                     <div class="info-fonts letter-spacing">Difficulty:</div>
                     <div class="info-rec">{{recipe.recipe_difficulty}}</div>
                 </div>
                 <!-- Allergens -->
-                <div class="col s12 m2 center">
+                <div class="col s4 m2 center">
                     <div>
-                        <i class="material-icons">priority_high</i>
+                        <i class="material-icons category-margin">priority_high</i>
                     </div>
                     <div class="info-fonts letter-spacing">Allergens:</div>
                     <div class="info-rec">{% for items in recipe.allergen_type %}
@@ -88,9 +89,9 @@
                         {% endfor %}</div>
                 </div>
                 <!-- Category -->
-                <div class="col s12 m2 center">
+                <div class="col s4 m2 center">
                     <div>
-                        <i class="material-icons">menu</i>
+                        <i class="material-icons category-margin">menu</i>
                     </div>
                     <div class="info-fonts letter-spacing">Category:</div>
                     <div class="info-rec">{{recipe.recipe_category_name}}</div>
@@ -98,7 +99,7 @@
             </div>
         </div>
     </div>
-    <!--{% for rating in recipe.ratings %}
+    <!--{% for favorite in recipe.favorite %}
     <div class="star-ratings-sprite"><span style="width:{{((rating.overall_ratings / 5)*100)}}%"
             class="star-ratings-sprite-rating"></span></div>
     {% endfor%}-->
@@ -116,8 +117,8 @@
         </div>
 
         <!-- Recipe ingredients -->
-        <div class="col s12 m6 recipe-padding">
-            <h5 class="form-subtitle position">Ingredients</h5>
+        <div class="col s12 l4 recipe-padding">
+            <h5 class="form-subtitle position-ingredients">Ingredients</h5>
             <ul class="ul-style">
                 {% for items in recipe.recipe_ingredients %}
                 <li>{{items}}</li>
@@ -126,8 +127,8 @@
         </div>
 
         <!-- Recipe method -->
-        <div class="col s12 m6 recipe-padding">
-            <h5 class="form-subtitle position">Method</h5>
+        <div class="col s12 l8 recipe-padding">
+            <h5 class="form-subtitle position-method">Method</h5>
             <ol class="ol-recipe">
                 {% for items in recipe.recipe_method %}
                 <li>{{items}}</li>

@@ -77,11 +77,11 @@ def signup():
             'password': password
         })
         session['logged_in'] = True
-        flash('Welcome to FOODictionary ' + author_name + '!', 'success')
+        flash('Welcome to FOODictionary ' + author_name + '!', 'toast-success')
         return render_template('home.html')
     else:
         session['logged_in'] = False
-        flash('Username already exists, please try again.', 'warning')
+        flash('Username already exists, please try again.', 'toast-warning')
     return register()
 
 
@@ -277,9 +277,9 @@ def my_favorite_recipes(page):
     user = userDB.find_one({'username': username})
 
     # Count the number of recipes in the Database
-    all_favorite_recipes = recipes.find({'author_name': username}).sort(
+    favorite = recipes.find({'author_name': username}).sort(
         [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
-    count_favorite_recipes = all_recipe_favorite.count()
+    count_favorite_recipes = favorite.count()
     # Variables for Pagination
     offset = (int(page) - 1) * 6
     limit = 6
@@ -302,12 +302,12 @@ def recipe_favorite(recipe_id):
     new_favorite = request.form['favorite']
     recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
 
-    for favorite in recipe['favorite']:
-        overall_favorite = rating['overall_ratings']
+    for new_favorite in recipe['favorite']:
+        overall_favorite = favorite['favorite']
     
     recipes.update( {'_id': ObjectId(recipe_id)},
         {'$set':{
-            'favorite': 'test1'
+            'favorite': 'testFavorite'
         }})
         
     userDB.update({"username": username},
