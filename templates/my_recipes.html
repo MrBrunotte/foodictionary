@@ -20,8 +20,7 @@
             </p>
         </div>
         {% if total_no_of_pages <= 1 %}
-        <div class="col s12">
-        </div>
+        <div class="col s12"></div>
         {% else %}
         <div class="col s12">
             <ul class="pagination right-align">
@@ -30,7 +29,6 @@
                         {% endif %}>
                         <i class="material-icons">chevron_left</i>Prev</a>
                 </li>
-                <!--TODO fix the lineheight -->
                 <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="" {% else %} class="disabled"
                     {% endif %}>
                     <a {% if page|int != total_no_of_pages|int %}
@@ -47,7 +45,6 @@
     <div class="row">
         <div class="col s12">
             {% for recipe in recipes %}
-            <!--TODO Some of the image sizes are off -->
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
@@ -80,7 +77,6 @@
             {% endfor %}
         </div>
     </div>
-
 </div>
 <!-- This belongs to the if-statement above the cards! -->
 {% endif%}

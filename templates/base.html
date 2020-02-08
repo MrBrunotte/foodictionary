@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Author of project -->
+    <meta name="author" content="Stefan Brunotte">
+    <!-- Description of project -->
+    <meta name="description" content="Milestone Project 3 Code Institute">
     <!-- google fonts: Lora & Ubuntu -->
     <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -43,9 +47,10 @@
 
 
     <!-- Dropdown structure for Recipe's and My Account Sidenav -->
+    <!--TODO the dropdown does not work -->
     <ul id="dropdown3" class="dropdown-content">
         {% for category in recipeCategory %}
-        <li><a class="nav-link"
+        <li><a class="nav-link-mobile"
                 href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
         </li>
         {% endfor %}
@@ -57,7 +62,7 @@
         <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
         <!--TODO add url_for 'my_favorite_recipes-->
         <li><a href="{{url_for('my_favorite_recipes', page=1)}}" class="nav-link">my favorite recipes</a></li>
-        <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
+        <li><a href="{{url_for('logout')}}" class="nav-link-mobile">logout</a></li>
     </ul>
 
     <nav>
@@ -82,7 +87,7 @@
             <!-- sidemenu Mobile -->
             <ul class="sidenav" id="mobile-demo">
                 <div class="background">
-                    <img src="/static/images/mobile_hamburger_300px.jpg">
+                    <img src="/static/images/mobile_hamburger_300px.jpg" class="sidenav-img">
                 </div>
                 <div class="hamburger-list">
                     <li><a href="{{url_for('home')}}" class="nav-link-mobile">home</a></li>
@@ -117,30 +122,32 @@
 
 
     <footer>
-        <!-- TODO add footer section -->
         <div class="footer">
             <div class="row center">
-                <div class="col s6 m6 l6">
+                <div class="col s7 m9">
                     <h5 class="footer-padding">About FOODictionary</h5>
                     <p class="about">FOODictionary is your personalized cookbook!
                         <br>FOODictionary is a platform where you can add, edit and save your favorite recipes for quick
                         access. You can also se other members recipes and add them to your favorites.
                         <br>FOODictionary's vision is to give you a personalized plattform where you can grow your own
                         personal cookbook filled with your own favorite recipes.</p>
-                    Icons made by <a href="https://www.flaticon.com/authors/freepik" class="freepik-hover" title="Freepik">Freepik</a> from <a
-                        href="https://www.flaticon.com/" class="freepik-hover" title="Flaticon"> www.flaticon.com</a>
+                    <p class="about">Icons made by <a href="https://www.flaticon.com/authors/freepik"
+                            class="freepik freepik-hover" title="Freepik">Freepik</a> from <a
+                            href="https://www.flaticon.com/" class="freepik freepik-hover" title="Flaticon">
+                            www.flaticon.com</a></p>
+
                 </div>
 
-                <div class="col s6 m6 l6">
+                <div class="col s5 m3">
                     <h5 class="footer-padding">I'm social</h5>
-                    <a class="social" href="https://www.facebook.com/brunotte" target="_blank"><img
+                    <a class="social social-padding" href="https://www.facebook.com/brunotte" target="_blank"><img
                             src="/static/images/facebook18px.png" alt="Facebook"></a>
-                    <a class="social" href="https://www.instagram.com/mrbrunotte/" target="_blank"><img
+                    <a class="social social-padding" href="https://www.instagram.com/mrbrunotte/" target="_blank"><img
                             src="/static/images/instagram18px.png" alt="Instagram"></a>
-                    <a class="social" href="https://twitter.com/mrbrunotte" target="_blank"><img
+                    <a class="social social-padding" href="https://twitter.com/mrbrunotte" target="_blank"><img
                             src="/static/images/twitter18px.png" alt="Twitter"></a>
-                    <a class="social" href="https://www.linkedin.com/in/stefan-brunotte-44b01521/" target="_blank"><img
-                            src="/static/images/linkedin18px.png" alt="Linkedin"></a>
+                    <a class="social social-padding" href="https://www.linkedin.com/in/stefan-brunotte-44b01521/"
+                        target="_blank"><img src="/static/images/linkedin18px.png" alt="Linkedin"></a>
                 </div>
             </div>
             <div class="row">

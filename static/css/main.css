@@ -119,7 +119,7 @@ nav {
 }
 
 .username-nav {
-    color: var(--black);
+    color: var(--black) !important;
     background-color: #fafaee;
     text-align: center !important;
     padding: 14px 16px;
@@ -128,10 +128,10 @@ nav {
 .nav-link,
 .nav-link-mobile {
     text-decoration: none;
-    text-transform: capitalize;
+    text-transform: capitalize !important;
     font-family: 'Ubuntu', sans-serif;
     color: var(--black);
-    background-color: #fafaee;
+    background-color: transparent !important;
 }
 
 .nav-link:hover,
@@ -144,6 +144,11 @@ nav {
 [type="checkbox"]:checked + span:not(.lever)::before,
 .dropdown-content li > a, .dropdown-content li > span {
     color: var(--black) !important;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    text-transform: capitalize !important;
+    background-color: #fafaee !important;
 }
 
 .mobile-color {
@@ -627,10 +632,6 @@ a .img-card {
     letter-spacing: .2em;
 }
 
-margin-bottom {
-    margin-bottom: 2em !important;
-}
-
 .info-fonts {
     text-transform: uppercase;
 }
@@ -643,18 +644,6 @@ margin-bottom {
 
 /* <!-- Recipe image from DB --> */
 
-/*TODO set a fixed with and hieght to the image */
-.recipe-img {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0 auto;
-    padding: 1.3em 1.3em 2em;
-    border-top-left-radius: 45px;
-    border-top-right-radius: 45px;
-    width: 30%
-}
-
-/* <!-- Recipe tags --> */
 .text-background {
     background: rgb(190, 190, 190, 0.3);
 }
@@ -725,6 +714,20 @@ margin-bottom {
     height: 35vh;
 }
 
+/* =============
+    Recipe.html
+================ */
+
+.recipe-img {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 1.3em 1.3em 2em;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    width: 100%;
+}
+
 
 /* ==================
     My_recipe.html 
@@ -734,18 +737,11 @@ margin-bottom {
     vertical-align: top;
 }
 
-
-
-
-
-
 .header-home{
     background: transparent;
     position: absolute;
     width: 100%;
 }
-
-
 
 .title,
 .subtitle {
@@ -792,6 +788,7 @@ margin-bottom {
 
 .about {
     font-size: .75rem;
+    padding: 0 2em;
 }
 
 .freepik-hover:hover {
@@ -808,6 +805,9 @@ margin-bottom {
 
 .footer-bottom {
     background-color: #848484f0;
+    color: var(--orange);
+    font-size: .8rem;
+    font-weight: 900;
     text-align: center;
     padding: .4rem 0rem; 
     width: 100%;
@@ -835,17 +835,35 @@ margin-bottom {
 
 /* =================================================================
                           Media Queries
-    Breakpoints: <== .s 600px, > .m 600px, < .l 992px, < .xl 1200px
+    Breakpoints: <== col s.. 600px, > col m.. 600px, < col l.. 992px, < col xl.. 1200px
 ==================================================================== */
 
 /* Class previx .s */
 
 @media screen and (max-width: 600px) {
-   
+    .top-image-home         { height: 30vh;}
+    .title-home             { font-size: 2rem;}
+    .subtitle-home          { font-size: 1.5rem;}
+    .search-recipes         { font-size: 2rem;}
+    .chip                   { margin: 3px 0;}
+    .tags-header-whitespace { margin-bottom: .5em;}
+    .smaller-scr-size       { font-size: .6rem;}
+    .sidenav-img            { width: 50%;}
+    .background             { height: 130px;}
+
+
+    input[type="text"]:not(.browser-default) { font-size: .85rem;}
+
+
+    /* footer */
+    .footer-padding         { font-size: 1.2rem;}
+    .social-padding         { display: block; padding: .5em 1.5em;}
+    .about                  { padding: 0 1em;}
+    .freepik                { font-size: .75rem;}
 }
 
 @media screen and (min-width: 600px) and (max-width: 992px) {
-    
+    .top-image-home         { height: 45vh;}
 }
 
 @media screen and (min-width: 1200px) {

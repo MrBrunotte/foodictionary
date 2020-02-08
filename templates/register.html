@@ -4,7 +4,6 @@
     <div class="container-form">
         {% if session['logged_in'] %}v
         <p class="alert-text">You are already logged in. You don't need to register!</p>
-        <!-- TODO add css and correct url_for -->
         <p class="alert-text">Go to <a class="sign-in-link" href="{{url_for('home')}}">Home</a></p>
         {% else %}
         <form action="{{url_for('signup')}}" method="POST" class="form-register">

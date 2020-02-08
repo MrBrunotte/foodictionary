@@ -15,8 +15,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 toastr = Toastr(app)
 app.config['MONGO_DBNAME'] = 'foodictionary'
+#TODO fix the security settings for MONG_URI and SECRET_KEY
 # app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost')
 app.config['MONGO_URI'] = 'mongodb+srv://mrbrunotte:mrUSERbrunotte@foodictionary-gckbp.mongodb.net/foodictionary?retryWrites=true&w=majority'
+#TODO fix the security settings for SECRET_KEY
 app.secret_key = '9893869affbf35907d0e7f0f20a72bc9'
 # Add secret key:   app.secret_key = os.getenv('SECRET', 'randomstring123')
 
@@ -313,40 +315,6 @@ def recipe_favorite(recipe_id):
                 {'favorite' : recipe_id}}) 
     return redirect(url_for('recipe_page', recipe_id = recipe_id))
 
-#TODO -remove this!!
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-# Ratings                                                                                                  #
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~# 
-@app.route('/recipe_rating/<recipe_id>', methods=['POST'])
-def recipe_rating(recipe_id):
-    username=session.get('username')
-    user = userDB.find_one({'username' : username}) 
-    new_rating = request.form['new_rating']
-    recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
-
-    for rating in recipe['ratings']:
-        overall_rating = rating['overall_ratings']
-        total_rating = rating['total_ratings']
-        no_of_ratings = rating['no_of_ratings']
-        #Calculation for figuring out weighted rating
-        rating = (((int(overall_rating * total_rating) + int(new_rating)) / (int(total_rating)+1)))
-        rating = (round(rating,1))
-    
-    recipes.update( {'_id': ObjectId(recipe_id)},
-        {'$set':{
-            'ratings': [
-                {
-                    'total_ratings': int(total_rating) + int(new_rating),
-                    'overall_ratings': rating,
-                    'no_of_ratings': no_of_ratings + 1
-                }
-            ]}
-        })
-        
-    userDB.update({"username": username},
-                {'$addToSet': 
-                {'recipes_rated' : recipe_id}}) 
-    return redirect(url_for('recipe_page', recipe_id = recipe_id, page_title='Recipe at Lemon & Ginger, Recipe Finder'))
 
 
 # SEARCH KEYWORD  --------------------------------------------#

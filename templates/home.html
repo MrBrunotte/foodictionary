@@ -22,7 +22,7 @@
 <div class="container">
     <div class="row">
         <div class="col s12 center tags-whitespace">
-            <h6 class="tags-header-whitespace">Popular tags</h6>
+            <h5 class="tags-header-whitespace">Popular tags</h5>
             {% set _stub = recipes.rewind() %}
             <!--Limit no of Tags displayed -->
             {% for items in tags[0:20] %}
@@ -41,7 +41,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h3>Search Recipes</h3>
+                <h3 class="search-recipes">Search Recipes</h3>
                 <div class="input-field">
                     <form action="{{url_for('receive_keyword', page=1)}}" id="search-form" method="post" target="_top">
                         <input class="radius white grey-text autocomplete" id="search-text" name="keyword"
@@ -66,37 +66,37 @@
                 <div class="col s2">
                     <a href="{{url_for('browse_recipes', recipe_category_name = 'Starter', page=1)}}"><img
                             src="/static/images/canape.png" alt="Starters">
-                        <p class="uppercase">STARTER</p>
+                        <p class="uppercase smaller-scr-size">starter</p>
                     </a>
                 </div>
                 <div class="col s2">
                     <a href="{{url_for('browse_recipes', recipe_category_name = 'Breakfast', page=1)}}"><img
                             src="/static/images/breakfast.png" alt="Breakfast">
-                        <p class="uppercase">BREAKFAST</p>
+                        <p class="uppercase smaller-scr-size">breakfast</p>
                     </a>
                 </div>
                 <div class="col s2">
                     <a href="{{url_for('browse_recipes', recipe_category_name = 'Lunch', page=1)}}"><img
                             src="/static/images/lunch.png" alt="Lunch">
-                        <p class="uppercase">LUNCH</p>
+                        <p class="uppercase smaller-scr-size">lunch</p>
                     </a>
                 </div>
                 <div class="col s2">
-                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Main', page=1)}}"><img
+                    <a href="{{url_for('browse_recipes', recipe_category_name = 'Main-Course', page=1)}}"><img
                             src="/static/images/dinner.png" alt="Main">
-                        <p class="uppercase">Main course</p>
+                        <p class="uppercase smaller-scr-size">main course</p>
                     </a>
                 </div>
                 <div class="col s2">
                     <a href="{{url_for('browse_recipes', recipe_category_name = 'Dessert', page=1)}}"><img
                             src="/static/images/pancakes.png" alt="Dessert">
-                        <p class="uppercase">DESSERT</p>
+                        <p class="uppercase smaller-scr-size">dessert</p>
                     </a>
                 </div>
                 <div class="col s2">
                     <a href="{{url_for('browse_recipes', recipe_category_name = 'Snack', page=1)}}"><img
                             src="/static/images/nut.png" alt="Snack">
-                        <p class="uppercase">SNACK</p>
+                        <p class="uppercase smaller-scr-size">snack</p>
                     </a>
                 </div>
             </div>
