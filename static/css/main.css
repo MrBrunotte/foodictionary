@@ -453,7 +453,7 @@ input[type="password"]:not(.browser-default) {
     color: #fff;
     background-position: center;
     border-radius: 25px 25px 0px 0px;
-    height: 70vh;
+    height: 65vh;
     margin-bottom: 15px !important;
 }
 
