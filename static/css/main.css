@@ -783,7 +783,7 @@ margin-bottom {
     color: whitesmoke;
     background-color: #84848482;
     margin-top: 10px;
-    height: 160px;
+    height: auto;
 }
 
 .footer-padding {
@@ -792,6 +792,10 @@ margin-bottom {
 
 .about {
     font-size: .75rem;
+}
+
+.freepik-hover:hover {
+    color: var(--gray);
 }
 
 .footer h5 {
