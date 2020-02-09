@@ -25,7 +25,7 @@
 
 body {
     scroll-behavior: smooth;
-    background-image: url(/static/images/restaurant_icons.png);
+    background-image: url(/static/images/background_image.png);
 }
 
 * {
@@ -88,7 +88,7 @@ strong {
 ===================== */
 nav {
     background-color: #0d0c0ce6;
-    background-image: url(/static/images/restaurant_icons.png);
+    background-image: url(/static/images/background_image.png);
     height: 40px;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -185,11 +185,15 @@ nav .brand-logo.center {
 /* Navigation smaller screens*/
 
 .sidenav{
-    background-image: url(/static/images/restaurant_icons.png);
+    background-image: url(/static/images/background_image.png);
     background-size: cover;
     background-position: center;
     height: 100vh;
     object-fit: cover;
+}
+
+.sidenav-img {
+    width: 100%;
 }
 
 .sidenav li > a {
@@ -203,7 +207,7 @@ nav .brand-logo.center {
 }
 
 .background {
-    height: 234px;
+    height: 120px;
 }
 
 .hamburger-lists {
@@ -358,7 +362,7 @@ input:active {
 ================ */
 /* <!-- top image --> */
 .top-image-home {
-    background-image: url(/static/images/three_burgers_cropped.jpg);
+    background-image: url(/static/images/three_burgers.jpg);
     border-radius: 25px 25px 0px 0px;
     background-size: cover;
     background-position: center top;
@@ -478,7 +482,7 @@ input[type="password"]:not(.browser-default) {
 }
 
 .top-image-my-recipes {
-    background-image: url(/static/images/silhouette_cropped.png);
+    background-image: url(/static/images/bon_appetit.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 85%;
@@ -856,7 +860,6 @@ a .img-card {
     .chip                   { margin: 3px 0;}
     .tags-header-whitespace { margin-bottom: .5em;}
     .smaller-scr-size       { font-size: .6rem;}
-    .sidenav-img            { width: 50%;}
     .background             { height: 130px;}
     .edit-recipe, 
     .delete_recipe          { margin-top: 0;}
@@ -898,7 +901,7 @@ a .img-card {
 }
 
 @media screen and (min-width: 1200px) {
-    .top-image-home         { background-image: url(/static/images/three_burgers_cropped.jpg);}
+    .top-image-home         { background-image: url(/static/images/three_burgers.jpg);}
     .messages               { width: 30%;}
     .title                  { padding-top: 10px;
                               font-size: 3rem;}
