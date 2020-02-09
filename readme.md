@@ -112,3 +112,5 @@ This is also where the user logs out from the website.
 
 MongoDB is the database used in this project. 
 I have created a database called "foodictionary" with the collections:
+
+**[DatabaseSchema](https://github.com/MrBrunotte/foodictionary/blob/master/planning/database_schema.jpg)**

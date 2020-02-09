@@ -791,7 +791,11 @@ a .img-card {
     padding: 0 2em;
 }
 
-.freepik-hover:hover {
+.freepik-style {
+    color: whitesmoke;
+}
+
+.freepik-style:hover {
     color: var(--gray);
 }
 
@@ -811,6 +815,10 @@ a .img-card {
     text-align: center;
     padding: .4rem 0rem; 
     width: 100%;
+}
+
+.footer-bottom:hover {
+    color: var(--white);
 }
 
 /* =============
