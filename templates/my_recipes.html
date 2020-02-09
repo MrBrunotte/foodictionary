@@ -29,8 +29,8 @@
                         {% endif %}>
                         <i class="material-icons">chevron_left</i>Prev</a>
                 </li>
-                <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="" {% else %} class="disabled"
-                    {% endif %}>
+                <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="pagination-size" {% else %}
+                    class="disabled" {% endif %}>
                     <a {% if page|int != total_no_of_pages|int %}
                         href="{{url_for('my_recipes', author_name=author_name, page=page|int+1)}}" {% endif %}>Next<i
                             class="material-icons">chevron_right</i></a>
@@ -65,14 +65,14 @@
                         -->
 
                     </div>
-                    <div class="card-content">
-                        <span class="card-title card-span">{{recipe.recipe_name}}</span>
+                    <div class="my-card-content">
+                        <span class="my-card-title card-span">{{recipe.recipe_name}}</span>
                         <p class="description-size">
                             {{recipe.recipe_description}}
                         </p>
-                        <span class="recipe-author">Recipe added by: {{recipe.author_name}}</span>
+                        <span class="recipes-author">Recipe added by: {{recipe.author_name}}</span>
                     </div>
-                    <div class="card-action">
+                    <div class="my-card-action">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}">View Recipe</a>
                     </div>
                 </div>

@@ -1,7 +1,3 @@
-/* ========================================
-    This is the start of every css page!!
-=========================================== */
-
 /*  Fonts
     -----
     font-family: 'Lora', serif;             headers
@@ -15,7 +11,7 @@
     --black: #464646;
     --white: #dcdace;
     --gray: #848484;
-    --dark-gray: rgb(190, 190, 190, 0.3);
+    --dark-gray: #bebebe4d;
     --orange: #e79b508f;
 }
 
@@ -29,7 +25,7 @@ body {
 }
 
 * {
-    box-sizing: border-box;
+    box-sizing: border-box;     /* to remove all padding and margings */
 }
 
 body {
@@ -477,6 +473,28 @@ input[type="password"]:not(.browser-default) {
 /* =============
     Recipe.html 
 ================ */
+
+#next-page-url a,
+#prev-page-url a {
+    font-size: 1rem;
+}
+
+.pagination li i {
+    font-size: 1.5rem;
+}
+
+.pagination li a .material-icons {
+    vertical-align: middle;
+}
+
+.pagination li a {
+    line-height: 22px;
+}
+
+.pagination {
+    margin-bottom: 0;
+}
+
 .font-size {
     font-size: 1.3rem;
 }
@@ -548,33 +566,48 @@ a .img-card {
     height: 300px !important;
 }
 
-.card-title {
-    font-size: 14px !important;
-    font-weight: 900 !important;
+.my-card-title {
+    font-size: 12px;
+    font-weight: 900;
     text-transform: uppercase;
     height: auto;
 }
 
-.card-action {
-    background-color: var(--gray) !important;
+.my-card-action {
+    background-color: var(--gray);
+    height: 50px;
 }
 
-.card-content {
-    padding: 24px 24px 0 !important;
+.my-card-action a {
+    margin: auto 1em;
+    line-height: 2.5;
 }
 
-.card-content p {
+.my-card-content {
+    padding: 1.4em 1em 0;
+}
+
+.my-card-content p {
     height: 11em;
     overflow-y: auto;
-    padding: 1em;
+    padding: 0 1em;
 }
 
+.recipes-author,
 .recipe-author {
     text-transform: capitalize;
     font-weight: 900;
     font-size: .9rem;
-    color: var(--orange);
     height: 5px;
+}
+.recipes-author {
+    color: var(--orange);
+}
+
+.recipe-author {
+    color: var(--gray); 
+    font-weight: 400;
+    letter-spacing: .1em;
 }
 
 .category-margin {
@@ -729,7 +762,7 @@ a .img-card {
     padding: 1.3em 1.3em 2em;
     border-top-left-radius: 45px;
     border-top-right-radius: 45px;
-    width: 100%;
+    width: 80%;
 }
 
 
@@ -807,8 +840,14 @@ a .img-card {
     color: whitesmoke;
 }
 
+.social-padding {
+    display: inline;
+    padding: 0 .5rem;
+}
+
 .social {
-    padding-right: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
 }
 
 .footer-bottom {
@@ -841,18 +880,39 @@ a .img-card {
 }
 
 
-
-
-
-
-/* =================================================================
+/* ===================================================================================================
                           Media Queries
-    Breakpoints: <== col s.. 600px, > col m.. 600px, < col l.. 992px, < col xl.. 1200px
-==================================================================== */
+    Breakpoints: <== col xs.. <= 600px, s.. >600px, > col m.. 600px, < col l.. 992px, < col xl.. 1200px
+====================================================================================================== */
 
-/* Class previx .s, .m, .l */
+/* Class previx  .xs, .s, .m, .l */
+@media screen and (min-width: 300px) and (max-width: 600px) {
 
-@media screen and (max-width: 600px) {
+    .img-card           { height: 170px !important;}
+    .my-card-title      { font-size: .8rem;}
+    .my-card-content    { height: 220px;
+                          padding: 2em 1em;}
+    .my-card-content p  {
+                          height: 110px;
+                          font-size: .9rem;
+                          padding: 0;
+                          margin-bottom: .5em;}
+    .recipe-img         { width: 60%;}
+    .edit-recipe,
+    .delete_recipe      { margin-top: 0;}
+    #next-page-url a,
+    #prev-page-url a    {font-size: .9rem;}
+    .pagination li i    {font-size: 1rem;}
+    .pagination li a .material-icons {vertical-align: middle;}
+    .pagination         {margin-bottom: 0;}
+    .about              {font-size: .5rem;}
+    .footer-padding     {font-size: .9rem;}
+    .footer-bottom      {font-size: .7rem;}
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 992px) {
+    
     .top-image-home         { height: 30vh;}
     .title-home             { font-size: 2rem;}
     .subtitle-home          { font-size: 1.5rem;}
@@ -864,6 +924,9 @@ a .img-card {
     .edit-recipe, 
     .delete_recipe          { margin-top: 0;}
     .info-fonts             { font-size: .6rem;}
+    .recipe-img             { width: 80%;}
+    .edit-recipe,
+    .delete_recipe      { margin-top: 1em;}
     
     input[type="text"]:not(.browser-default) { font-size: .85rem;}
 
@@ -890,7 +953,7 @@ a .img-card {
     .freepik                { font-size: .75rem;}
 }
 
-@media screen and (min-width: 600px) and (max-width: 992px) {
+@media screen and (min-width: 992px) and (max-width: 1200px) {
     .top-image-home         { height: 45vh;}
     .image-random-meal      { width: 60%;}
     .ol-recipe              { max-height: 1500px;
@@ -898,6 +961,7 @@ a .img-card {
     .ul-style               { max-height: 500px;
                               overflow-y: auto;}
     .info-fonts             { font-size: .6rem;}
+    .recipe-img             { width: 90%;}
 }
 
 @media screen and (min-width: 1200px) {
@@ -905,4 +969,5 @@ a .img-card {
     .messages               { width: 30%;}
     .title                  { padding-top: 10px;
                               font-size: 3rem;}
+    .recipe-img             { width: 80%;}
 }
