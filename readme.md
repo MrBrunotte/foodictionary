@@ -41,11 +41,13 @@ The website uses two differnt fonts to create typographic harmony.
 
 ### **Wireframe & Mockup**
 
-I have used [AdobeXD](https://www.adobe.com/se/products/xd.html) as my tool for  the wireframe and mockup.
+I have used [AdobeXD](https://www.adobe.com/se/products/xd.html) as my tool for the mockup.
 
-#### **Desktop**
+#### **Desktop & Mobile**
 
-#### **Mobile**
+Link to [FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c-7b6cc300c5c0-d631/)
+
+**When you have followed the link, click on FOODictionary at the top left corner to see all the mockups for desktop and mobile.**
 
 ## **FEATURES**
 

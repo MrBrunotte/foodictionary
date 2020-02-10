@@ -84,7 +84,13 @@
 <!-- This belongs to the if-statement above the cards! -->
 {% endif%}
 {% else %}
-<p>You must be logged in to edit a recipe </p>
+<div class="row vh">
+    <div class="col s12">
+        <h4 class="login-recipe">You must be logged in to Add a Recipe!<br><br>Login <a
+                href="{{url_for('login')}}">here</a>
+        </h4>
+    </div>
+</div>
 {% endif %}
 
 {% endblock %}

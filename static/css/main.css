@@ -474,6 +474,24 @@ input[type="password"]:not(.browser-default) {
     Recipe.html 
 ================ */
 
+.vh{
+    min-height: calc(100vh - 214px);
+}
+
+.login-recipe {
+    text-align: center;
+    text-transform: capitalize;
+    margin: 4em;
+}
+
+.login-recipe a::before {
+    content: open-quote;
+}
+
+.login-recipe a::after {
+    content: close-quote;
+}
+
 #next-page-url a,
 #prev-page-url a {
     font-size: 1rem;
