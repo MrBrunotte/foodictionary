@@ -52,12 +52,16 @@ def get_recipes():
 # RANDOM MEAL PAGE ----------------------------------------#
 @app.route('/random_meal')
 def random_meal():
-    return render_template('random_meal.html')
+    return render_template('random_meal.html', recipeCategory=recipeCategory.find())
+
+
+
 
 # USER LOGIN AND REGISTRATION -----------------------------#
 @app.route('/register')
 def register():
     return render_template('register.html')
+
 
 
 @app.route('/signup', methods=['POST'])
