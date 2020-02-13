@@ -43,11 +43,13 @@ def home():
                            recipeCategory=list(recipeCategory.find()), page=1, tags=tags)
 
 
+# TODO Remove this route..not used!
+"""
 @app.route('/get_recipes')
 def get_recipes():
     return render_template('get_recipes.html', recipes=recipes.find().sort('date_time', pymongo.DESCENDING),
                            recipeCategory=list(recipeCategory.find()))
-
+"""
 
 # RANDOM MEAL PAGE ----------------------------------------#
 @app.route('/random_meal')
@@ -155,7 +157,7 @@ def browse_recipes(recipe_category_name, page):
 # ADD RECIPE's --------------------------------------------#
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=list(recipeCategory.find()),
+    return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=recipeCategory.find(),
                            skillLevel=skillLevel.find(), allergens=allergens.find(), userDB=userDB.find())
 
 
@@ -191,7 +193,7 @@ def insert_recipe():
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    return render_template('edit_recipe.html', recipeCategory=list(recipeCategory.find()),
+    return render_template('edit_recipe.html', recipeCategory=recipeCategory.find(),
                            allergens=allergens.find(), skillLevel=skillLevel.find(), page=1,
                            recipes=recipes.find_one({'_id': ObjectId(recipe_id)}))
 
@@ -238,10 +240,9 @@ def recipe_page(recipe_id):
     logged_in = session.get('logged_in')
     user = userDB.find_one({'username': username})
     if not user:
-        return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}), recipeCategory=list(recipeCategory.find()), recipe_id=recipe_id,  page=1)
+        return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}), recipe_id=recipe_id, recipeCategory=list(recipeCategory.find()),  page=1)
     else:
-        return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}),
-                               recipeCategory=list(recipeCategory.find()), recipe_id=recipe_id,
+        return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}), recipe_id=recipe_id, recipeCategory=list(recipeCategory.find()),
                                user=user, page=1, page_title='FOODictionary - Recipe')
 
 
@@ -289,7 +290,7 @@ def my_favorite_recipes(page):
 
     return render_template('my_favorite_recipes.html',
                            recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_favorite_recipes=count_favorite_recipes,
-                           total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=list(recipeCategory.find()))
+                           total_no_of_pages=total_no_of_pages, recipeCategory=list(recipeCategory.find()), page=page, author_name=username)
 
 
 # ADD TO FAVORITE MEAL SECTION  --------------------------------------------#
@@ -343,8 +344,7 @@ def search_keyword(keyword, page):
 
     return render_template('keyword_search.html', keyword=keyword,
                            search_results=recipe_pages.sort(
-                               'date_time', pymongo.DESCENDING),
-                           recipeCategory=list(recipeCategory.find()), count_recipes=count_recipes,
+                               'date_time', pymongo.DESCENDING), count_recipes=count_recipes, recipeCategory=list(recipeCategory.find()),
                            total_no_of_pages=total_no_of_pages, page=page)
 
 
@@ -373,8 +373,7 @@ def search_tag(tag, page):
 
     return render_template('tag_search.html', tag=tag,
                            search_results=recipe_pages.sort(
-                               'date_time', pymongo.DESCENDING),
-                           recipeCategory=list(recipeCategory.find()), count_recipes=count_recipes,
+                               'date_time', pymongo.DESCENDING), count_recipes=count_recipes, recipeCategory=list(recipeCategory.find()),
                            total_no_of_pages=total_no_of_pages, page=page)
 
 #-------------#

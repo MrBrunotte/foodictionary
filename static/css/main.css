@@ -655,8 +655,30 @@ a .img-card {
     text-align: center;
     border: 0;
     background: none;
-    margin-top: 2em;
+    margin-top: .5em;
     letter-spacing: .2em;
+}
+
+.edit-recipe {
+    border-radius: 25px 0px 0px 0px;
+}
+
+.delete_recipe {
+    border-radius: 0px 25px 0px 0px;
+}
+
+.edit-bg,
+.delete-bg {
+    background-color: var(--dark-gray);
+}
+
+
+.edit-bg {
+    border-radius: 25px 0px 0px 0px;
+}
+
+.delete-bg {
+    border-radius: 0px 25px 0px 0px;
 }
 
 .add-to-favorite {
