@@ -345,7 +345,7 @@ def search_keyword(keyword, page):
                            search_results=recipe_pages.sort(
                                'date_time', pymongo.DESCENDING),
                            recipeCategory=list(recipeCategory.find()), count_recipes=count_recipes,
-                           total_no_of_pages=total_no_of_pages, page=page, page_title='Search Results, Lemon & Ginger, Recipe Finder')
+                           total_no_of_pages=total_no_of_pages, page=page)
 
 
 # SEARCH TAG  --------------------------------------------#
@@ -384,17 +384,17 @@ def search_tag(tag, page):
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html', recipeCategory=list(recipeCategory.find()), page=1, page_title='404 Error Page, FOODictionary'), 404
+    return render_template('404.html', page=1, page_title='404 Error Page, FOODictionary'), 404
 
 
 @app.errorhandler(405)
 def page_not_found(error):
-    return render_template('405.html', recipeCategory=list(recipeCategory.find()), page=1, page_title='405 Method Not Allowed, FOODictionary'), 405
+    return render_template('405.html', page=1, page_title='405 Method Not Allowed, FOODictionary'), 405
 
 
 @app.errorhandler(500)
 def something_wrong(error):
-    return render_template('500.html', recipeCategory=list(recipeCategory.find()), page=1, page_title='500 Error, FOODictionary'), 500
+    return render_template('500.html', page=1, page_title='500 Error, FOODictionary'), 500
 
 
 if __name__ == '__main__':
