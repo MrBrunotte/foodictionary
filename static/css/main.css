@@ -97,15 +97,15 @@ nav {
     top: -40px;
 }
 
-.dropdown-content li > a, .dropdown-content li > span {
-    color: #78766a;
-    text-transform: capitalize;
-    font-size:14px;
-    letter-spacing: 1px;
-}
 
-.dropdown-content li:hover, .dropdown-content li.active {
-    background-color: rgb(232, 232, 223);
+.dropdown-content li > a, 
+.dropdown-content li > span {
+    color: var(--black) !important;
+    text-transform: capitalize !important;
+    background-color: #fafaee !important;
+    font-size: 14px;
+    letter-spacing: 1px;
+   
 }
 
 .line-height {
@@ -135,15 +135,11 @@ nav {
     color: var(--black);
 }
 
-[type="checkbox"]:checked + span:not(.lever)::before,
-.dropdown-content li > a, .dropdown-content li > span {
+[type="checkbox"]:checked + span:not(.lever)::before {
     color: var(--black) !important;
 }
 
-.dropdown-content li > a, .dropdown-content li > span {
-    text-transform: capitalize !important;
-    background-color: #fafaee !important;
-}
+
 
 .mobile-color {
     color: var(--black);
@@ -192,10 +188,11 @@ nav .brand-logo.center {
     width: 100%;
 }
 
+nav li a,
 .sidenav li > a {
     color: var(--black);
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 900 !important;
 }
 
 .sm {

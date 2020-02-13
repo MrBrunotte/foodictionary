@@ -38,7 +38,7 @@
 
     <ul id="dropdown2" class="dropdown-content">
         <li class="username-nav">Hello {{session.username|capitalize}}</li>
-        <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
+        <li><a href="{{url_for('add_recipe')}}" class="nav-link-mobile">add recipe</a></li>
         <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
         <!--TODO add url_for 'my_favorite_recipes-->
         <li><a href="{{url_for('my_favorite_recipes', page=1)}}" class="nav-link">my favorite recipes</a></li>
@@ -54,15 +54,6 @@
                 href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
         </li>
         {% endfor %}
-    </ul>
-
-    <ul id="dropdown4" class="dropdown-content">
-        <li class="username-nav">Hello {{session.username|capitalize}}</li>
-        <li><a href="{{url_for('add_recipe')}}" class="nav-link">add recipe</a></li>
-        <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
-        <!--TODO add url_for 'my_favorite_recipes-->
-        <li><a href="{{url_for('my_favorite_recipes', page=1)}}" class="nav-link">my favorite recipes</a></li>
-        <li><a href="{{url_for('logout')}}" class="nav-link-mobile">logout</a></li>
     </ul>
 
     <nav>
@@ -96,12 +87,12 @@
                     </li>
                     <!-- Dropdown Trigger -->
                     <!--TODO Recipes does not connect to DB in sidenav -->
-                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown3">recipe category<i
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown1">recipe category<i
                                 class="material-icons right line-height">arrow_drop_down</i></a></li>
                     <li class="divider"></li>
                     {% if session.logged_in %}
                     <li class="username-nav">Hello {{session.username|capitalize}}</li>
-                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown4">my account<i
+                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown2">my account<i
                                 class="material-icons right line-height">arrow_drop_down</i></a></li>
                     {% else %}
                     <li><a href="{{url_for('login')}}" class="nav-link-mobile">login/register</a></li>
