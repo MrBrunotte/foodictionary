@@ -1,8 +1,8 @@
 # DEPENDENCIES --------------------------------------------#
 import os
 import pymongo
-import math  # remove?
-import random  # remove?
+import math
+import random
 from flask import Flask, flash, render_template, redirect, request, url_for, request, session, g, abort
 from flask_toastr import Toastr
 from flask_pymongo import PyMongo
