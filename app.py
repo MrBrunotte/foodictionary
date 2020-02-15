@@ -130,8 +130,33 @@ def logout():
 
 # RECIPES SECTION #
 
+# ---------------------------------------------------- #
+# ------------- browse_recipes.html ------------------ #
+# ---------------------------------------------------- #
+
+# UPDATE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/add_favorite_recipe_browse_recipes/<recipe_id>/<recipe_category_name>?page=<page>&destination=<destination>', methods=['GET'])
+def add_favorite_recipe_browse_recipes(recipe_id, recipe_category_name, page, destination):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': True
+        }
+    })
+    return redirect(url_for(destination, recipe_category_name=recipe_category_name, page=page))
+
+# REMOVE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/remove_favorite_recipe_browse_recipes/<recipe_id>/<recipe_category_name>?page=<page>&destination=<destination>', methods=['GET'])
+def remove_favorite_recipe_browse_recipes(recipe_id, recipe_category_name, page, dest):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': False
+        }
+    })
+    return redirect(url_for(destination, recipe_category_name=recipe_category_name, page=page))
+
 # BROWSE RECIPE CATEGORIES --------------------------------#
-# To find the different categories in the nav menu. #
 @app.route('/browse_recipes/<recipe_category_name>/<page>', methods=['GET'])
 def browse_recipes(recipe_category_name, page):
     tags = recipes.distinct("recipe_tags")
@@ -366,8 +391,33 @@ def remove_favorite_recipe_page(recipe_id):
     })
     return redirect(url_for('recipe_page', recipe_id=recipe_id))
 
+# ------------------------------------------------ #
+# ------------- search_keyword.html ------------------ #
+# ------------------------------------------------ #
 
-# SEARCH KEYWORD  --------------------------------------------#
+# UPDATE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/add_favorite_recipe_search_keyword/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
+def add_favorite_recipe_search_keyword(recipe_id, keyword, page):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': True
+        }
+    })
+    return redirect(url_for('search_keyword', keyword=keyword, page=page))
+
+# REMOVE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/remove_favorite_recipe_search_keyword/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
+def remove_favorite_recipe_search_keyword(recipe_id, keyword, page):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': False
+        }
+    })
+    return redirect(url_for('search_keyword', keyword=keyword, page=page))
+
+
 @app.route('/search_keyword', methods=['POST'])
 def receive_keyword():
     return redirect(url_for('search_keyword', keyword=request.form.get('keyword'), page=1))
