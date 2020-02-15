@@ -250,8 +250,8 @@ nav .brand-logo.center {
     width: inherit;
     display: block !important;
     text-align: center;
-    color: var(--gray) !important;
-    font-size: 1.6rem;
+    color: var(--black) !important;
+    font-size: 1.9rem;
     line-height: 40px;
 }
 
@@ -542,7 +542,9 @@ input[type="password"]:not(.browser-default) {
 }
 
 .recipe-headers::before,
-.search-keyword::before {
+.search-keyword::before,
+.recipe-name::before,
+.form-title::before {
     content: open-quote;
 }
 
@@ -552,7 +554,8 @@ input[type="password"]:not(.browser-default) {
 
 .recipe-headers::after,
 .recipe-name::after,
-.search-keyword::after {
+.search-keyword::after,
+.form-title::after {
     content: close-quote;
 }
 
@@ -592,9 +595,26 @@ a .img-card {
     height: 50px;
 }
 
+.my-card-action:hover {
+    background-color: var(--black);
+    color: var(--white);
+    height: 50px;
+}
+
+.my-card-action:active {
+    background-color: var(--black);
+    border: solid 4px var(--orange);
+    height: 50px;
+}
+
 .my-card-action a {
     margin: auto 1em;
     line-height: 2.5;
+}
+
+.my-card-action a:hover,
+.my-card-action a:focus {
+    color: var(--white);
 }
 
 .my-card-content {
@@ -610,18 +630,14 @@ a .img-card {
 .recipes-author,
 .recipe-author {
     text-transform: capitalize;
+    color: var(--gray);
     font-weight: 900;
-    font-size: .9rem;
-    height: 5px;
-}
-.recipes-author {
-    color: var(--orange);
+    font-size: .8rem;
 }
 
-.recipe-author {
-    color: var(--gray); 
-    font-weight: 400;
-    letter-spacing: .1em;
+.recipes-author:hover,
+.recipe-author:hover {
+    color: var(--black);
 }
 
 .category-margin {

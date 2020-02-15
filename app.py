@@ -182,7 +182,7 @@ def insert_recipe():
         'recipe_method':  request.form.getlist('recipe_method'),
         'date_time': datetime.now(),
         'author_name': user['username'],
-        'favorite': request.form.get('favorite'),
+        'favorite': request.form.get('favorite') == 'on',
         'recipe_tags': recipe_tags_split
     }
     recipes.insert_one(complete_recipe)
@@ -278,23 +278,47 @@ def my_favorite_recipes(page):
     user = userDB.find_one({'username': username})
 
     # Count the number of recipes in the Database
-    favorite = recipes.find({'author_name': username}).sort(
+    all_recipes = recipes.find({'author_name': username, 'favorite': True}).sort(
         [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
-    count_favorite_recipes = favorite.count()
+    count_recipes = all_recipes.count()
     # Variables for Pagination
     offset = (int(page) - 1) * 6
     limit = 6
-    total_no_of_pages = int(math.ceil(count_favorite_recipes/limit))
-    recipe_pages = recipes.find({'author_name': username}).sort([("date_time", pymongo.DESCENDING),
-                                                                 ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
+    total_no_of_pages = int(math.ceil(count_recipes/limit))
+    recipe_pages = recipes.find({'author_name': username, 'favorite': True}).sort([("date_time", pymongo.DESCENDING),
+                                                                                   ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
 
     return render_template('my_favorite_recipes.html',
-                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_favorite_recipes=count_favorite_recipes,
-                           total_no_of_pages=total_no_of_pages, recipeCategory=list(recipeCategory.find()), page=page, author_name=username)
+                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
+                           total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=list(recipeCategory.find()))
 
+
+# UPDATE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/add_favorite_recipe/<recipe_id>?page=<page>&destination=<destination>', methods=['GET'])
+def add_favorite_recipe(recipe_id, page, destination):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': True
+        }
+    })
+    return redirect(url_for(destination, page=page))
+
+
+# REMOVE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/remove_favorite_recipe/<recipe_id>?page=<page>&destination=<destination>', methods=['GET'])
+def remove_favorite_recipe(recipe_id, page, destination):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': False
+        }
+    })
+    return redirect(url_for(destination, page=page))
 
 # ADD TO FAVORITE MEAL SECTION  --------------------------------------------#
 # TODO set the function() for favorites here and in app.py
+
 
 @app.route('/recipe_favorite/<recipe_id>', methods=['POST'])
 def recipe_favorite(recipe_id):

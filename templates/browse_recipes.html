@@ -3,7 +3,7 @@
 <div class="top-image-my-recipes container"></div>
 <div class="container">
     <div class="wrapper-browse-recipes">
-        <h4 class="center search-result">{{recipe_category_name}}</h4>
+        <h4 class="center form-title">{{recipe_category_name}}</h4>
         {% if session['logged_in'] and count_recipes == 0 %}
         <p class="center font-size">You don't have any recipes for this category. Why don't you <a
                 href="{{url_for('add_recipe')}}">add</a>

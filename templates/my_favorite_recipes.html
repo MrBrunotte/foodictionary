@@ -27,15 +27,15 @@
         <div class="col s12">
             <ul class="pagination right-align">
                 <li id="prev-page-url" {% if page|int > 1 %} class="" {% else %} class="disabled" {% endif %}>
-                    <a {% if page|int > 1 %} href="{{url_for('my_recipes', author_name=author_name, page=page|int-1)}}"
-                        {% endif %}>
+                    <a {% if page|int > 1 %}
+                        href="{{url_for('my_favorite_recipes', author_name=author_name, page=page|int-1)}}" {% endif %}>
                         <i class="material-icons">chevron_left</i>Prev</a>
                 </li>
                 <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="" {% else %} class="disabled"
                     {% endif %}>
                     <a {% if page|int != total_no_of_pages|int %}
-                        href="{{url_for('my_recipes', author_name=author_name, page=page|int+1)}}" {% endif %}>Next<i
-                            class="material-icons">chevron_right</i></a>
+                        href="{{url_for('my_favorite_recipes', author_name=author_name, page=page|int+1)}}"
+                        {% endif %}>Next<i class="material-icons">chevron_right</i></a>
                 </li>
             </ul>
         </div>
@@ -52,7 +52,7 @@
                     <div class="card-image">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_image}}"
                                 class="img-card" alt="{{recipe.recipe_name}}"></a>
-                       <!--TODO add url_for "recipe_favorite" see app.py line 295 -->
+                        <!--TODO add url_for "recipe_favorite" see app.py line 295 -->
                         <a href="#" class="halfway-fab btn-floating pink pulse">
                             <i class="material-icons">favorite</i>
                         </a>
