@@ -46,18 +46,21 @@
                         <div class="card-image medium">
                             <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img class="img-card"
                                     src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"></a>
-                            <!--TODO add url_for "recipe_favorite" see app.py line 295 -->
-                            {% if recipe.favorite != true %} <a
-                                href="{{url_for('add_favorite_recipe', recipe_id = recipe._id, page = page, destination = url_for('search_tag', tag=tag, page=page))}}"
-                                class="halfway-fab btn-floating">
-                                <i class="material-icons">add</i>
-                            </a>
-                            {% else %}
-                            <a href="{{url_for('remove_favorite_recipe', recipe_id = recipe._id, page = page, destination = url_for('search_tag', tag=tag, page=page))}}"
-                                class="halfway-fab btn-floating pink">
-                                <i class="material-icons">remove</i>
-                            </a>
-                            {% endif %}
+
+                            <form action="{{url_for('recipe_favorite', recipe_id = recipe._id)}}" method="POST"
+                                class="col s12">
+                                {% if recipe.favorite != true %} <a
+                                    href="{{url_for('add_favorite_recipe_search_tag', recipe_id = recipe._id, tag = tag, page = page)}}"
+                                    class="halfway-fab btn-floating">
+                                    <i class="material-icons">add</i>
+                                </a>
+                                {% else %}
+                                <a href="{{url_for('remove_favorite_recipe_search_tag', recipe_id = recipe._id, tag = tag, page = page)}}"
+                                    class="halfway-fab btn-floating pink">
+                                    <i class="material-icons">remove</i>
+                                </a>
+                                {% endif %}
+                            </form>
                         </div>
                         <div class="my-card-content">
                             <span class="my-card-title card-span">{{recipe.recipe_name}}</span>

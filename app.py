@@ -307,7 +307,6 @@ def add_favorite_recipe(recipe_id, page, destination):
     })
     return redirect(url_for(destination, page=page))
 
-
 # REMOVE AS A FAVORITE RECIPE --------------------------------------------#
 @app.route('/remove_favorite_recipe/<recipe_id>?page=<page>&destination=<destination>', methods=['GET'])
 def remove_favorite_recipe(recipe_id, page, destination):
@@ -367,9 +366,8 @@ def remove_favorite_recipe_page(recipe_id):
     })
     return redirect(url_for('recipe_page', recipe_id=recipe_id))
 
+
 # SEARCH KEYWORD  --------------------------------------------#
-
-
 @app.route('/search_keyword', methods=['POST'])
 def receive_keyword():
     return redirect(url_for('search_keyword', keyword=request.form.get('keyword'), page=1))
@@ -398,8 +396,32 @@ def search_keyword(keyword, page):
                                'date_time', pymongo.DESCENDING), count_recipes=count_recipes, recipeCategory=list(recipeCategory.find()),
                            total_no_of_pages=total_no_of_pages, page=page)
 
+# ------------------------------------------------ #
+# ------------- tag_search.html ------------------ #
+# ------------------------------------------------ #
 
-# SEARCH TAG  --------------------------------------------#
+# UPDATE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/add_favorite_recipe_search_tag/<recipe_id>/<tag>?page=<page>', methods=['GET'])
+def add_favorite_recipe_search_tag(recipe_id, tag, page):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': True
+        }
+    })
+    return redirect(url_for('search_tag', tag=tag, page=page))
+
+# REMOVE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/remove_favorite_recipe_search_tag/<recipe_id>/<tag>?page=<page>', methods=['GET'])
+def remove_favorite_recipe_search_tag(recipe_id, tag, page):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': False
+        }
+    })
+    return redirect(url_for('search_tag', tag=tag, page=page))
+
 
 @app.route('/search_tag', methods=['GET'])
 def receive_tag():
