@@ -43,14 +43,6 @@ def home():
                            recipeCategory=list(recipeCategory.find()), page=1, tags=tags)
 
 
-# TODO Remove this route..not used!
-"""
-@app.route('/get_recipes')
-def get_recipes():
-    return render_template('get_recipes.html', recipes=recipes.find().sort('date_time', pymongo.DESCENDING),
-                           recipeCategory=list(recipeCategory.find()))
-"""
-
 # RANDOM MEAL PAGE ----------------------------------------#
 @app.route('/random_meal')
 def random_meal():
@@ -80,7 +72,7 @@ def signup():
             'password': password
         })
         session['logged_in'] = True
-        flash('Welcome to FOODictionary ' + author_name + '!', 'toast-success')
+        flash('Welcome to FOODictionary ' + author_name + '!')
         return render_template('home.html')
     else:
         session['logged_in'] = False
@@ -182,7 +174,7 @@ def browse_recipes(recipe_category_name, page):
 # ADD RECIPE's --------------------------------------------#
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=recipeCategory.find(),
+    return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=list(recipeCategory.find()),
                            skillLevel=skillLevel.find(), allergens=allergens.find(), userDB=userDB.find())
 
 
@@ -218,7 +210,7 @@ def insert_recipe():
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    return render_template('edit_recipe.html', recipeCategory=recipeCategory.find(),
+    return render_template('edit_recipe.html', recipeCategory=list(recipeCategory.find()),
                            allergens=allergens.find(), skillLevel=skillLevel.find(), page=1,
                            recipes=recipes.find_one({'_id': ObjectId(recipe_id)}))
 

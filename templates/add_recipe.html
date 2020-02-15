@@ -36,7 +36,6 @@
                     <h6 class="edit-recipe-headers">recipe category</h6>
                     <select id="recipe_category_name" name="recipe_category_name" required>
                         <option value="" disabled selected>*Choose your option</option>
-                        {% set _stub = recipeCategory.rewind() %}
                         {% for category in recipeCategory %}
                         <option value="{{category.recipe_category_name}}">{{category.recipe_category_name}}</option>
                         {% endfor %}
@@ -47,7 +46,6 @@
                     <h6 class="edit-recipe-headers">Allergens</h6>
                     <select multiple id="allergen_type" name="allergen_type">
                         <option value="" disabled selected>*Choose your option(s):</option>
-                        {% set _stub = recipeCategory.rewind() %}
                         {% for allergen in allergens %}
                         <option value="{{allergen.allergen_type}}">{{allergen.allergen_type}}</option>
                         {% endfor %}
@@ -79,7 +77,6 @@
                     <h6 class="edit-recipe-headers">Difficulty</h6>
                     <select id="recipe_difficulty" name="recipe_difficulty" required>
                         <option value="" disabled selected>* Choose your option</option>
-                        {% set _stub = skillLevel.rewind() %}
                         {% for skill in skillLevel %}
                         <option value="{{skill.recipe_difficulty}}">{{skill.recipe_difficulty}}</option>
                         {% endfor %}

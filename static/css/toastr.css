@@ -36,7 +36,7 @@
     filter: alpha(opacity=80);
     line-height: 1;
   }
-  .toast-close-button:hover,
+  /*.toast-close-button:hover,
   .toast-close-button:focus {
     color: #000000;
     text-decoration: none;
@@ -44,7 +44,7 @@
     opacity: 0.4;
     -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
     filter: alpha(opacity=40);
-  }
+  }*/
   .rtl .toast-close-button {
     left: -0.3em;
     float: left;
