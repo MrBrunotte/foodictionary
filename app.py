@@ -364,6 +364,7 @@ def recipe_favorite(recipe_id):
                    {'favorite': recipe_id}})
     return redirect(url_for('recipe_page', recipe_id=recipe_id))
 
+
 # -------------------------------------------- #
 # ------------- recipe.html ------------------ #
 # -------------------------------------------- #
