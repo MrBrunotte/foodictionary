@@ -72,11 +72,11 @@ def signup():
             'password': password
         })
         session['logged_in'] = True
-        flash('Welcome to FOODictionary ' + author_name + '!')
-        return render_template('home.html')
+        flash('Welcome to FOODictionary ' + author_name + '!', 'success')
+        return redirect('home')
     else:
         session['logged_in'] = False
-        flash('Username already exists, please try again.', 'toast-warning')
+        flash('Username already exists, please try again.', 'success')
     return register()
 
 
@@ -101,16 +101,16 @@ def signin():
         session['logged_in'] = False
         flash('User ' + session['username'] +
               ' is not registered. Please try again.', 'warning')
-        return signin()
+        return render_template('login.html')
     elif not check_password_hash(user['password'], password):
         session['logged_in'] = False
         flash('Wrong Password, please try again.', 'warning')
-        return signin()
+        return render_template('login.html')
     else:
         session['logged_in'] = True
         flash('Welcome back ' +
               user['author_name'].capitalize() + '!', 'success')
-        return redirect('home')  # if login ok redirect to home
+        return redirect('home')
 
 
 @app.route('/logout', methods=['GET'])
