@@ -50,7 +50,6 @@
                     <div class="card-image">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id, page = page)}}"><img class="img-card"
                                 src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"></a>
-                        <!--TODO add url_for "recipe_favorite" see app.py line 295 -->
                         <form action="{{url_for('recipe_favorite', recipe_id = recipe._id)}}" method="POST"
                             class="col s12">
                             {% if recipe.favorite != true %}
@@ -65,13 +64,6 @@
                             </a>
                             {% endif %}
                         </form>
-
-                        <!--TODO remove this: <a href="{{url_for('recipe_favorite', recipe_id = recipe._id)}}"
-                            class="halfway-fab btn-floating pink pulse">
-                            <i class="material-icons">favorite</i>
-                        </a> 
-                        -->
-
                     </div>
                     <div class="my-card-content">
                         <span class="my-card-title card-span">{{recipe.recipe_name}}</span>

@@ -52,10 +52,17 @@
                     <div class="card-image">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_image}}"
                                 class="img-card" alt="{{recipe.recipe_name}}"></a>
-                        <!--TODO add url_for "recipe_favorite" see app.py line 295 -->
-                        <a href="#" class="halfway-fab btn-floating pink pulse">
-                            <i class="material-icons">favorite</i>
+                        {% if recipe.favorite != true %}
+                        <a href="{{url_for('add_favorite_recipe', recipe_id = recipe._id, page = page, destination = 'my_favorite_recipes')}}"
+                            class="halfway-fab btn-floating">
+                            <i class="material-icons">add</i>
                         </a>
+                        {% else %}
+                        <a href="{{url_for('remove_favorite_recipe', recipe_id = recipe._id, page = page, destination = 'my_favorite_recipes')}}"
+                            class="halfway-fab btn-floating pink">
+                            <i class="material-icons">remove</i>
+                        </a>
+                        {% endif %}
                     </div>
                     <div class="my-card-content">
                         <span class="my-card-title card-span">{{recipe.recipe_name}}</span>

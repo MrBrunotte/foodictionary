@@ -269,9 +269,8 @@ def my_recipes(page):
                            recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
                            total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=list(recipeCategory.find()))
 
-# TODO - Look into this and see what is wrong!! This is ALL my favorite recipes from my_favorite_recipes.html
+
 # MY FAVORITE RECIPE's (see my my_favorite_recipes.html) --------------------------------------------#
-# Collects my favorite recipes from DB #
 @app.route('/my_favorite_recipes/<page>', methods=['GET'])
 def my_favorite_recipes(page):
     username = session.get('username')
@@ -292,6 +291,10 @@ def my_favorite_recipes(page):
                            recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
                            total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=list(recipeCategory.find()))
 
+
+# ----------------------------------------------------------------------- #
+# ------------- my_recipes.html / my_favorite_recipes.html -------------- #
+# ----------------------------------------------------------------------- #
 
 # UPDATE AS A FAVORITE RECIPE --------------------------------------------#
 @app.route('/add_favorite_recipe/<recipe_id>?page=<page>&destination=<destination>', methods=['GET'])
@@ -317,9 +320,6 @@ def remove_favorite_recipe(recipe_id, page, destination):
     return redirect(url_for(destination, page=page))
 
 # ADD TO FAVORITE MEAL SECTION  --------------------------------------------#
-# TODO set the function() for favorites here and in app.py
-
-
 @app.route('/recipe_favorite/<recipe_id>', methods=['POST'])
 def recipe_favorite(recipe_id):
     username = session.get('username')
@@ -340,8 +340,35 @@ def recipe_favorite(recipe_id):
                    {'favorite': recipe_id}})
     return redirect(url_for('recipe_page', recipe_id=recipe_id))
 
+# -------------------------------------------- #
+# ------------- recipe.html ------------------ #
+# -------------------------------------------- #
+
+# UPDATE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/add_favorite_recipe_page/<recipe_id>', methods=['GET'])
+def add_favorite_recipe_page(recipe_id):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': True
+        }
+    })
+    return redirect(url_for('recipe_page', recipe_id=recipe_id))
+
+
+# REMOVE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/remove_favorite_recipe_page/<recipe_id>', methods=['GET'])
+def remove_favorite_recipe_page(recipe_id):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': False
+        }
+    })
+    return redirect(url_for('recipe_page', recipe_id=recipe_id))
 
 # SEARCH KEYWORD  --------------------------------------------#
+
 
 @app.route('/search_keyword', methods=['POST'])
 def receive_keyword():
