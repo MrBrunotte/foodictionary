@@ -73,7 +73,7 @@ def signup():
         })
         session['logged_in'] = True
         flash('Welcome to FOODictionary ' + author_name + '!', 'success')
-        return redirect('home', page_title='FOODictionary - Home page')
+        return redirect('home')
     else:
         session['logged_in'] = False
         flash('Username already exists, please try again.', 'success')
@@ -211,8 +211,7 @@ def insert_recipe():
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     return render_template('edit_recipe.html', recipeCategory=list(recipeCategory.find()),
-                           allergens=allergens.find(), skillLevel=skillLevel.find(), page=1,
-                           recipes=recipes.find_one({'_id': ObjectId(recipe_id)}))
+                           allergens=allergens.find(), skillLevel=skillLevel.find(), page=1, recipes=recipes.find_one({'_id': ObjectId(recipe_id)}))
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
@@ -241,10 +240,11 @@ def update_recipe(recipe_id):
 
 
 # DELETE RECIPE  --------------------------------------------#
+# TODO recipes.remove({'_id': ObjectId(recipe_id)}) changed .remove to delete_one
 
 @app.route('/delete_recipe/<recipe_id>', methods=['POST'])
 def delete_recipe(recipe_id):
-    recipes.remove({'_id': ObjectId(recipe_id)})
+    recipes.delete_one({'_id': ObjectId(recipe_id)})
     return redirect(url_for('my_recipes', page=1))
 
 
@@ -387,28 +387,6 @@ def remove_favorite_recipe_page(recipe_id):
 # ------------- keyword_search.html ------------------ #
 # ------------------------------------------------ #
 
-# UPDATE AS A FAVORITE RECIPE --------------------------------------------#
-@app.route('/add_favorite_recipe_keyword_search/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
-def add_favorite_recipe_keyword_search(recipe_id, keyword, page):
-    recipes.update({'_id': ObjectId(recipe_id)},
-                   {
-        '$set': {
-            'favorite': True
-        }
-    })
-    return redirect(url_for('keyword_search', keyword=keyword, page=page))
-
-# REMOVE AS A FAVORITE RECIPE --------------------------------------------#
-@app.route('/remove_favorite_recipe_keyword_search/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
-def remove_favorite_recipe_keyword_search(recipe_id, keyword, page):
-    recipes.update({'_id': ObjectId(recipe_id)},
-                   {
-        '$set': {
-            'favorite': False
-        }
-    })
-    return redirect(url_for('keyword_search', keyword=keyword, page=page))
-
 
 @app.route('/keyword_search', methods=['POST'])
 def receive_keyword():
@@ -437,6 +415,28 @@ def keyword_search(keyword, page):
                            search_results=recipe_pages.sort(
                                'date_time', pymongo.DESCENDING), count_recipes=count_recipes, recipeCategory=list(recipeCategory.find()),
                            total_no_of_pages=total_no_of_pages, page=page, page_title='FOODictionary - Search by Keyword')
+
+# UPDATE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/add_favorite_recipe_keyword_search/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
+def add_favorite_recipe_keyword_search(recipe_id, keyword, page):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': True
+        }
+    })
+    return redirect(url_for('keyword_search', keyword=keyword, page=page))
+
+# REMOVE AS A FAVORITE RECIPE --------------------------------------------#
+@app.route('/remove_favorite_recipe_keyword_search/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
+def remove_favorite_recipe_keyword_search(recipe_id, keyword, page):
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        '$set': {
+            'favorite': False
+        }
+    })
+    return redirect(url_for('keyword_search', keyword=keyword, page=page))
 
 # ------------------------------------------------ #
 # ------------- tag_search.html ------------------ #

@@ -140,6 +140,8 @@ I have created a database called "foodictionary" with the collections:
 
 **[DatabaseSchema](https://github.com/MrBrunotte/foodictionary/blob/master/planning/database_schema.jpg)**
 
+
+**[DatabaseCollections](https://github.com/MrBrunotte/foodictionary/blob/master/planning/collections.png)**
 <!-- TODO MORE IN THIS SECTION!!!! -->
 
 ## **TECHNOLOGIES USED**
@@ -161,6 +163,10 @@ This website is designed and runs using the technologies below:
    12) **[AdobeXd](https://www.adobe.com/products/xd.html?promoid=PYPVQ3HN&mv=other)**
 
 ## **TESTING**
+
+### Unittesting
+<!-- clean this up -->
+Runt the test in the commandline: python -m unittest test_unittest.py
 
 ### **Manual testing**
 
