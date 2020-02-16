@@ -25,7 +25,9 @@ The database Foodictionary consists of the five collections:
     4) skillLevel
     5) users
 
-See the database schema for [Foodictionary](https://github.com/MrBrunotte/foodictionary/blob/master/planning/database_schema.jpg) here! 
+See the Schema here: **[DatabaseSchema](https://github.com/MrBrunotte/foodictionary/blob/master/planning/database_schema.jpg)**
+
+See the Collections here: **[DatabaseCollections](https://github.com/MrBrunotte/foodictionary/blob/master/planning/collections.png)** 
 
 ## **UX**
 
@@ -51,13 +53,13 @@ Link to [FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c
 
 ## **FEATURES**
 
-FOODictionary is build to be userfriendly and easy to use. The user is able to both register as a user with a personal section or the user can choose to use the site as a guest user. The guest user will only be able to look at recipes and find random recipes. The registered user will be able to interact with the site and save, edit and delete recipes. The logged in user will also be able to save recipes to a favorite section for quick and easy access.
+FOODictionary is build to be user friendly and easy to use. The user is able to both register as a user and get access to a personal section or the user can choose to use the site as a guest user. The guest user will only be able to look at recipes and find random recipes. The registered user will be able to interact with the site and save, edit and delete recipes the user will also be able to add/remove recipes to a favorite recipe page for quick and easy access.
 
 ### **Existing features**
 
 #### **Navigation**
 
-The navigation consistst of logged in navigation and a "guest" navigation.
+The navigation consist of a "logged in" navigation and a "guest" navigation.
 The difference between the two is that when the user is logged in they will be able to reach the "my account" section.
 
 There is a navigation row for larger screens and a "hamburger" menu for smaller screens.
@@ -76,20 +78,15 @@ When the user logs in, the "Login" navigation changes to "My Account" where the 
 7) My Favorite Recipes
 8) Logout
 
-
 #### **Home**
 
 The "home" navigation takes the user to the landing page:
-
-[Home](https://foodictionary.herokuapp.com/home)
 
 When the user is on the landing page they can search for recipes by tags, keywords or categories.
 
 #### **Random Recipe**
 
-The "Random Recipe" navigation takes the user to the "Random Recipe Generator": 
-
-[RandomRecipe](https://foodictionary.herokuapp.com/random_meal) 
+The "Random Recipe" navigation takes the user to the "Random Recipe Generator"
 
 The user clicks on the "Generate Meal" button and is taken to a random recipe with written instructions and a video on how to prepare the meal. If the user wants another recipe they just click on the button again and a new random recipe will load.
 
@@ -97,14 +94,14 @@ The user clicks on the "Generate Meal" button and is taken to a random recipe wi
 
 The "Recipe Category" navigation lets the user click on one of the six categories:
 
-1) **[Brakfast](https://foodictionary.herokuapp.com/browse_recipes/Breakfast/1)**
-2) **[Starter](https://foodictionary.herokuapp.com/browse_recipes/Starter/1)**
-3) **[Lunch](http://foodictionary.herokuapp.com/browse_recipes/Lunch/1)**
-4) **[MainCourse](https://foodictionary.herokuapp.com/browse_recipes/Main-Course/1)**
-5) **[Dessert](https://foodictionary.herokuapp.com/browse_recipes/Dessert/1)**
-6) **[Snack](https://foodictionary.herokuapp.com/browse_recipes/Snack/1)**
+1) **Breakfast**
+2) **Starter**
+3) **Lunch**
+4) **MainCourse**
+5) **Dessert**
+6) **Snack**
 
-If the user clicks on [Lunch](http://foodictionary.herokuapp.com/browse_recipes/Lunch/1) the user is reredirected to the "Lunch" page where the user can browse all the "lunch" recipes. The recipes are paginated and up to six recipes are displayed on each page, the user can easily navigate through the pages by clicking on "prev" or "next".
+If the user clicks on **Lunch** the user is reredirected to the "Lunch" page where the user can browse all the "lunch" recipes. The recipes are paginated and up to six recipes are displayed on each page, the user can easily navigate through the pages by clicking on "prev" or "next".
 
 The user can also view an indiviual recipe by clicking on the image or "View Recipe" in each recipe card. The user is taken to the "Recipe" page where all the information for the specific recipe is shown. 
 
@@ -114,7 +111,7 @@ There is also an "ADD TO FAVORITE'S" button. If the user is a guest and not logg
 
 #### Login
 
-If the user clicks on [Login/Register](https://foodictionary.herokuapp.com/login) the user is redirected to a login page where the user is able to log in or register as a new user.
+If the user clicks on **Login/Register** the user is redirected to a login page where the user is able to log in or register as a new user.
 
 When the user is logged in or Registered he/she is reredirected back to the landing page and greated with a "toast" message that welcomes the user back.
 
@@ -138,14 +135,11 @@ This is also where the user logs out from the website.
 MongoDB is the database used in this project. 
 I have created a database called "foodictionary" with the collections:
 
-**[DatabaseSchema](https://github.com/MrBrunotte/foodictionary/blob/master/planning/database_schema.jpg)**
+See the Schema here: **[DatabaseSchema](https://github.com/MrBrunotte/foodictionary/blob/master/planning/database_schema.jpg)**
 
-
-**[DatabaseCollections](https://github.com/MrBrunotte/foodictionary/blob/master/planning/collections.png)**
-<!-- TODO MORE IN THIS SECTION!!!! -->
+See the Collections here: **[DatabaseCollections](https://github.com/MrBrunotte/foodictionary/blob/master/planning/collections.png)**
 
 ## **TECHNOLOGIES USED**
-
 
 This website is designed and runs using the technologies below:
 
@@ -212,14 +206,14 @@ Home page features testing
     2) Type search word in the search field and verify that the user is redirected to the correct category for that specific search word.
     3) Click on each catergory and verify that the user is taken to the correct category that corresponds with the anchor link (image). 
 
-[Testpath_Home](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_homePageFunctions.png)
+[Testpath Home](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_homePageFunctions.png)
 
 #### **Random Recipe**
 
     1) Click on the "Generate Meal" button.
     2) Click on the video and verify that it runs properly.
 
-[Testpath_RandomRecipe](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_randomRecipe.png)
+[Testpath RandomRecipe](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_randomRecipe.png)
 
 #### **Recipe Category**
 
@@ -236,7 +230,7 @@ When redirected to each category, verify that the category is matched with the c
     6) Click on the flashing plus-sign ("add to favorite recipes") and make sure that the "new" user is taken to the info page where the user can choose to register and then add the recipe to his/her favorite recipes.
     7) Click on "View recipe" and verify that the user is redirected to the correct recipe.
 
-[Testpath_RecipeCategory](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_category.png)
+[Testpath RecipeCategory](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_category.png)
 
 #### **Login/Register**
 
@@ -251,7 +245,7 @@ When redirected to each category, verify that the category is matched with the c
     1) Verify that the user is redirected to the "landing page" and greated by a toast message "Welcome Back "username" ".
     2) Verify that all navigation links, tags, search field and categories work.
 
-[Testpath_LoginRegister](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_loginRegister.png)
+[Testpath LoginRegister](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_loginRegister.png)
 
 #### **My account**
 
