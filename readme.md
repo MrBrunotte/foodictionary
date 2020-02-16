@@ -206,14 +206,14 @@ Home page features testing
     2) Type search word in the search field and verify that the user is redirected to the correct category for that specific search word.
     3) Click on each catergory and verify that the user is taken to the correct category that corresponds with the anchor link (image). 
 
-See the test flowchart: [Testpath Home](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_homePageFunctions.png)
+See the test flowchart: [Testpath Home](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_homePageFunctions.png)
 
 #### **Random Recipe**
 
     1) Click on the "Generate Meal" button.
     2) Click on the video and verify that it runs properly.
 
-See the test flowchart: [Testpath RandomRecipe](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_randomRecipe.png)
+See the test flowchart: [Testpath RandomRecipe](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_randomRecipe.png)
 
 #### **Recipe Category**
 
@@ -230,7 +230,7 @@ When redirected to each category, verify that the category is matched with the c
     6) Click on the flashing plus-sign ("add to favorite recipes") and make sure that the "new" user is taken to the info page where the user can choose to register and then add the recipe to his/her favorite recipes.
     7) Click on "View recipe" and verify that the user is redirected to the correct recipe.
 
-See the test flowchart: [Testpath RecipeCategory](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_category.png)
+See the test flowchart: [Testpath RecipeCategory](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_category.png)
 
 #### **Login/Register**
 
@@ -245,7 +245,7 @@ See the test flowchart: [Testpath RecipeCategory](https://github.com/MrBrunotte/
     1) Verify that the user is redirected to the "landing page" and greated by a toast message "Welcome Back "username" ".
     2) Verify that all navigation links, tags, search field and categories work.
 
-See the test flowchart: [Testpath LoginRegister](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_loginRegister.png)
+See the test flowchart: [Testpath LoginRegister](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_loginRegister.png)
 
 #### **My account**
 
@@ -287,4 +287,4 @@ Click on the "My account" dropdown menu and verify that the user is greeted with
 
     1) click on logout and verify that the user is logged out, redirected to the landingpage and a toas message "You are now logged out!" appears.
 
-See the test flowchart: [testPath MyAccount](https://github.com/MrBrunotte/foodictionary/blob/master/planning/testpath_myAccount.png)
+See the test flowchart: [testPath MyAccount](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_myAccount.png)
