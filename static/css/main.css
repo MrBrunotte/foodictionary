@@ -952,7 +952,33 @@ a .img-card {
 
 /* Class previx  .xs, .s, .m, .l */
 @media screen and (min-width: 300px) and (max-width: 600px) {
-
+    .top-image-home     { height: 25vh;}
+    .top-image-add-form { height: 20vh;}
+    .top-image-random-meal  { height: 25vh;}
+    .random-meal-body   { min-height: calc(100vh - 210px);}
+    .title-home         { font-size: 1.5rem;}
+    .subtitle-home      { font-size: 1rem;}
+    .tags-header-whitespace             { font-size: 1rem;}
+    .chip               { margin-bottom: 5px;
+                          margin-right: 5px;
+                          height: 20px;
+                          font-size: 5px;
+                          line-height: 20px;}
+    .chip a             { text-transform: capitalize;
+                          font-size: .7rem;}
+    .search-recipes     { font-size: 1.5rem;}
+    input[type="text"]:not(.browser-default)    { font-size: 9px;
+                                                  height: 1.6rem;}
+    .section            { padding: .3em .6em 0;}
+    .smaller-scr-size   { font-size: .5rem;}
+    .form-title         { font-size: 1.2rem;}
+    .edit-recipe-headers    { font-size: .8rem;}
+    .btn-small          { height: 18px;
+                          line-height: 18px;
+                          font-size: 9px;}
+    .btn-small i        {font-size: .7rem;}
+    .recipe-name        { margin: 10px;
+                          padding: ;}
     .img-card           { height: 170px !important;}
     .my-card-title      { font-size: .8rem;}
     .my-card-content    { height: 220px;
@@ -968,7 +994,7 @@ a .img-card {
     #next-page-url a,
     #prev-page-url a    {font-size: .9rem;}
     .pagination li i    {font-size: 1rem;}
-    .pagination li a .material-icons {vertical-align: middle;}
+    .pagination li a .material-icons    {vertical-align: middle;}
     .pagination         {margin-bottom: 0;}
     .about              {font-size: .5rem;}
     .footer-padding     {font-size: .9rem;}

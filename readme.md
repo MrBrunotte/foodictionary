@@ -164,11 +164,34 @@ This website is designed and runs using the technologies below:
 
 ## **TESTING**
 
-### Unittesting
-<!-- clean this up -->
-Runt the test in the commandline: python -m unittest test_unittest.py
+### **Unittesting**
 
-### **Manual testing**
+Automated testing was conducted by using Pythons built-in [Unit Testing Framework](https://docs.python.org/3/library/unittest.html). 
+
+The "test case" was used which is the indivdual unit of testing. The "test case" checks for a specific response to a particular set of inputs.
+
+I used three tests:
+
+    1) Testing the routes:
+       -) "Testing the routes" checked if the routes responded with "200 - route OK" and the correct response for my error route "404 - route not found".
+    2) Register a user:
+       -) "Registering a user" registered a "test-user", searched for the "test-user" and finally deleted the "test-user"
+    3) Deleting a recipe: 
+       -) "Deleting a recipe" deleted a hard-coded recipe and deleted it.
+
+The test_unittest.py file started with a setUp() method that the testing framwork call for every single test that is run. The file then ends with a tearDown() method that tides up after the test method has been run.
+
+### **Responsivness testing**
+
+To test the responsivness of my sight I used the developer tool in both FireFox and Chrome. The responsive testing for mobile screens were made on:
+
+    -)  Iphone 5/SE IOS 10.3.1
+    -)  Iphnoe X/XS IOS 12
+    -)  Galaxy S9/S9+ Android 7.0
+
+Responsive testing for mobile screens were made for both landscape and portrait.
+
+### **Manual testing - User testing**
 
 The manual testing on the website was conducted by testing each individual section on every page. The testing was conducted as a "new" user and also as an "old - registered" user with a username.
 

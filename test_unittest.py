@@ -20,6 +20,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app.config['DEBUG'] = False
 app.config['TESTING'] = True
 app.config['WTF_CSRF_ENABLED'] = False
+# TODO change to os.getenv('SECRET', 'randomstring123')
 app.secret_key = '9893869affbf35907d0e7f0f20a72bc9'
 
 mongo = PyMongo(app)
@@ -32,59 +33,48 @@ skillLevel = mongo.db.skillLevel
 userDB = mongo.db.users
 
 
-# Testing App Routes (for tests to run the name needs to start with test_ ---------------#
+# Testing App Routes ---------------#
 class TestApp(unittest.TestCase):
 
     def setUp(self):
         self.mongo = app.test_client()
 
+# for tests to run the name needs to start with test_ 
     def test_routes(self):
         # Test Homepage
         page = self.mongo.get('/home')
         self.assertEqual(page.status_code, 200)
 
-        # Test Random recipe page
-        page = self.mongo.get('/random_meal')
+        # Test Login
+        page = self.mongo.get('/login')
         self.assertEqual(page.status_code, 200)
 
         # Test Register Page
         page = self.mongo.get('/register')
         self.assertEqual(page.status_code, 200)
 
-        # Test Signup Page
-        #page = self.mongo.get('/signup')
-        #self.assertEqual(page.status_code, 200)
-
-        # Test Login Page
-        #page = self.mongo.get('/signin')
-        #self.assertEqual(page.status_code, 200)
-
-        # Test Key-Searchword page
-        page = self.mongo.get('/keyword_search')
-        self.assertEqual(page.status_code, 200)
-
-        # Test Tag-Search page
-        page = self.mongo.get('/tag_search')
+        # Test Random recipe page
+        page = self.mongo.get('/random_meal')
         self.assertEqual(page.status_code, 200)
 
         # Test 404 Error Page
         page = self.mongo.get('/test')
         self.assertEqual(page.status_code, 404)
 
-        print('All the tests passed')
+        print('test-routes PASSED')
 
 
 # Testing Registering a User and Removing the user -----------------------------------------------#
 
     def test_successful_registration(self):
-        response = self.mongo.post('/signup', data=dict(author_name='Author Name', username='testuser',
+        response = self.mongo.post('/signup', data=dict(author_name='Author Name', username='test-user',
                                                         password='password', recipes_rated='1234'), follow_redirects=True)
         data = response.data.decode('utf-8')
-        find_user = userDB.find_one({'username': 'testuser'})
+        find_user = userDB.find_one({'username': 'test-user'})
         self.assertIsNotNone(find_user)
-        print('User Found. Preparing for Deletion')
-        delete_user = userDB.delete_one({'username': 'testuser'})
-        print('User Deleted.')
+        print('test-user FOUND')
+        delete_user = userDB.delete_one({'username': 'test-user'})
+        print('test-user DELETED')
 
 
 # Testing Deleting a Recipe -----------------------------------------------#
@@ -105,11 +95,6 @@ class TestApp(unittest.TestCase):
 
 
 # Run Tests -----------------------------------------------#
-# Three ways to run the tests:
-# 1) run with: python test_unittest.py
-# 2) run in the terminal with "run code"
-# 3) python -m unittest test_unittest.py
-
 
 if __name__ == '__main__':
     unittest.main()
