@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/toastr.css')}}" type="text/css" />
 
-    <title>FOODictionary</title>
+    <title>{{ page_title }}</title>
     <!-- Flask-Toastr -->
     {{ toastr.include_jquery() }}
     <!--{{ toastr.include_toastr_css() }}-->

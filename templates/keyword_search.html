@@ -23,13 +23,13 @@
         <div class="col s12 m6">
             <ul class="pagination right-align">
                 <li id="prev-page-url" {% if page|int > 1 %} class="" {% else %} class="disabled" {% endif %}>
-                    <a {% if page|int > 1 %} href="{{url_for('search_keyword',keyword=keyword, page=page|int-1)}}"
+                    <a {% if page|int > 1 %} href="{{url_for('keyword_search',keyword=keyword, page=page|int-1)}}"
                         {% endif %}><i class="material-icons">chevron_left</i>Prev</a>
                 </li>
                 <li id="next-page-url" {% if page|int != total_no_of_pages|int %}class="" {% else %} class="disabled"
                     {% endif %}>
                     <a {% if page|int != total_no_of_pages|int %}
-                        href="{{url_for('search_keyword',keyword=keyword, page=page|int+1)}}" {% endif %}>Next<i
+                        href="{{url_for('keyword_search',keyword=keyword, page=page|int+1)}}" {% endif %}>Next<i
                             class="material-icons">chevron_right</i></a>
                 </li>
             </ul>
@@ -50,12 +50,12 @@
                             <form action="{{url_for('recipe_favorite', recipe_id = recipe._id)}}" method="POST"
                                 class="col s12">
                                 {% if recipe.favorite != true %} <a
-                                    href="{{url_for('add_favorite_recipe_search_keyword', recipe_id = recipe._id, keyword = keyword, page = page)}}"
+                                    href="{{url_for('add_favorite_recipe_keyword_search', recipe_id = recipe._id, keyword = keyword, page = page)}}"
                                     class="halfway-fab btn-floating">
                                     <i class="material-icons">add</i>
                                 </a>
                                 {% else %}
-                                <a href="{{url_for('remove_favorite_recipe_search_keyword', recipe_id = recipe._id, keyword = keyword, page = page)}}"
+                                <a href="{{url_for('remove_favorite_recipe_keyword_search', recipe_id = recipe._id, keyword = keyword, page = page)}}"
                                     class="halfway-fab btn-floating pink">
                                     <i class="material-icons">remove</i>
                                 </a>

@@ -11,6 +11,7 @@
     --black: #464646;
     --white: #dcdace;
     --gray: #848484;
+    --grayOpacity: #8484848a;
     --dark-gray: #bebebe4d;
     --orange: #e79b508f;
 }
@@ -241,16 +242,28 @@ nav .brand-logo.center {
     color: var(--white);
 }
 
+.blury {
+    background-color: var(--grayOpacity) !important;
+}
+
+.blury:hover {
+    background-color: var(--black) !important;
+}
+
 .btn-floating {
-    background-color: #e79b50 !important;
+    background-color: #e79b50;
     border-radius: 5px !important;
+}
+
+.btn-floating:hover {
+    background-color: var(--black);
 }
 
 .btn-floating i {
     width: inherit;
     display: block !important;
     text-align: center;
-    color: var(--black) !important;
+    color: var(--white) !important;
     font-size: 1.9rem;
     line-height: 40px;
 }

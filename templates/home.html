@@ -28,7 +28,7 @@
             {% for items in tags[0:20] %}
             {% if items !="" %}
             <div class="chip">
-                <a href="{{url_for('search_tag', tag=items, page=1)}}">{{items}}</a>
+                <a href="{{url_for('tag_search', tag=items, page=1)}}">{{items}}</a>
             </div>
             {% endif %}
             {% endfor %}

@@ -105,8 +105,8 @@
     box-sizing: border-box;
   }
   #toast-container > div {
-    background-color: var(--dark-gray);
-    position: relative;
+    background-color: var(--gray);
+    position: right;
     pointer-events: auto;
     overflow: hidden;
     margin: 0 0 6px;
@@ -178,7 +178,7 @@
     left: 0;
     bottom: 0;
     height: 4px;
-    background-color: #000000;
+    background-color: var(--orange);
     opacity: 0.9;
     -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
     filter: alpha(opacity=90);

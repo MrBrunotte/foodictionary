@@ -40,19 +40,19 @@ def home():
     random.shuffle(tags)
     username = session.get('username')
     return render_template('home.html', recipes=recipes.find().sort('date_time', pymongo.DESCENDING),
-                           recipeCategory=list(recipeCategory.find()), page=1, tags=tags)
+                           recipeCategory=list(recipeCategory.find()), page=1, tags=tags, page_title='FOODictionary - Home page')
 
 
 # RANDOM MEAL PAGE ----------------------------------------#
 @app.route('/random_meal')
 def random_meal():
-    return render_template('random_meal.html', recipeCategory=list(recipeCategory.find()))
+    return render_template('random_meal.html', recipeCategory=list(recipeCategory.find()), page_title='FOODictionary - Random Recipe')
 
 
 # USER LOGIN AND REGISTRATION -----------------------------#
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    return render_template('register.html', page_title='FOODictionary - Register')
 
 
 @app.route('/signup', methods=['POST'])
@@ -73,7 +73,7 @@ def signup():
         })
         session['logged_in'] = True
         flash('Welcome to FOODictionary ' + author_name + '!', 'success')
-        return redirect('home')
+        return redirect('home', page_title='FOODictionary - Home page')
     else:
         session['logged_in'] = False
         flash('Username already exists, please try again.', 'success')
@@ -83,9 +83,9 @@ def signup():
 @app.route('/login')
 def login():
     if not session.get('logged_in'):
-        return render_template('login.html')
+        return render_template('login.html', page_title='FOODictionary - Log in')
     else:
-        return redirect('home')
+        return redirect('home', page_title='FOODictionary - Home page')
 
 
 @app.route('/signin', methods=['POST'])
@@ -139,7 +139,7 @@ def add_favorite_recipe_browse_recipes(recipe_id, recipe_category_name, page, de
 
 # REMOVE AS A FAVORITE RECIPE --------------------------------------------#
 @app.route('/remove_favorite_recipe_browse_recipes/<recipe_id>/<recipe_category_name>?page=<page>&destination=<destination>', methods=['GET'])
-def remove_favorite_recipe_browse_recipes(recipe_id, recipe_category_name, page, dest):
+def remove_favorite_recipe_browse_recipes(recipe_id, recipe_category_name, page, destination):
     recipes.update({'_id': ObjectId(recipe_id)},
                    {
         '$set': {
@@ -168,14 +168,14 @@ def browse_recipes(recipe_category_name, page):
 
     return render_template('browse_recipes.html',
                            recipes=recipe_pages, recipeCategory=list(recipeCategory.find()), count_recipes=count_recipes, total_no_of_pages=total_no_of_pages,
-                           page=page, recipe_category_name=recipe_category_name, tags=tags)
+                           page=page, recipe_category_name=recipe_category_name, tags=tags, page_title='FOODictionary - Browse Recipes')
 
 
 # ADD RECIPE's --------------------------------------------#
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=list(recipeCategory.find()),
-                           skillLevel=skillLevel.find(), allergens=allergens.find(), userDB=userDB.find())
+                           skillLevel=skillLevel.find(), allergens=allergens.find(), userDB=userDB.find(), page_title='FOODictionary - Add a  Recipe')
 
 
 @app.route('/insert_recipe', methods=['POST'])
@@ -284,7 +284,7 @@ def my_recipes(page):
 
     return render_template('my_recipes.html',
                            recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
-                           total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=list(recipeCategory.find()))
+                           total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=list(recipeCategory.find()), page_title='FOODictionary - My Recipes')
 
 
 # MY FAVORITE RECIPE's (see my my_favorite_recipes.html) --------------------------------------------#
@@ -305,8 +305,7 @@ def my_favorite_recipes(page):
                                                                                    ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
 
     return render_template('my_favorite_recipes.html',
-                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes,
-                           total_no_of_pages=total_no_of_pages, page=page, author_name=username, recipeCategory=list(recipeCategory.find()))
+                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes, author_name=username, recipeCategory=list(recipeCategory.find()), total_no_of_pages=total_no_of_pages, page=page, page_title='FOODictionary - My Favorite recipes')
 
 
 # ----------------------------------------------------------------------- #
@@ -385,39 +384,39 @@ def remove_favorite_recipe_page(recipe_id):
     return redirect(url_for('recipe_page', recipe_id=recipe_id))
 
 # ------------------------------------------------ #
-# ------------- search_keyword.html ------------------ #
+# ------------- keyword_search.html ------------------ #
 # ------------------------------------------------ #
 
 # UPDATE AS A FAVORITE RECIPE --------------------------------------------#
-@app.route('/add_favorite_recipe_search_keyword/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
-def add_favorite_recipe_search_keyword(recipe_id, keyword, page):
+@app.route('/add_favorite_recipe_keyword_search/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
+def add_favorite_recipe_keyword_search(recipe_id, keyword, page):
     recipes.update({'_id': ObjectId(recipe_id)},
                    {
         '$set': {
             'favorite': True
         }
     })
-    return redirect(url_for('search_keyword', keyword=keyword, page=page))
+    return redirect(url_for('keyword_search', keyword=keyword, page=page))
 
 # REMOVE AS A FAVORITE RECIPE --------------------------------------------#
-@app.route('/remove_favorite_recipe_search_keyword/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
-def remove_favorite_recipe_search_keyword(recipe_id, keyword, page):
+@app.route('/remove_favorite_recipe_keyword_search/<recipe_id>/<keyword>?page=<page>', methods=['GET'])
+def remove_favorite_recipe_keyword_search(recipe_id, keyword, page):
     recipes.update({'_id': ObjectId(recipe_id)},
                    {
         '$set': {
             'favorite': False
         }
     })
-    return redirect(url_for('search_keyword', keyword=keyword, page=page))
+    return redirect(url_for('keyword_search', keyword=keyword, page=page))
 
 
-@app.route('/search_keyword', methods=['POST'])
+@app.route('/keyword_search', methods=['POST'])
 def receive_keyword():
-    return redirect(url_for('search_keyword', keyword=request.form.get('keyword'), page=1))
+    return redirect(url_for('keyword_search', keyword=request.form.get('keyword'), page=1))
 
 
-@app.route('/search_keyword/<keyword>/<page>', methods=['GET'])
-def search_keyword(keyword, page):
+@app.route('/keyword_search/<keyword>/<page>', methods=['GET'])
+def keyword_search(keyword, page):
     recipes.create_index(
         [('recipe_name', 'text'), ('recipe_ingredients', 'text'), ('recipe_category_name', 'text')])
 
@@ -437,42 +436,42 @@ def search_keyword(keyword, page):
     return render_template('keyword_search.html', keyword=keyword,
                            search_results=recipe_pages.sort(
                                'date_time', pymongo.DESCENDING), count_recipes=count_recipes, recipeCategory=list(recipeCategory.find()),
-                           total_no_of_pages=total_no_of_pages, page=page)
+                           total_no_of_pages=total_no_of_pages, page=page, page_title='FOODictionary - Search by Keyword')
 
 # ------------------------------------------------ #
 # ------------- tag_search.html ------------------ #
 # ------------------------------------------------ #
 
 # UPDATE AS A FAVORITE RECIPE --------------------------------------------#
-@app.route('/add_favorite_recipe_search_tag/<recipe_id>/<tag>?page=<page>', methods=['GET'])
-def add_favorite_recipe_search_tag(recipe_id, tag, page):
+@app.route('/add_favorite_recipe_tag_search/<recipe_id>/<tag>?page=<page>', methods=['GET'])
+def add_favorite_recipe_tag_search(recipe_id, tag, page):
     recipes.update({'_id': ObjectId(recipe_id)},
                    {
         '$set': {
             'favorite': True
         }
     })
-    return redirect(url_for('search_tag', tag=tag, page=page))
+    return redirect(url_for('tag_search', tag=tag, page=page))
 
 # REMOVE AS A FAVORITE RECIPE --------------------------------------------#
-@app.route('/remove_favorite_recipe_search_tag/<recipe_id>/<tag>?page=<page>', methods=['GET'])
-def remove_favorite_recipe_search_tag(recipe_id, tag, page):
+@app.route('/remove_favorite_recipe_tag_search/<recipe_id>/<tag>?page=<page>', methods=['GET'])
+def remove_favorite_recipe_tag_search(recipe_id, tag, page):
     recipes.update({'_id': ObjectId(recipe_id)},
                    {
         '$set': {
             'favorite': False
         }
     })
-    return redirect(url_for('search_tag', tag=tag, page=page))
+    return redirect(url_for('tag_search', tag=tag, page=page))
 
 
-@app.route('/search_tag', methods=['GET'])
+@app.route('/tag_search', methods=['GET'])
 def receive_tag():
-    return redirect(url_for('search_tag', keyword=request.form.get('tag'), page=1))
+    return redirect(url_for('tag_search', keyword=request.form.get('tag'), page=1))
 
 
-@app.route('/search_tag/<tag>/<page>', methods=['GET'])
-def search_tag(tag, page):
+@app.route('/tag_search/<tag>/<page>', methods=['GET'])
+def tag_search(tag, page):
     recipes.create_index([('recipe_tags', pymongo.ASCENDING)])
     # Count the number of recipes in the Database
     all_recipes = recipes.find({'recipe_tags': tag}).sort(
@@ -490,7 +489,7 @@ def search_tag(tag, page):
     return render_template('tag_search.html', tag=tag,
                            search_results=recipe_pages.sort(
                                'date_time', pymongo.DESCENDING), count_recipes=count_recipes, recipeCategory=list(recipeCategory.find()),
-                           total_no_of_pages=total_no_of_pages, page=page)
+                           total_no_of_pages=total_no_of_pages, page=page, page_title='FOODictionary - Search by Tag')
 
 #-------------#
 # Error Pages
@@ -499,17 +498,17 @@ def search_tag(tag, page):
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html', page=1, page_title='404 Error Page, FOODictionary'), 404
+    return render_template('404.html', page=1, page_title='FOODictionary - 404 Error Page'), 404
 
 
 @app.errorhandler(405)
 def page_not_found(error):
-    return render_template('405.html', page=1, page_title='405 Method Not Allowed, FOODictionary'), 405
+    return render_template('405.html', page=1, page_title='FOODictionary - 405 Method Not Allowed'), 405
 
 
 @app.errorhandler(500)
 def something_wrong(error):
-    return render_template('500.html', page=1, page_title='500 Error, FOODictionary'), 500
+    return render_template('500.html', page=1, page_title='FOODictionary - 500 Error'), 500
 
 
 if __name__ == '__main__':
