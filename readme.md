@@ -189,7 +189,7 @@ Responsive testing for mobile screens were made for both landscape and portrait.
 
 The manual testing on the website was conducted by testing each individual section on every page. The testing was conducted as a "new" user and also as an "old - registered" user with a username.
 
-#### **Navigation**
+#### Navigation
 
 Testing the navigation from each page and verify that it is working correctly and directing the user to the correct pages.
 
@@ -198,7 +198,7 @@ Testing the navigation from each page and verify that it is working correctly an
     3) Click on the "Recipe Category" and verify that all categories redirect to its corresponding and correct category.
     4) Click on "Login/Register" and verfy that the user is taken to the login form. Click on "Register Here!" and verify that a new user is redirected to the register form.
 
-#### **Home**
+#### Home
 
 Home page features testing
 
@@ -208,14 +208,14 @@ Home page features testing
 
 See the test flowchart: [Testpath Home](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_homePageFunctions.png)
 
-#### **Random Recipe**
+#### Random Recipe
 
     1) Click on the "Generate Meal" button.
     2) Click on the video and verify that it runs properly.
 
 See the test flowchart: [Testpath RandomRecipe](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_randomRecipe.png)
 
-#### **Recipe Category**
+#### Recipe Category
 
 Click on the "Recipe Category" dropdown and verify that all the categories are redirected to the correct category page.
 
@@ -232,7 +232,7 @@ When redirected to each category, verify that the category is matched with the c
 
 See the test flowchart: [Testpath RecipeCategory](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_category.png)
 
-#### **Login/Register**
+#### Login/Register
 
 ##### Register
 
@@ -247,7 +247,7 @@ See the test flowchart: [Testpath RecipeCategory](https://github.com/MrBrunotte/
 
 See the test flowchart: [Testpath LoginRegister](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_loginRegister.png)
 
-#### **My account**
+#### My account
 
 Click on the "My account" dropdown menu and verify that the user is greeted with "Hello "username" "
 
@@ -288,3 +288,22 @@ Click on the "My account" dropdown menu and verify that the user is greeted with
     1) click on logout and verify that the user is logged out, redirected to the landingpage and a toas message "You are now logged out!" appears.
 
 See the test flowchart: [testPath MyAccount](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_myAccount.png)
+
+#### Error pages
+
+
+
+#### Issues found and fixes implemented
+
+
+
+## **DEPLOYMENT**
+
+
+
+## **CREDITS**
+
+
+### **Contact**
+
+Created by [Stefan Brunotte](mrbrunotte@gmail.com).
