@@ -59,7 +59,7 @@ $(document).ready(function () {
     if ($('.chips')[0]) {
         var data = $('input[name="recipe_tags"]').val().split(',').map(function (tag) {
             return { tag: tag }
-        })
+        });
         $('.chips').material_chip({
             data: data
         });
@@ -69,7 +69,7 @@ $(document).ready(function () {
         });
         $('.chips').on('chip.add', function (e, chip) {
             updateChipInput(this);
-        })
+        });
         $('.chips').on('chip.delete', function (e, chip) {
             updateChipInput(this);
         });
