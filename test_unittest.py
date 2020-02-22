@@ -1,4 +1,5 @@
 # Resources  https://docs.python.org/3/library/unittest.html ----------#
+# To run the test: python test_unittest.py
 
 # Import pre-requisites -----------------------------------------------#
 
@@ -39,8 +40,8 @@ class TestApp(unittest.TestCase):
     def setUp(self):
         self.mongo = app.test_client()
 
-# for tests to run the name needs to start with test_ 
-    def test_routes(self):
+# for tests to run the name needs to start with test_
+    def test_that_routes_work_properly(self):
         # Test Homepage
         page = self.mongo.get('/home')
         self.assertEqual(page.status_code, 200)
@@ -66,7 +67,8 @@ class TestApp(unittest.TestCase):
 
 # Testing Registering a User and Removing the user -----------------------------------------------#
 
-    def test_successful_registration(self):
+
+    def test_that_registration_works(self):
         response = self.mongo.post('/signup', data=dict(author_name='Author Name', username='test-user',
                                                         password='password', recipes_rated='1234'), follow_redirects=True)
         data = response.data.decode('utf-8')
@@ -79,7 +81,8 @@ class TestApp(unittest.TestCase):
 
 # Testing Deleting a Recipe -----------------------------------------------#
 
-    def test_deleting_a_recipe(self):
+
+    def test_that_the_user_can_delete_a_recipe(self):
         response = self.mongo.post('/delete_recipe/5cff8ed42d609f1b9f4aa059')
         recipe = recipes.find_one(
             {'_id': ObjectId('5cff8ed42d609f1b9f4aa059')})
@@ -89,6 +92,7 @@ class TestApp(unittest.TestCase):
 
 
 # Tidy Up after test -----------------------------------------------#
+
 
     def tearDown(self):
         sign_out = self.mongo.get('/logout')
