@@ -593,7 +593,7 @@ a .img-card {
 }
 
 .img-card {
-    height: 300px !important;
+    height: 250px !important;
 }
 
 .my-card-title {
@@ -872,9 +872,23 @@ a .img-card {
 /* ==================
     footer
 ===================== */
+/*
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 5rem;
+}
+*/
 
 .wrapper-browse-recipes {
     min-height: calc(100vh - 215px);
+}
+
+.wrapper-keyword-search {
+    min-height: 31vh;
 }
 
 .footer {
@@ -882,6 +896,9 @@ a .img-card {
     background-color: #84848482;
     margin-top: 10px;
     height: auto;
+    /*position: absolute;
+    bottom: 0;*/
+    width: 100%
 }
 
 .footer-padding {

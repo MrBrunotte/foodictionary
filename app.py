@@ -240,7 +240,6 @@ def update_recipe(recipe_id):
 
 
 # DELETE RECIPE  --------------------------------------------#
-# TODO recipes.remove({'_id': ObjectId(recipe_id)}) changed .remove to delete_one
 
 @app.route('/delete_recipe/<recipe_id>', methods=['POST'])
 def delete_recipe(recipe_id):
@@ -305,8 +304,14 @@ def my_favorite_recipes(page):
                                                                                    ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
 
     return render_template('my_favorite_recipes.html',
-                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes, author_name=username, recipeCategory=list(recipeCategory.find()), total_no_of_pages=total_no_of_pages, page=page, page_title='FOODictionary - My Favorite recipes')
+                           recipes=recipe_pages.sort('date_time', pymongo.DESCENDING), count_recipes=count_recipes, author_name=username, recipeCategory=list(recipeCategory.find()), total_no_of_pages=total_no_of_pages, page=page, page_title='#
 
+# --------------------------------------------------------------#
+# ---------------- Update as favorite from other user --------- #
+# TODO ------------------------------------------------------------- #
+
+
+@app.route('/update_as_favorite_from_other_user')
 
 # ----------------------------------------------------------------------- #
 # ------------- my_recipes.html / my_favorite_recipes.html -------------- #
@@ -443,6 +448,7 @@ def remove_favorite_recipe_keyword_search(recipe_id, keyword, page):
 # ------------------------------------------------ #
 
 # UPDATE AS A FAVORITE RECIPE --------------------------------------------#
+#TODO same as 419
 @app.route('/add_favorite_recipe_tag_search/<recipe_id>/<tag>?page=<page>', methods=['GET'])
 def add_favorite_recipe_tag_search(recipe_id, tag, page):
     recipes.update({'_id': ObjectId(recipe_id)},

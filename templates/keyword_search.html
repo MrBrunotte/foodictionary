@@ -2,7 +2,7 @@
 <div class="body-search">
     <!-- top image -->
     <div class="top-image-my-recipes"></div>
-    <div class="container container-width">
+    <div class="container container-width wrapper-keyword-search">
         <h5 class="form-title center search-result">Search word: {{keyword}}</h5>
         {% if count_recipes == 0 %}
         <p class="center">Your search for <span class="search-keyword">{{keyword}}</span> did not generate a recipe!</p>
@@ -46,7 +46,6 @@
                         <div class="card-image medium">
                             <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img class="img-card"
                                     src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"></a>
-                            <!--TODO add url_for "recipe_favorite" see app.py line 295 -->
                             <form action="{{url_for('recipe_favorite', recipe_id = recipe._id)}}" method="POST"
                                 class="col s12">
                                 {% if recipe.favorite != true %} <a
