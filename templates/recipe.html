@@ -22,6 +22,7 @@
         <div class="col s12 m6">
             <img class="recipe-img margin-bottom" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
             <div class="col s12 center">
+                {% if recipe.author_name == session.username %}
                 {% if recipe.favorite != true %}
                 <a href="{{url_for('add_favorite_recipe_page', recipe_id = recipe._id)}}" class="btn-floating">
                     <i class="material-icons">add</i>
@@ -32,6 +33,7 @@
                     <i class="material-icons">remove</i>
                 </a>
                 <div class="info-fonts add-to-favorite">click and remove from favorite's</div>
+                {% endif %}
                 {% endif %}
             </div>
         </div>

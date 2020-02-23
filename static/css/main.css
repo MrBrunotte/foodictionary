@@ -597,7 +597,7 @@ a .img-card {
 }
 
 .my-card-title {
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 900;
     text-transform: uppercase;
     height: auto;
@@ -739,7 +739,7 @@ a .img-card {
 
 .info-fonts,
 .info-rec {
-    font-size: .8rem;
+    font-size: .7rem;
     padding-bottom: 10px;
 }
 

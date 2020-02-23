@@ -56,21 +56,21 @@
                                 src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"></a>
                         <form action="{{url_for('recipe_favorite', recipe_id = recipe._id)}}" method="POST"
                             class="col s12">
-                            {% if recipe.favorite != true %} <a
-                                href="{{url_for('add_favorite_recipe_browse_recipes', recipe_id = recipe._id, recipe_category_name = recipe_category_name, page = page, destination = 'browse_recipes')}}"
+                            {% if recipe.author_name == session.username %}
+                            {% if recipe.favorite != true %}
+                            <a href="{{url_for('add_favorite_recipe_browse_recipes', recipe_id = recipe._id, recipe_category_name = recipe_category_name, page = page, destination = 'browse_recipes')}}"
                                 class="halfway-fab btn-floating">
-                                <i class="material-icons">add</i>
-                            </a>
+                                <i class="material-icons">add</i></a>
                             {% else %}
                             <a href="{{url_for('remove_favorite_recipe_browse_recipes', recipe_id = recipe._id, recipe_category_name = recipe_category_name, page = page, destination = 'browse_recipes')}}"
                                 class="halfway-fab btn-floating blury">
-                                <i class="material-icons">remove</i>
-                            </a>
+                                <i class="material-icons">remove</i></a>
+                            {% endif %}
                             {% endif %}
                         </form>
                     </div>
                     <div class="my-card-content">
-                        <span class="my-card-title card-span">{{recipe.recipe_name}}</span>
+                        <span class="my-card-title card-span truncate">{{recipe.recipe_name}}</span>
                         <p class="description-size">
                             {{recipe.recipe_description}}
                         </p>

@@ -21,8 +21,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app.config['DEBUG'] = False
 app.config['TESTING'] = True
 app.config['WTF_CSRF_ENABLED'] = False
-# TODO change to os.getenv('SECRET', 'randomstring123')
-app.secret_key = '9893869affbf35907d0e7f0f20a72bc9'
+os.getenv('SECRET_KEY', 'randomstring123')
 
 mongo = PyMongo(app)
 

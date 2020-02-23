@@ -48,7 +48,8 @@
                                     src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"></a>
 
                             <form action="{{url_for('recipe_favorite', recipe_id = recipe._id)}}" method="POST"
-                                class="col s12">
+                                class="col s12 ">
+                                {% if recipe.author_name == session.username %}
                                 {% if recipe.favorite != true %} <a
                                     href="{{url_for('add_favorite_recipe_tag_search', recipe_id = recipe._id, tag = tag, page = page)}}"
                                     class="halfway-fab btn-floating">
@@ -60,10 +61,11 @@
                                     <i class="material-icons">remove</i>
                                 </a>
                                 {% endif %}
+                                {% endif %}
                             </form>
                         </div>
                         <div class="my-card-content">
-                            <span class="my-card-title card-span">{{recipe.recipe_name}}</span>
+                            <span class="my-card-title card-span truncate">{{recipe.recipe_name}}</span>
                             <p>
                                 {{recipe.recipe_description}}
                             </p>
