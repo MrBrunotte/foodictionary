@@ -4,13 +4,14 @@
 
 The idea for this cookbook is to let the user build their own cookbook with thier favorite recipes. The user can also find other recipes that other users have added. There is a random recipe section when the user want a quick inspiration for a meal to cook. There is a favorite section where user can store their favorite recipes.
 
-FOODictionary uses the CRUD functions for the recipes:
+FOODictionary uses the CRUD functions for the recipes, which was a requriement for this project:
 
     1) Create a recipe
     2) Read a recipe
     3) Update a recipe
     4) Delete a recipe
 
+****
 ## **Database**
 
 This project use [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) to create and store the values. The aim of this project was to use the CRUD functions to let the user interact with the database on the website.
@@ -29,9 +30,10 @@ See the Schema here: **[DatabaseSchema](https://github.com/MrBrunotte/foodiction
 
 See the Collections here: **[DatabaseCollections](https://github.com/MrBrunotte/foodictionary/blob/master/planning/collections.png)** 
 
+****
 ## **UX**
 
-This website is for anyone that likes to cook and want to have all their recipes in order in one place. The website have a simple layout with a navigation bar at the top where you can reach all the different sections. One can use the website as a registered user on a non-registered user. When one becomes registered there are additional feature for the user. The user can save recipes to a favorite section, add, edit or delete their own recipes.
+This website is for anyone that likes to cook and want to have all their recipes in order in one place. The website have a simple layout with a navigation bar at the top where you can reach all the different sections. One can use the website as a registered user on a non-registered user. When one becomes registered there are additional feature for the user. The user can save their own recipes to a favorite section, add, edit or delete their own recipes.
 
 The typical user is anyone that loves to cook and have their recipes in one place on the web.
 
@@ -47,10 +49,10 @@ I have used [AdobeXD](https://www.adobe.com/se/products/xd.html) as my tool for 
 
 #### **Desktop & Mobile**
 
-Link to [FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c-7b6cc300c5c0-d631/)
+Link to [FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c-7b6cc300c5c0-d631/grid)
 
-**When you have followed the link, click on FOODictionary at the top left corner to see all the mockups for desktop and mobile.**
 
+****
 ## **FEATURES**
 
 FOODictionary is build to be user friendly and easy to use. The user is able to both register as a user and get access to a personal section or the user can choose to use the site as a guest user. The guest user will only be able to look at recipes and find random recipes. The registered user will be able to interact with the site and save, edit and delete recipes the user will also be able to add/remove recipes to a favorite recipe page for quick and easy access.
@@ -107,13 +109,13 @@ The user can also view an indiviual recipe by clicking on the image or "View Rec
 
 The user can also click on the different recipe tags to get reredirected to recipes with the specific tag.
 
-There is also an "ADD TO FAVORITE'S" button. If the user is a guest and not logged in the user will be redirected to a page where the user is asked to either log in or register to add the recipe to their favorites.
+There is also an "ADD TO FAVORITE's" button of the user is logged in. If the user is a guest and not logged they will not see the "ADD TO FAVORITE's" button. The user can only add their own recipes to favorites.
 
 #### Login
 
 If the user clicks on **Login/Register** the user is redirected to a login page where the user is able to log in or register as a new user.
 
-When the user is logged in or Registered he/she is reredirected back to the landing page and greated with a "toast" message that welcomes the user back.
+When the user is logged in or Registered he/she is redirected back to the landing page and greated with a "toast" message that welcomes the user back.
 
 #### My Account
 
@@ -128,8 +130,6 @@ In this section the user is able to manage their own recipes. The user can add, 
 
 This is also where the user logs out from the website.
 
-### **Planning**
-
 #### **MongoDB**
 
 MongoDB is the database used in this project. 
@@ -139,6 +139,7 @@ See the Schema here: **[DatabaseSchema](https://github.com/MrBrunotte/foodiction
 
 See the Collections here: **[DatabaseCollections](https://github.com/MrBrunotte/foodictionary/blob/master/planning/collections.png)**
 
+****
 ## **TECHNOLOGIES USED**
 
 This website is designed and runs using the technologies below:
@@ -156,6 +157,7 @@ This website is designed and runs using the technologies below:
    11) **[Visual Studio code](https://code.visualstudio.com/)**
    12) **[AdobeXd](https://www.adobe.com/products/xd.html?promoid=PYPVQ3HN&mv=other)**
 
+****
 ## **TESTING**
 
 ### **Unittesting**
@@ -167,11 +169,11 @@ The "test case" was used which is the indivdual unit of testing. The "test case"
 I used three tests:
 
     1) Testing the routes:
-       -) "Testing the routes" checked if the routes responded with "200 - route OK" and the correct response for my error route "404 - route not found".
+        "Testing the routes" checked if the routes responded with "200 - route OK" and the correct response for my error route "404 - route not found".
     2) Register a user:
-       -) "Registering a user" registered a "test-user", searched for the "test-user" and finally deleted the "test-user"
+        "Registering a user" registered a "test-user", searched for the "test-user" and finally deleted the "test-user"
     3) Deleting a recipe: 
-       -) "Deleting a recipe" deleted a hard-coded recipe and deleted it.
+        "Deleting a recipe" deleted a hard-coded recipe and deleted it.
 
 The test_unittest.py file started with a setUp() method that the testing framwork call for every single test that is run. The file then ends with a tearDown() method that tides up after the test method has been run.
 
@@ -289,21 +291,62 @@ Click on the "My account" dropdown menu and verify that the user is greeted with
 
 See the test flowchart: [testPath MyAccount](https://github.com/MrBrunotte/foodictionary/blob/master/testing/testpath_myAccount.png)
 
-#### Error pages
+#### Error pages - 404, 405, 500
 
-
+    1) Confirmed that the "Back to homepage" link worked and redirected the user back to the landingpage.
 
 #### Issues found and fixes implemented
 
+* images are on some larger screensizes a bit wide depending on the image source. Not able to fix this problem.
 
-
+****
 ## **DEPLOYMENT**
 
+GitHub was used for source control and Heroku was used for deployment of the project.
 
+See repository location here: [FOODictionary](https://github.com/MrBrunotte/foodictionary)
+
+See Heroku App location here: [FOODictionary Heroku App](https://foodictionary.herokuapp.com/)
+
+**Steps taken to deploy to website:**
+
+    1) Database was created in Atlas MongoDB account.
+    2) VScode was used for the projects workspace.
+    3) A virtual environment for this project was created and Flask was installed.
+    4) app.py file was created and FLask and os was imported.
+    5) An instance of Flask was created - app = Flask(__name__)
+    6) host, ip and debug=True was set inside the app run()
+    7) Log in and create the app through CMD in Heroku - heroku login, - heroku apps:create foodictionary
+    8)  Create a GitHub repository foodictionary
+    9)  Connected App tho GitHub repository with automatic deploys.
+    10) Create requirements.txt file - pip freeze --local > requirements.txt
+    11) Create Procfile - echo web:python app.py > Procfile
+    12) Commit to GitHub
+    13) Commit to Heroku - git push heroku master
+    14) Command used to tell Heroku to run the app - heroku ps:scale web=1
+    15) Add config variables IP 0.0.0.0 and PORT 5000 in Heroku
+    16) Install flask-pymongo and dnspython to get Flask to talk to MongoDB
+    17) Store SECRET_KEY for app in environment variables
+    18) Confirm that FOODictionary App is working
+    19) set Debug to False in app.py.
+****
 
 ## **CREDITS**
 
+## Content
 
-### **Contact**
+* All recipes and images are from [Allrecipes](https://www.allrecipes.com/)
 
-Created by [Stefan Brunotte](mrbrunotte@gmail.com).
+* The random meal database is from [TheMealDB](https://www.themealdb.com/)
+
+
+## Acknowledgments
+
+I would like to thank my good friend Niklas Lind for his support and guidance during the development of this project. 
+
+I would also like to thank my mentor Marantha Ilesanmi and the tutors at Code Institute for their help.
+
+****
+## Contact
+
+Created by [Stefan Brunotte](mrbrunotte@gmail.com)

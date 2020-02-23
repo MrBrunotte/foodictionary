@@ -14,7 +14,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 toastr = Toastr(app)
 app.config['MONGO_DBNAME'] = 'foodictionary'
-# TODO fix the security settings for MONG_URI and SECRET_KEY
 # app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost')
 app.config['MONGO_URI'] = 'mongodb+srv://mrbrunotte:mrUSERbrunotte@foodictionary-gckbp.mongodb.net/foodictionary?retryWrites=true&w=majority'
 app.secret_key = os.getenv('SECRET_KEY', 'randomstring123')
@@ -502,4 +501,4 @@ def something_wrong(error):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
-            debug=True)  # change to False when finished!
+            debug=False)
