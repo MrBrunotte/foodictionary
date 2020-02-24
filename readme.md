@@ -4,21 +4,21 @@
 
 Foodictionary lets the user personalize their own special cookbook!
 
-The idea for this website is to let the user build their own personalized cookbook. The registered user is able to add, edit and delete their own recipes they are also ablo to add their favorite recipes to a favoriets section.
+The idea for this website is to let the user build their own personalized cookbook. The registered user is able to add, edit and delete their own recipes they are also able to add their favorite recipes to a favoriets section.
 
 The guest user is able to browse and search for recipes but to be able to use all the websites functionalities they need to become a registered user.
 
 
 ## **Database**
-****
+
+[MongoDB Atlas](https://www.mongodb.com/cloud/atlas) was used to create and store the values. 
+
 FOODictionary uses the CRUD functions for the recipes, which was a requriement for this project:
 
 * Create a recipe
 * Read a recipe
 * Update a recipe
 * Delete a recipe
-
-[MongoDB Atlas](https://www.mongodb.com/cloud/atlas) was used to create and store the values. 
 
 The database schema consists of a Database named Foodictionary with five collections: 
 
@@ -32,7 +32,7 @@ See the Schema here: **[DatabaseSchema](https://github.com/MrBrunotte/foodiction
 
 See the Collections here: **[DatabaseCollections](https://github.com/MrBrunotte/foodictionary/blob/master/planning/collections.png)** 
 
-****
+
 ## **UX**
 
 This website is for anyone that likes to cook and want to have all their recipes in order in one place. The website have a simple layout with a navigation bar at the top where you can reach all the different sections. One can use the website as a registered user or as a non-registered user. 
@@ -63,7 +63,7 @@ See the [FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c
 
 
 ## **FEATURES**
-****
+
 FOODictionary is build to be user friendly and easy to use. The site can be used both by as a "guest" or "registered" user.
 
 The "registered" user will have access to more features than the "guest" user.
@@ -161,7 +161,7 @@ This is also where the user logs out from the website.
 
 
 ## **TECHNOLOGIES USED**
-****
+
 This website is designed and runs using the technologies below:
 
    1) **[HTML](https://en.wikipedia.org/wiki/HTML)**
@@ -179,7 +179,7 @@ This website is designed and runs using the technologies below:
 
 
 ## **TESTING**
-****
+
 ### **Unittesting**
 
 Automated testing was conducted by using Pythons built-in [Unit Testing Framework](https://docs.python.org/3/library/unittest.html). 
@@ -323,7 +323,7 @@ See the test flowchart: [testPath MyAccount](https://github.com/MrBrunotte/foodi
 
 
 ## **DEPLOYMENT**
-****
+
 GitHub was used for source control and Heroku was used for deployment of the project.
 
 See repository location here: [FOODictionary](https://github.com/MrBrunotte/foodictionary)
@@ -354,7 +354,6 @@ See Heroku App location here: [FOODictionary Heroku App](https://foodictionary.h
 
 
 ## **CREDITS**
-****
 
 ## Content
 
@@ -369,7 +368,7 @@ I would like to thank my good friend Niklas Lind for his support and guidance du
 
 I would also like to thank my mentor Marantha Ilesanmi and the tutors at Code Institute for their help.
 
-****
+
 ## Contact
 
 Created by [Stefan Brunotte](mrbrunotte@gmail.com)
