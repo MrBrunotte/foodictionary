@@ -360,6 +360,7 @@ See Heroku App location here: [FOODictionary Heroku App](https://foodictionary.h
 * All recipes and images are from [Allrecipes](https://www.allrecipes.com/)
 
 * The random meal database is from [TheMealDB](https://www.themealdb.com/)
+* Toastr JavaScript library from [Toastr](https://codeseven.github.io/toastr/)
 
 
 ## Acknowledgments
