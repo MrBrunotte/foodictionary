@@ -5,7 +5,6 @@
 */
 
 /* compound selectors */
-
 :root {
     --yellow: #FFE600;
     --black: #464646;
@@ -16,25 +15,22 @@
     --orange: #e79b508f;
 }
 
-.gray {
+/*.gray {
     color: var(--gray) !important;
-}
-
-body {
-    scroll-behavior: smooth;
-    background-image: url(/static/images/background_image.png);
-}
+}*/
 
 * {
-    box-sizing: border-box;     /* to remove all padding and margings */
+    box-sizing: border-box;         /* to remove all padding and margings */
 }
 
 body {
-    margin: 0;                  /* to not touch the sides */
+    margin: 0;                             /* to not touch the sides */
     font-family: 'Ubuntu', sans-serif;
-    font-size: 1rem;            /* 1rem = 16 px (default) */
+    font-size: 1rem;                       /* 1rem = 16 px (default) */
     font-weight: 400;
-    line-height: 1.6;           /* Its easier to read */
+    line-height: 1.6;                      /* Its easier to read */
+    scroll-behavior: smooth;
+    background-image: url(/static/images/background_image.png);
 }
 
 ul {
@@ -55,7 +51,6 @@ a {
 /* ==================
     Typography
 ===================== */
-
 h1,
 h2,
 h3,
@@ -214,10 +209,6 @@ nav .brand-logo.center {
     margin: 2em !important;
 }
 
-.bts {
-    line-height: 0 !important;
-}
-
 .btn-small {
     background-color: var(--orange) !important;
     color: var(--black);
@@ -230,6 +221,7 @@ nav .brand-logo.center {
 }
 
 .chip {
+    background-color: var(--orange) !important;
     margin-bottom: 15px;
     margin-right: 15px;
 }
@@ -240,6 +232,13 @@ nav .brand-logo.center {
 
 .chip a:hover {
     color: var(--white);
+}
+
+.chip a{
+    font-size: .8rem;
+    text-transform: uppercase;
+    color: var(--black);
+    font-weight: 900;
 }
 
 .blury {
@@ -365,7 +364,6 @@ input:active {
 /* =============
     Home.html 
 ================ */
-/* <!-- top image --> */
 .top-image-home {
     background-image: url(/static/images/three_burgers.jpg);
     border-radius: 25px 25px 0px 0px;
@@ -374,8 +372,6 @@ input:active {
     height: 55vh;
     width: 85%;
 }
-
-/* <!-- text section home --> */
 
 .background-light-gray {
     background: rgb(190, 190, 190, 0.3);
@@ -455,7 +451,6 @@ input[type="password"]:not(.browser-default) {
     min-height: calc(100vh - 215px);
 }
 
-/* <!-- top image --> */
 .top-image-random-meal{
     background-image: url(/static/images/random_meal.jpg);
     background-size: cover;
@@ -480,10 +475,20 @@ input[type="password"]:not(.browser-default) {
 }
 
 /* =============
-    Recipe.html 
+    Recipe.html
 ================ */
 
-.vh{
+.recipe-img {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 1.3em 1.3em 2em;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    width: 80%;
+}
+
+.vh {
     min-height: calc(100vh - 214px);
 }
 
@@ -657,15 +662,6 @@ a .img-card {
     padding-top: .8em;
 }
 
-/* <!-- Recipe info --> */
-.recipe-info {
-    border-radius: 25px 25px 0px 0px;
-    background: var(--dark-gray);
-    padding-bottom: 15px;
-    margin-bottom: 0;
-}
-
-/* <!-- Recipe info--> */
 .recipe-info {
     border-radius: 25px 25px 0px 0px;
     background: var(--dark-gray);
@@ -678,7 +674,6 @@ a .img-card {
     padding-top: 10px;
 }
 
-/* <!-- Go to Edit/Delete my recipe page --> */
 .edit-recipe,
 .delete_recipe {
     text-align: center;
@@ -743,24 +738,10 @@ a .img-card {
     padding-bottom: 10px;
 }
 
-/* <!-- Recipe image from DB --> */
-
 .text-background {
     background: rgb(190, 190, 190, 0.3);
 }
 
-.chip {
-    background-color: var(--orange) !important;
-}
-
-.chip a{
-    font-size: .8rem;
-    text-transform: uppercase;
-    color: var(--black);
-    font-weight: 900;
-}
-
-/* <!-- Recipe method --> */
 .recipe-padding{
     padding-left: 1.5em !important;
     padding-right: 1.5em !important;
@@ -783,7 +764,6 @@ a .img-card {
 .ul-style {
     padding-left: 2rem !important;
 }
-
 
 /* =================
     Add_recipe.html 
@@ -815,21 +795,6 @@ a .img-card {
     border-radius: 25px 25px 0px 0px;
     height: 35vh;
 }
-
-/* =============
-    Recipe.html
-================ */
-
-.recipe-img {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0 auto;
-    padding: 1.3em 1.3em 2em;
-    border-top-left-radius: 45px;
-    border-top-right-radius: 45px;
-    width: 80%;
-}
-
 
 /* ==================
     My_recipe.html 
@@ -868,20 +833,9 @@ a .img-card {
 }
 
 
-
 /* ==================
     footer
 ===================== */
-/*
-#page-container {
-    position: relative;
-    min-height: 100vh;
-}
-
-#content-wrap {
-    padding-bottom: 5rem;
-}
-*/
 
 .wrapper-browse-recipes {
     min-height: calc(100vh - 215px);
@@ -896,8 +850,6 @@ a .img-card {
     background-color: #84848482;
     margin-top: 10px;
     height: auto;
-    /*position: absolute;
-    bottom: 0;*/
     width: 100%
 }
 
@@ -1034,7 +986,7 @@ a .img-card {
     .info-fonts             { font-size: .6rem;}
     .recipe-img             { width: 80%;}
     .edit-recipe,
-    .delete_recipe      { margin-top: 1em;}
+    .delete_recipe          { margin-top: 1em;}
     
     input[type="text"]:not(.browser-default) { font-size: .85rem;}
 
