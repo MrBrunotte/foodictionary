@@ -8,6 +8,7 @@ The idea for this website is to let the user build their own personalized cookbo
 
 The guest user is able to browse and search for recipes but to be able to use all the websites functionalities they need to become a registered user.
 
+To get the best experiance and understanding of all features of the website, please register as a user and add some recipes. When you have registered and logged in you will be able to test all features of FOODictionary.
 
 ## **Database**
 
