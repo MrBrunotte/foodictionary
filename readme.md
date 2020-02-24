@@ -1,30 +1,32 @@
 # **FOODictionary**
 
-**FOODictionary** - Your personalized cookbook for all your recipes!
+**FOODictionary - Your personalized cookbook!**
 
-The idea for this cookbook is to let the user build their own cookbook with thier favorite recipes. The user can also find other recipes that other users have added. There is a random recipe section when the user want a quick inspiration for a meal to cook. There is a favorite section where user can store their favorite recipes.
+Foodictionary lets the user personalize their own special cookbook!
 
+The idea for this website is to let the user build their own personalized cookbook. The registered user is able to add, edit and delete their own recipes they are also ablo to add their favorite recipes to a favoriets section.
+
+The guest user is able to browse and search for recipes but to be able to use all the websites functionalities they need to become a registered user.
+
+
+## **Database**
+****
 FOODictionary uses the CRUD functions for the recipes, which was a requriement for this project:
 
-    1) Create a recipe
-    2) Read a recipe
-    3) Update a recipe
-    4) Delete a recipe
+* Create a recipe
+* Read a recipe
+* Update a recipe
+* Delete a recipe
 
-****
-## **Database**
+[MongoDB Atlas](https://www.mongodb.com/cloud/atlas) was used to create and store the values. 
 
-This project use [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) to create and store the values. The aim of this project was to use the CRUD functions to let the user interact with the database on the website.
+The database schema consists of a Database named Foodictionary with five collections: 
 
-The database schema consists of one Cluster with a Database named Foodictionary. 
-
-The database Foodictionary consists of the five collections:
-
-    1) allergens
-    2) recipeCategory
-    3) recipes
-    4) skillLevel
-    5) users
+* allergens
+* recipeCategory
+* recipes
+* skillLevel
+* users
 
 See the Schema here: **[DatabaseSchema](https://github.com/MrBrunotte/foodictionary/blob/master/planning/database_schema.jpg)**
 
@@ -33,15 +35,22 @@ See the Collections here: **[DatabaseCollections](https://github.com/MrBrunotte/
 ****
 ## **UX**
 
-This website is for anyone that likes to cook and want to have all their recipes in order in one place. The website have a simple layout with a navigation bar at the top where you can reach all the different sections. One can use the website as a registered user on a non-registered user. When one becomes registered there are additional feature for the user. The user can save their own recipes to a favorite section, add, edit or delete their own recipes.
+This website is for anyone that likes to cook and want to have all their recipes in order in one place. The website have a simple layout with a navigation bar at the top where you can reach all the different sections. One can use the website as a registered user or as a non-registered user. 
 
-The typical user is anyone that loves to cook and have their recipes in one place on the web.
+When a user registers additional feature are unlocked for the user. The user will also have access to "My Account" where they can:
+
+* Add a recipe
+* Edit a recipe
+* See thier favoriet recipes
+* Logout
+
+The typical user is anyone that loves to cook and want to have their recipes in one place on the web.
 
 ### **Fonts**
 
 The website uses two differnt fonts to create typographic harmony.
-1) **[Lora](https://fonts.google.com/specimen/Lora)** - Headings
-2) **[Ubuntu](https://fonts.google.com/specimen/Ubuntu)** - Body and buttons
+1) **[Lora](https://fonts.google.com/specimen/Lora)** - For headings
+2) **[Ubuntu](https://fonts.google.com/specimen/Ubuntu)** - For body and buttons
 
 ### **Wireframe & Mockup**
 
@@ -49,13 +58,26 @@ I have used [AdobeXD](https://www.adobe.com/se/products/xd.html) as my tool for 
 
 #### **Desktop & Mobile**
 
-Link to [FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c-7b6cc300c5c0-d631/grid)
+See the [FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c-7b6cc300c5c0-d631/grid)
 
 
-****
+
 ## **FEATURES**
+****
+FOODictionary is build to be user friendly and easy to use. The site can be used both by as a "guest" or "registered" user.
 
-FOODictionary is build to be user friendly and easy to use. The user is able to both register as a user and get access to a personal section or the user can choose to use the site as a guest user. The guest user will only be able to look at recipes and find random recipes. The registered user will be able to interact with the site and save, edit and delete recipes the user will also be able to add/remove recipes to a favorite recipe page for quick and easy access.
+The "registered" user will have access to more features than the "guest" user.
+
+The guest user will only be able to:
+
+* search for recipes
+* find a random meal suggestion.
+
+The registered user will be able to:
+
+* add a recipe
+* edit a recipe 
+* add their own recipes to a "favorite recipe's" list
 
 ### **Existing features**
 
@@ -130,18 +152,16 @@ In this section the user is able to manage their own recipes. The user can add, 
 
 This is also where the user logs out from the website.
 
-#### **MongoDB**
+#### **Future features**
 
-MongoDB is the database used in this project. 
-I have created a database called "foodictionary" with the collections:
+*   **Personal account** - Where the user can update or change passwords, upload an personal image.
+*   **Ineraction between users** - A blog section that lets the registered users blog about thier recipes, cooking etc.
+*   **Reviews & Comments** - Let the registered users comment on other users recipes.
+*   **Undo delete** - Let the user undo a deletion of a recipe by saving the deleted recipes in a "deleted_recipes" collection in the database.
 
-See the Schema here: **[DatabaseSchema](https://github.com/MrBrunotte/foodictionary/blob/master/planning/database_schema.jpg)**
 
-See the Collections here: **[DatabaseCollections](https://github.com/MrBrunotte/foodictionary/blob/master/planning/collections.png)**
-
-****
 ## **TECHNOLOGIES USED**
-
+****
 This website is designed and runs using the technologies below:
 
    1) **[HTML](https://en.wikipedia.org/wiki/HTML)**
@@ -157,9 +177,9 @@ This website is designed and runs using the technologies below:
    11) **[Visual Studio code](https://code.visualstudio.com/)**
    12) **[AdobeXd](https://www.adobe.com/products/xd.html?promoid=PYPVQ3HN&mv=other)**
 
-****
-## **TESTING**
 
+## **TESTING**
+****
 ### **Unittesting**
 
 Automated testing was conducted by using Pythons built-in [Unit Testing Framework](https://docs.python.org/3/library/unittest.html). 
@@ -181,9 +201,9 @@ The test_unittest.py file started with a setUp() method that the testing framwor
 
 To test the responsivness of my sight I used the developer tool in both FireFox and Chrome. The responsive testing for mobile screens were made on:
 
-    -)  Iphone 5/SE IOS 10.3.1
-    -)  Iphnoe X/XS IOS 12
-    -)  Galaxy S9/S9+ Android 7.0
+* Iphone 5/SE IOS 10.3.1
+* Iphnoe X/XS IOS 12
+* Galaxy S9/S9+ Android 7.0
 
 Responsive testing for mobile screens were made for both landscape and portrait.
 
@@ -297,11 +317,13 @@ See the test flowchart: [testPath MyAccount](https://github.com/MrBrunotte/foodi
 
 #### Issues found and fixes implemented
 
-* images are on some larger screensizes a bit wide depending on the image source. Not able to fix this problem.
+* **Issue:** images on some larger screensizes are a bit wide depending on the image source. 
+* **Fix:** Not able to fix this problem.
 
-****
+
+
 ## **DEPLOYMENT**
-
+****
 GitHub was used for source control and Heroku was used for deployment of the project.
 
 See repository location here: [FOODictionary](https://github.com/MrBrunotte/foodictionary)
@@ -329,9 +351,10 @@ See Heroku App location here: [FOODictionary Heroku App](https://foodictionary.h
     17) Store SECRET_KEY for app in environment variables
     18) Confirm that FOODictionary App is working
     19) set Debug to False in app.py.
-****
+
 
 ## **CREDITS**
+****
 
 ## Content
 
