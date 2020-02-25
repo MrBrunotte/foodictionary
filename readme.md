@@ -1,5 +1,7 @@
 # **FOODictionary**
 
+![alt text](https://github.com/AnthonyNicklin/meat-free/blob/master/app/static/images/white_logo.png "Meat Free Logo")
+
 **FOODictionary - Your personalized cookbook!**
 
 Foodictionary lets the user personalize their own special cookbook!
