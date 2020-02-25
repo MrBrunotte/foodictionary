@@ -325,35 +325,124 @@ See the test flowchart: [testPath MyAccount](https://github.com/MrBrunotte/foodi
 
 ## **DEPLOYMENT**
 
-GitHub was used for source control and Heroku was used for deployment of the project.
+The web application was created using [VScode](https://code.visualstudio.com/), and the web application is deployed using Heroku. Git was used for version control and pushed to a remote repository hosted on GitHub.
 
-See repository location here: [FOODictionary](https://github.com/MrBrunotte/foodictionary)
+See repository: [FOODictionary repository](https://github.com/MrBrunotte/foodictionary)
 
-See Heroku App location here: [FOODictionary Heroku App](https://foodictionary.herokuapp.com/)
+See Heroku app: [FOODictionary Heroku App](https://foodictionary.herokuapp.com/)
 
-**Steps taken to deploy to website:**
+There are no differences between the deployed version and the development version.
 
-    1) Database was created in Atlas MongoDB account.
-    2) VScode was used for the projects workspace.
-    3) A virtual environment for this project was created and Flask was installed.
-    4) app.py file was created and FLask and os was imported.
-    5) An instance of Flask was created - app = Flask(__name__)
-    6) host, ip and debug=True was set inside the app run()
-    7) Log in and create the app through CMD in Heroku - heroku login, - heroku apps:create foodictionary
-    8) Create a GitHub repository foodictionary
-    9) Connected App tho GitHub repository with automatic deploys.
-    10) Create requirements.txt file - pip freeze --local > requirements.txt
-    11) Create Procfile - echo web:python app.py > Procfile
-    12) Commit to GitHub
-    13) Commit to Heroku - git push heroku master
-    14) Command used to tell Heroku to run the app - heroku ps:scale web=1
-    15) Add config variables IP 0.0.0.0 and PORT 5000 in Heroku
-    16) Install flask-pymongo and dnspython to get Flask to talk to MongoDB
-    17) Store SECRET_KEY for app in environment variables
-    18) Confirm that FOODictionary App is working
-    19) set Debug to False in app.py.
+### **How to deploy the code locally**
 
-**Follow these steps to  website:**
+If you wish to run this code locally then please follow the instructions below.
+
+1. Download the code from the Github repository from [here](https://github.com/MrBrunotte/foodictionary).
+2. Click on _"Clone"_ or _"download then Download ZIP"_. This will download the code into a ZIP folder locally on your computer.
+3. Uncompress the ZIP folder.
+4. Create a virtual environment. Tutorial of how to create a virtual environment can be found 
+[here](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/). 
+5. Activate the virtual environment.
+6. Install the necessary Python packages in the requirements.txt file.
+    * ````pip freeze --local > requirements.txt````
+7. [Create a secret key](https://miniwebtool.com/password-generator/) and set as environment variable.
+    * MacOS and Linux ````export SECRET_KEY=<secret key>````
+    * Windows ````set SECRET_KEY=<secret key>````
+8. Tell Flask how to import the app.
+    * MacOS and Linux ````export FLASK_APP=app.py````
+    * Windows ````set FLASK_APP=app.py````
+9. Connect your MongoDB database to the application. If you have not created a MongoDB database please follow the 
+instructions under the heading [Create a MongoDB account](https://github.com/AnthonyNicklin/meat-free#create-a-mongodb-account).
+    * Set MongoDB URI as environment variable.
+        * MacOS and Linux ````export MONGO_URI=<mongo_uri>````
+        * Windows ````set MONGO_URI=<mongo_uri>````
+    * Create a database and five collections. Called:
+      * **allergens**
+      * **recipeCategory**
+      * **recipes**
+      * **skillLevel**
+      * **users**
+
+    * Set MongoDB database name as environment variable.
+        * MacOS and Linux ````export MONGO_DBNAME=<mongo_DBNAME>````
+        * Windows ````set MONGO_DBNAME=<mongo_DBNAME>````
+1.  Open up a terminal and run ````flask run````.
+2.  Navigate to the address the terminal returns to view **FOODictionary**.
+
+### **Deploy to Heroku**
+
+This project was deployed to Heroku and uses Heroku for its production environment. Instructions are below on how to 
+deploy this web application to a production environment in Heroku.
+
+
+*Git must be installed onto your computer. Instructions for installing Git can be found 
+[here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
+**Heroku CLI must be installed in order to deploy to Heroku using these instructions. Please follow the instructions 
+here to download and install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+***You must have a MongoDB account and database setup with five collections.
+Follow the instructions under the heading **create-a-mongodb-account** below.
+
+1. Open up Heroku and navigate to your dashboard.
+2. Select _New_ > _Create New App_ and fill out the details required then hit _Create App_.
+3. Select _Settings_ > _Reveal Config Vars_
+    * Enter in the following environment variables:
+        * SECRET_KEY: the generated key
+        * MONGO_URI: starts with: **mongodb+srv://**
+        * MONGO_DBNAME: foodictionary
+        * FLASK_APP: app.py
+        * IP: 0.0.0.0
+        * PORT:	5000
+4. Download the code from the Github repository [here](https://github.com/MrBrunotte/foodictionary).
+5. Click on _Clone_ or _download then Download ZIP_. This will download the code into a ZIP folder locally on your computer.
+6. Uncompress the ZIP folder.
+7. Open up a terminal or cmd prompt and login into Heroku CLI.
+    * ````heroku login````
+8. Check the app is present.
+    * ````heroku apps````
+9. A Procfile have already been created for this project but make sure that it is present. If for some 
+reason it is not then follow the steps below to create it.
+    
+    * Procfile
+        * In a terminal make sure you are in the root directory of the project then run ````echo web: python app.py > Procfile````.
+        * Add the following text to the Procfile **web: python app.py runserver 0.0.0.0:5000**.
+1.  Add a new git remote for Heroku.
+    * ````git remote add heroku git@heroku.comYOUR_APP_NAME.git````
+2.  Push to Heroku.
+    * ````git push heroku master````
+3.  Give Heroku a few minutes to get it all set up and then check the activity logs under Activity tab in your Heroku 
+dashboard. 
+13. Once the build is complete click on **open app** top right to see FOODictionary in action.
+
+#### Create a MongoDB Account
+
+The database used for this application is MongoDB Atlas and a free account can be created [here](https://www.mongodb.com/cloud/atlas).
+
+1. Click on _Try Free_ top right
+2. In the right hand panel complete the fields and complete verification steps required
+3. Click on _Build a New Cluster_.
+    * Select your preferred Cloud provider.
+    * Select the region you wish to host and be sure to check the region is in the free tier.  
+    * Select a Cluster Tier. Again be careful to select a free one if you wish to host this for free.
+    * Select any additional settings you wish to set.
+    * Give the Cluster a name.
+    * Check settings then once happy select _Create Cluster_.
+4. Click on _Collections_ > _Create Database_.
+    * Give it a name (remember this as you will need the database name for import settings when deploying the code).
+5. Click on _Create Collection_.  
+    * Create five collections:
+      * **allergens**
+      * **recipeCategory**
+      * **recipes**
+      * **skillLevel**
+      * **users**
+6. Click on the _Overview_ tab then _Connect_.
+    * Click on _Connect Your Application_.
+    * Select the correct drive and version.
+    * Copy and past the Connection String and keep this safe as you will need it for your MONGO_URI variable to deploy 
+    the code.
+
 
 ## **CREDITS**
 
