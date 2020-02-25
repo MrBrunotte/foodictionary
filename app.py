@@ -13,9 +13,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # CONNECT TO MONGODB DATABASE -----------------------------#
 app = Flask(__name__)
 toastr = Toastr(app)
-app.config['MONGO_DBNAME'] = 'foodictionary'
-# app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost')
-app.config['MONGO_URI'] = 'mongodb+srv://mrbrunotte:mrUSERbrunotte@foodictionary-gckbp.mongodb.net/foodictionary?retryWrites=true&w=majority'
+app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost')
 app.secret_key = os.getenv('SECRET_KEY', 'randomstring123')
 
 mongo = PyMongo(app)
@@ -299,7 +297,7 @@ def my_recipes(page):
     all_recipes = recipes.find({'author_name': username}).sort(
         [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
     count_recipes = all_recipes.count()
-    
+
     offset = (int(page) - 1) * 6
     limit = 6
     total_no_of_pages = int(math.ceil(count_recipes/limit))
@@ -323,7 +321,7 @@ def my_favorite_recipes(page):
     all_recipes = recipes.find({'author_name': username, 'favorite': True}).sort(
         [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
     count_recipes = all_recipes.count()
-    
+
     offset = (int(page) - 1) * 6
     limit = 6
     total_no_of_pages = int(math.ceil(count_recipes/limit))
@@ -380,6 +378,7 @@ def recipe_favorite(recipe_id):
 # ------------- keyword_search.html ------------------ #
 # ---------------------------------------------------- #
 
+
 @app.route('/keyword_search', methods=['POST'])
 def receive_keyword():
     return redirect(url_for('keyword_search', keyword=request.form.get('keyword'), page=1))
@@ -432,6 +431,7 @@ def remove_favorite_recipe_keyword_search(recipe_id, keyword, page):
 # -------------------- tag_search.html ------------------ #
 # ------------------------------------------------------- #
 
+
 @app.route('/tag_search', methods=['GET'])
 def receive_tag():
     return redirect(url_for('tag_search', keyword=request.form.get('tag'), page=1))
@@ -440,7 +440,7 @@ def receive_tag():
 @app.route('/tag_search/<tag>/<page>', methods=['GET'])
 def tag_search(tag, page):
     recipes.create_index([('recipe_tags', pymongo.ASCENDING)])
-    
+
     all_recipes = recipes.find({'recipe_tags': tag}).sort(
         [('date_time', pymongo.DESCENDING), ('_id', pymongo.ASCENDING)])
     count_recipes = all_recipes.count()
@@ -482,6 +482,7 @@ def remove_favorite_recipe_tag_search(recipe_id, tag, page):
 # -------------------------------------------------------------- #
 # ----------------------- Error Pages -------------------------- #
 # -------------------------------------------------------------- #
+
 
 @app.errorhandler(404)
 def page_not_found(error):
