@@ -18,8 +18,8 @@ FOODictionary uses the CRUD functions for the recipes, which was a requriement f
 
 * Create a recipe
 * Read a recipe
-* Update a recipe
-* Delete a recipe
+* Update a recipe**
+* Delete a recipe**
 
 The database schema consists of a Database named Foodictionary with five collections: 
 
@@ -340,8 +340,8 @@ See Heroku App location here: [FOODictionary Heroku App](https://foodictionary.h
     5) An instance of Flask was created - app = Flask(__name__)
     6) host, ip and debug=True was set inside the app run()
     7) Log in and create the app through CMD in Heroku - heroku login, - heroku apps:create foodictionary
-    8)  Create a GitHub repository foodictionary
-    9)  Connected App tho GitHub repository with automatic deploys.
+    8) Create a GitHub repository foodictionary
+    9) Connected App tho GitHub repository with automatic deploys.
     10) Create requirements.txt file - pip freeze --local > requirements.txt
     11) Create Procfile - echo web:python app.py > Procfile
     12) Commit to GitHub
@@ -353,6 +353,7 @@ See Heroku App location here: [FOODictionary Heroku App](https://foodictionary.h
     18) Confirm that FOODictionary App is working
     19) set Debug to False in app.py.
 
+**Follow these steps to  website:**
 
 ## **CREDITS**
 
@@ -368,7 +369,7 @@ See Heroku App location here: [FOODictionary Heroku App](https://foodictionary.h
 
 I would like to thank my good friend Niklas Lind for his support and guidance during the development of this project. 
 
-I would also like to thank my mentor Marantha Ilesanmi and the tutors at Code Institute for their help.
+I would also like to thank my mentor Maranatha Ilesanmi and the tutors at Code Institute for their help.
 
 
 ## Contact

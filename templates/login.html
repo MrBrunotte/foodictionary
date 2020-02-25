@@ -2,26 +2,26 @@
 {% block content %}
 
 {% if session['logged_in'] %}
-<h5 class="center">You are already logged in!</h5>
+<h5 class="center my-h5">You are already logged in!</h5>
 {% else %}
-<div class="main-content-forms container">
+<div class="main-content-forms container my-container">
     <div class="container-form">
         <form action="{{url_for('signin')}}" method="POST" class="form-register">
-            <h5 class="log-reg-title">Login to access all your recipe's!</h5>
+            <h5 class="log-reg-title my-h5">Login to access all your recipe's!</h5>
             <fieldset class="form-group">
                 <legend class="legend-text">login</legend>
 
                 <div class="group">
                     <h6 class="login-label">Type your username:</h6>
-                    <input class="login-input validate" type="text" value="" placeholder="" name="username" required>
+                    <input class="login-input my-login-input validate" type="text" value="" placeholder="" name="username" required>
 
                     <h6 class="login-label">Type your password:</h6>
-                    <input class="login-input validate" type="password" value="" placeholder="" name="password"
+                    <input class="login-input my-login-input validate" type="password" value="" placeholder="" name="password"
                         required>
                 </div>
             </fieldset>
             <div class="btn-group">
-                <button type="submit" value="Log in" class="waves-effect waves-light btn-small">log in</button>
+                <button type="submit" value="Log in" class="waves-effect waves-light btn-small my-btn-small">log in</button>
             </div>
             <div class="bottom-text">
                 need an account? <a class="sign-in-link" href="{{url_for('register')}}">register here!</a>

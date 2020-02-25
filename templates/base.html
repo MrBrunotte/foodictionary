@@ -28,73 +28,80 @@
 
 <body>
     <!-- Dropdown structure for Recipe's and My Account Large screens -->
-    <ul id="dropdown1" class="dropdown-content">
+    <ul id="dropdown1" class="dropdown-content my-dropdown-content">
         {% for category in recipeCategory %}
-        <li><a class="nav-link"
+        <li><a class="nav-link my-nav-link"
                 href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
         </li>
         {% endfor %}
     </ul>
 
-    <ul id="dropdown2" class="dropdown-content">
-        <li class="username-nav">Hello {{session.username|capitalize}}</li>
-        <li><a href="{{url_for('add_recipe')}}" class="nav-link-mobile">add recipe</a></li>
-        <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
-        <li><a href="{{url_for('my_favorite_recipes', page=1)}}" class="nav-link">my favorite recipes</a></li>
-        <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
+    <ul id="dropdown2" class="dropdown-content my-dropdown-content">
+        <li class="username-nav my-username-nav">Hello {{session.username|capitalize}}</li>
+        <li><a href="{{url_for('add_recipe')}}" class="nav-link-mobile my-nav-link-mobile">add recipe</a></li>
+        <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link-mobile my-nav-link-mobile">my recipes</a></li>
+        <li><a href="{{url_for('my_favorite_recipes', page=1)}}" class="nav-link-mobile my-nav-link-mobile">my favorite
+                recipes</a></li>
+        <li><a href="{{url_for('logout')}}" class="nav-link-mobile my-nav-link-mobile">logout</a></li>
     </ul>
 
     <!-- Dropdown structure for Recipe's and My Account Sidenav -->
-    <ul id="dropdown3" class="dropdown-content">
+    <ul id="dropdown3" class="dropdown-content my-dropdown-content">
         {% for category in recipeCategory %}
-        <li><a class="nav-link-mobile"
+        <li><a class="nav-link-mobile my-nav-link-mobile"
                 href="{{url_for('browse_recipes', recipe_category_name = category.recipe_category_name, page=1)}}">{{category.recipe_category_name}}</a>
         </li>
         {% endfor %}
     </ul>
 
-    <nav>
+    <nav class="my-nav">
         <div class="nav-wrapper">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger mobile-color"><i
                     class="material-icons">menu</i></a>
             <a href="{{url_for('home')}}" class="brand-logo"></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{{url_for('home')}}" class="nav-link">home</a></li>
-                <li><a id="get_meal_desktop" href="{{url_for('random_meal')}}" class="nav-link">random recipe</a></li>
+                <li><a href="{{url_for('home')}}" class="nav-link my-nav-link">home</a></li>
+                <li><a id="get_meal_desktop" href="{{url_for('random_meal')}}" class="nav-link my-nav-link">random
+                        recipe</a></li>
                 <!-- Dropdown Trigger -->
-                <li><a class="dropdown-trigger nav-link" href="#!" data-target="dropdown1">recipe category<i
-                            class="material-icons right line-height">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger nav-link my-nav-link" href="#!" data-target="dropdown1">recipe category<i
+                            class="material-icons right line-height my-line-height">arrow_drop_down</i></a></li>
 
                 {% if session.logged_in %}
-                <li><a class="dropdown-trigger nav-link" href="#!" data-target="dropdown2">my account<i
-                            class="material-icons right line-height">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger nav-link my-nav-link" href="#!" data-target="dropdown2">my account<i
+                            class="material-icons right line-height my-line-height">arrow_drop_down</i></a></li>
                 {% else %}
-                <li><a href="{{url_for('login')}}" class="nav-link">login/register</a></li>
+                <li><a href="{{url_for('login')}}" class="nav-link my-nav-link">login/register</a></li>
                 {% endif %}
             </ul>
             <!-- sidemenu Mobile -->
-            <ul class="sidenav" id="mobile-demo">
+            <ul class="sidenav my-sidenav" id="mobile-demo">
                 <div class="background">
                     <img src="/static/images/three_burgers.jpg" class="sidenav-img">
                 </div>
                 <div class="hamburger-list">
-                    <li><a href="{{url_for('home')}}" class="nav-link-mobile">home</a></li>
-                    <li><a id="get_meal_desktop" href="{{url_for('random_meal')}}" class="nav-link-mobile">random
+                    <li><a href="{{url_for('home')}}" class="nav-link-mobile my-nav-link-mobile">home</a></li>
+                    <li><a id="get_meal_desktop" href="{{url_for('random_meal')}}"
+                            class="nav-link-mobile my-nav-link-mobile">random
                             recipe</a>
                     </li>
                     <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-trigger nav-link-mobile" href="#!" data-target="dropdown3">recipe category<i
-                                class="material-icons right line-height">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger nav-link-mobile my-nav-link-mobile" href="#!"
+                            data-target="dropdown3">recipe category<i
+                                class="material-icons right line-height my-line-height">arrow_drop_down</i></a></li>
                     <li class="divider"></li>
                     {% if session.logged_in %}
-                    <li class="username-nav">Hello {{session.username|capitalize}}</li>
-                    <li><a href="{{url_for('add_recipe')}}" class="nav-link-mobile">add recipe</a></li>
-                    <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
-                    <li><a href="{{url_for('my_favorite_recipes', page=1)}}" class="nav-link">my favorite recipes</a>
+                    <li class="username-nav my-username-nav">Hello {{session.username|capitalize}}</li>
+                    <li><a href="{{url_for('add_recipe')}}" class="nav-link-mobile my-nav-link-mobile">add recipe</a>
                     </li>
-                    <li><a href="{{url_for('logout')}}" class="nav-link">logout</a></li>
+                    <li><a href="{{url_for('my_recipes', page=1)}}" class="nav-link">my recipes</a></li>
+                    <li><a href="{{url_for('my_favorite_recipes', page=1)}}"
+                            class="nav-link-mobile my-nav-link-mobile">my favorite recipes</a>
+                    </li>
+                    <li><a href="{{url_for('logout')}}" class="nav-link-mobile my-nav-link-mobile">logout</a></li>
                     {% else %}
-                    <li><a href="{{url_for('login')}}" class="nav-link-mobile">login/register</a></li>
+                    <li><a href="{{url_for('login')}}" class="nav-link-mobile my-nav-link-mobile">login/register</a>
+                    </li>
                     {% endif %}
                 </div>
             </ul>
@@ -103,7 +110,7 @@
 
 
     <!--Main Body-->
-    <div id="page-container">
+    <div id="page-container my-container">
         <div id="content-wrap">
             <!-- Flask-Toastr -->
             {{ toastr.include_toastr_js() }}
@@ -116,7 +123,7 @@
             <div class="footer">
                 <div class="row center">
                     <div class="col s7 m9">
-                        <h5 class="footer-padding">About FOODictionary</h5>
+                        <h5 class="footer-padding my-h5">About FOODictionary</h5>
                         <p class="about">FOODictionary is your personalized cookbook!
                             <br>FOODictionary is a platform where you can add, edit and save your favorite recipes for
                             quick
@@ -132,7 +139,7 @@
                     </div>
 
                     <div class="col s5 m3 center">
-                        <h5 class="footer-padding">I'm social</h5>
+                        <h5 class="footer-padding my-h5">I'm social</h5>
                         <div class="center social">
                             <a href="https://www.facebook.com/brunotte" target="_blank"><img
                                     src="/static/images/social/facebook18px.png" class="social-padding"

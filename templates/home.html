@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <!-- top image -->
-<div class="top-image-home container"></div>
+<div class="top-image-home container my-container"></div>
 <!-- text section home -->
-<div class="container background-light-gray">
+<div class="container my-container background-light-gray">
     <div class="row">
         <div class="col s12">
             {% if session.logged_in %}
@@ -19,17 +19,15 @@
 
 
 <!-- Section: Tags -->
-<div class="container">
+<div class="container my-container">
     <div class="row">
         <div class="col s12 center tags-whitespace">
-            <h5 class="tags-header-whitespace">Popular tags</h5>
+            <h5 class="tags-header-whitespace my-h5">Popular tags</h5>
             {% set _stub = recipes.rewind() %}
             <!--Limit no of Tags displayed -->
             {% for items in tags[0:20] %}
             {% if items !="" %}
-            <div class="chip">
-                <a href="{{url_for('tag_search', tag=items, page=1)}}">{{items}}</a>
-            </div>
+            <a href="{{url_for('tag_search', tag=items, page=1)}}" class="chip chip-test my-chip-test">{{items}}</a>
             {% endif %}
             {% endfor %}
         </div>
@@ -37,18 +35,18 @@
 </div>
 
 <!-- Section: Search -->
-<div id="search" class=" container section section-search search-background darken-1 white-text center scrollspy">
-    <div class="container">
+<div id="search" class=" container my-container section section-search search-background darken-1 white-text center scrollspy">
+    <div class="container my-container">
         <div class="row">
             <div class="col s12">
                 <h3 class="search-recipes">Search Recipes</h3>
                 <div class="input-field">
                     <form action="{{url_for('receive_keyword', page=1)}}" id="search-form" method="post" target="_top">
-                        <input class="radius white grey-text autocomplete" id="search-text" name="keyword"
+                        <input class="radius my-radius white grey-text autocomplete" id="search-text" name="keyword"
                             placeholder="Search for Recipe's, Tags or Ingredients..." type="text" />
-                        <button class="search-whitespace waves-effect waves-light btn-small" id="search-button"
+                        <button class="search-whitespace waves-effect waves-light btn-small my-btn-small" id="search-button"
                             type="submit">
-                            <i class="material-icons no-margin right">search</i>
+                            <i class="material-icons no-margin my-no-margin right">search</i>
                         </button>
                     </form>
                 </div>
@@ -58,7 +56,7 @@
 </div>
 
 <!-- Section: Categories -->
-<div class="container">
+<div class="container my-container">
     <div class="row">
         <div class="col s12 center tags-whitespace">
 

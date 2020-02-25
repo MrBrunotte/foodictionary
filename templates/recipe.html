@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <!-- top image -->
 <div class="top-image-my-recipes"></div>
-<div class="container container-width">
+<div class="container my-container container-width">
     <!-- title of page-->
-    <h5 class="form-title recipe-name">{{recipe.recipe_name}}</h5>
+    <h5 class="form-title recipe-name my-h5">{{recipe.recipe_name}}</h5>
 
     <!-- Recipe info-->
     <div class="row recipe-info">
@@ -24,12 +24,14 @@
             <div class="col s12 center">
                 {% if recipe.author_name == session.username %}
                 {% if recipe.favorite != true %}
-                <a href="{{url_for('add_favorite_recipe_page', recipe_id = recipe._id)}}" class="btn-floating">
-                    <i class="material-icons">add</i>
+                <a href="{{url_for('add_favorite_recipe_page', recipe_id = recipe._id)}}"
+                    class="btn-floating my-btn-floating">
+                    <i class="material-icons">favorite</i>
                 </a>
                 <div class="info-fonts add-to-favorite">click and add to favorite's</div>
                 {% else %}
-                <a href="{{url_for('remove_favorite_recipe_page', recipe_id = recipe._id)}}" class="btn-floating blury">
+                <a href="{{url_for('remove_favorite_recipe_page', recipe_id = recipe._id)}}"
+                    class="btn-floating my-btn-floating blury">
                     <i class="material-icons">remove</i>
                 </a>
                 <div class="info-fonts add-to-favorite">click and remove from favorite's</div>
@@ -111,19 +113,17 @@
     <div class="row text-background">
         <!-- Recipe tags -->
         <div class="col s12 center">
-            <h5 class="form-subtitle">Recipe Tags </h5>
+            <h5 class="form-subtitle my-h5">Recipe Tags </h5>
             {% for items in recipe.recipe_tags %}
             {% if items !="" %}
-            <div class="chip">
-                <a href="{{url_for('tag_search',tag=items, page=1)}}">{{items}}</a>
-            </div>
+            <a href="{{url_for('tag_search',tag=items, page=1)}}" class="chip chip-test my-chip-test">{{items}}</a>
             {% endif %}
             {% endfor %}
         </div>
 
         <!-- Recipe ingredients -->
         <div class="col s12 l4 recipe-padding">
-            <h5 class="form-subtitle position-ingredients">Ingredients</h5>
+            <h5 class="form-subtitle position-ingredients my-h5">Ingredients</h5>
             <ul class="ul-style">
                 {% for items in recipe.recipe_ingredients %}
                 <li>{{items}}</li>
@@ -133,7 +133,7 @@
 
         <!-- Recipe method -->
         <div class="col s12 l8 recipe-padding">
-            <h5 class="form-subtitle position-method">Method</h5>
+            <h5 class="form-subtitle position-method my-h5">Method</h5>
             <ol class="ol-recipe">
                 {% for items in recipe.recipe_method %}
                 <li>{{items}}</li>

@@ -52,7 +52,7 @@ def register():
 @app.route('/signup', methods=['POST'])
 def signup():
     session.permanent = True
-    app.permanent_session_lifetime = timedelta(minutes=30)
+    #app.permanent_session_lifetime = timedelta(minutes=30)
     author_name = request.form.get('author_name')
     username = request.form.get('username').lower()
     password = generate_password_hash(request.form.get('password'))
@@ -110,6 +110,7 @@ def signin():
 @app.route('/logout', methods=['GET'])
 def logout():
     session['logged_in'] = False
+    session['username'] = None
     flash('You are now logged out!', 'success')
     return redirect('home')
 

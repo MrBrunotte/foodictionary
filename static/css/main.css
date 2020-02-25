@@ -15,10 +15,6 @@
     --orange: #e79b508f;
 }
 
-/*.gray {
-    color: var(--gray) !important;
-}*/
-
 * {
     box-sizing: border-box;         /* to remove all padding and margings */
 }
@@ -41,11 +37,12 @@ a {
     color: var(--orange);
 }
 
-.container {
-    width: 85% !important;
+.my-container {
+    width: 85%;
 }
-.row {
-    margin-bottom: 0 !important;
+
+.my-row {
+    margin-bottom: 0;
 }
 
 /* ==================
@@ -61,8 +58,8 @@ h5 {
     margin-top: 0;
 }
 
-h5 {
-    text-transform: capitalize !important;
+.my-h5 {
+    text-transform: capitalize;
 }
 
 h6 {
@@ -84,58 +81,81 @@ nav {
     height: 40px;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+/* imporant used because of specificity need to overwrite a tag with a class */
+.my-nav {
     line-height: 35px !important;
 }
 
 .dropdown-content {
-    width: max-content !important;
-    height:auto !important;
+    
     top: -40px;
+}
+
+.my-dropdown-content {
+    width: max-content;
+    height: auto;
 }
 
 
 .dropdown-content li > a, 
 .dropdown-content li > span {
-    color: var(--black) !important;
-    text-transform: capitalize !important;
-    background-color: #fafaee !important;
     font-size: 14px;
     letter-spacing: 1px;
-    font-weight: 900 !important;
 }
 
-.line-height {
+.my-dropdown-content li > a, 
+.my-dropdown-content li > span {
+    color: var(--black);
+    text-transform: capitalize;
+    background-color: #fafaee;
+    font-weight: 900;
+}
+
+.my-line-height {
     line-height: 35px !important;
 }
 
 .username-nav {
-    color: var(--black) !important;
     background-color: #fafaee;
-    text-align: center !important;
     padding: 14px 16px;
 }
+
+.my-username-nav {
+    color: var(--black);
+    text-align: center;
+
+}
+
 
 .nav-link,
 .nav-link-mobile {
     text-decoration: none;
-    text-transform: capitalize !important;
     font-family: 'Ubuntu', sans-serif;
     color: var(--black);
-    background-color: transparent !important;
+}
+
+.my-nav-link,
+.my-nav-link-mobile {
+    text-transform: capitalize;
+    background-color: transparent;
 }
 
 .nav-link:hover,
+.my-nav-link:hover,
 .nav-link:focus,
+.my-nav-link:focus,
 .nav-link-mobile:hover,
-.nav-link-mobile:focus {
+.my-nav-link-mobile:hover,
+.nav-link-mobile:focus,
+.my-nav-link-mobile:focus {
     color: var(--black);
 }
 
 [type="checkbox"]:checked + span:not(.lever)::before {
     color: var(--black) !important;
 }
-
-
 
 .mobile-color {
     color: var(--black);
@@ -172,7 +192,8 @@ nav .brand-logo.center {
 
 /* Navigation smaller screens*/
 
-.sidenav{
+.sidenav,
+.my-sidenav {
     background-image: url(/static/images/background_image.png);
     background-size: cover;
     background-position: center;
@@ -180,14 +201,17 @@ nav .brand-logo.center {
     object-fit: cover;
 }
 
-.sidenav-img {
-    width: 100%;
-}
-
 .sidenav li > a {
     color: var(--black);
     font-size: 1rem;
-    font-weight: 900 !important;
+}
+
+.my-sidenav li > a {
+    font-weight: 900;
+}
+
+.sidenav-img {
+    width: 100%;
 }
 
 .sm {
@@ -205,66 +229,84 @@ nav .brand-logo.center {
 /* ==========
     Buttons 
 ============= */
-.btn-margin {
-    margin: 2em !important;
+.my-btn-margin {
+    margin: 2em;
 }
 
 .btn-small {
-    background-color: var(--orange) !important;
     color: var(--black);
 }
 
+.my-btn-small {
+    background-color: var(--orange);
+}
+
 .btn:hover,
-.btn-small:hover {
-    background-color: var(--black) !important;
+.my-btn-small:hover {
     color: var(--white);
 }
 
-.chip {
-    background-color: var(--orange) !important;
-    margin-bottom: 15px;
-    margin-right: 15px;
+.my-btn-small:hover {
+    background-color: var(--black);
 }
 
-.chip:hover {
-    background-color: var(--gray) !important;
-}
-
-.chip a:hover {
-    color: var(--white);
-}
-
-.chip a{
+.chip-test{
     font-size: .8rem;
     text-transform: uppercase;
     color: var(--black);
     font-weight: 900;
+    margin-bottom: 15px;
+    margin-right: 15px;
 }
 
+.my-chip-test {
+    background-color: var(--orange);
+}
+
+.chip-test:hover {
+    color: var(--white);
+}
+
+.my-chip-test:hover {
+    background-color: var(--gray);
+}
+
+.black-chip {
+    color: var(--gray) !important;
+}
+
+/* need to overwrite the materialize css here! */
 .blury {
-    background-color: var(--grayOpacity) !important;
+    background-color: var(--grayOpacity)!important;
 }
 
+/* need to overwrite the materialize css here! */
 .blury:hover {
-    background-color: var(--black) !important;
+    background-color: red !important;
 }
 
 .btn-floating {
     background-color: #e79b50;
-    border-radius: 5px !important;
+}
+
+.my-btn-floating {
+    border-radius: 5px;
 }
 
 .btn-floating:hover {
-    background-color: var(--black);
+    background-color: green;
 }
 
 .btn-floating i {
     width: inherit;
-    display: block !important;
     text-align: center;
-    color: var(--white) !important;
     font-size: 1.9rem;
     line-height: 40px;
+}
+
+.my-my-btn-floating  {
+    display: block;
+    color: var(--white);
 }
 
 .btn-group {
@@ -285,22 +327,6 @@ nav .brand-logo.center {
 .sign-in-link:focus,
 ::placeholder {
     color: var(--black);
-}
-
-.btn-form {
-    color: var(--black) !important;
-    padding: 0 2rem;
-    margin-top: 1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: .5px;
-    justify-self: center;
-}
-
-.btn-form {
-    background-color: #e79b50 !important;
-    font-size: 1rem;
 }
 
 /* ======================
@@ -342,11 +368,13 @@ nav .brand-logo.center {
     color: var(--black);
 }
 
-.login-input {
-    height: 2rem !important;
-    font-size: 1rem !important;
-    margin: 0px 0px 3px !important
+.my-login-input {
+    height: 2rem;
+    font-size: 1rem;
+    margin: 0px 0px 3px;
 }
+
+/* imporant used because of specificity need to overwrite a tag with a class */
 input:focus,
 input:active {
     border-bottom: 1.5px solid var(--black) !important;
@@ -406,8 +434,8 @@ input:active {
     font-size: 0px !important;
 }
 
-.radius {
-    border-radius: 50px !important;
+.my-radius {
+    border-radius: 50px;
 }
 
 input[type="text"]:not(.browser-default),
@@ -425,9 +453,13 @@ input[type="password"]:not(.browser-default) {
 }
 
 .no-margin {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
+}
 
+.my-no-margin {
+    margin: 0;
+    padding: 0;
 }
 
 .tags-whitespace {
@@ -598,7 +630,11 @@ a .img-card {
 }
 
 .img-card {
-    height: 250px !important;
+    height: 250px;
+}
+
+.my-img-card {
+    height: 250px;
 }
 
 .my-card-title {
@@ -611,6 +647,10 @@ a .img-card {
 .my-card-action {
     background-color: var(--gray);
     height: 50px;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 .my-card-action:hover {
@@ -628,6 +668,7 @@ a .img-card {
 .my-card-action a {
     margin: auto 1em;
     line-height: 2.5;
+    color: white;
 }
 
 .my-card-action a:hover,
@@ -742,7 +783,8 @@ a .img-card {
     background: rgb(190, 190, 190, 0.3);
 }
 
-.recipe-padding{
+/* imporant used because of specificity need to overwrite a tag with a class */
+.recipe-padding {
     padding-left: 1.5em !important;
     padding-right: 1.5em !important;
 }
@@ -761,6 +803,7 @@ a .img-card {
     padding-left: 1rem;
 }
 
+/* imporant used because of specificity need to overwrite a tag with a class */
 .ul-style {
     padding-left: 2rem !important;
 }
@@ -839,10 +882,6 @@ a .img-card {
 
 .wrapper-browse-recipes {
     min-height: calc(100vh - 215px);
-}
-
-.wrapper-keyword-search {
-    min-height: 31vh;
 }
 
 .footer {
@@ -928,12 +967,12 @@ a .img-card {
     .title-home         { font-size: 1.5rem;}
     .subtitle-home      { font-size: 1rem;}
     .tags-header-whitespace             { font-size: 1rem;}
-    .chip               { margin-bottom: 5px;
+    .chip-test          { margin-bottom: 5px;
                           margin-right: 5px;
                           height: 20px;
                           font-size: 5px;
-                          line-height: 20px;}
-    .chip a             { text-transform: capitalize;
+                          line-height: 20px;
+                          text-transform: capitalize;
                           font-size: .7rem;}
     .search-recipes     { font-size: 1.5rem;}
     input[type="text"]:not(.browser-default)    { font-size: 9px;
@@ -948,7 +987,8 @@ a .img-card {
     .btn-small i        {font-size: .7rem;}
     .recipe-name        { margin: 10px;
                           padding: ;}
-    .img-card           { height: 170px !important;}
+    .img-card           { height: 170px;}
+    .my-img-card           { height: 170px;}
     .my-card-title      { font-size: .8rem;}
     .my-card-content    { height: 220px;
                           padding: 2em 1em;}
@@ -977,7 +1017,7 @@ a .img-card {
     .title-home             { font-size: 2rem;}
     .subtitle-home          { font-size: 1.5rem;}
     .search-recipes         { font-size: 2rem;}
-    .chip                   { margin: 3px 0;}
+    .chip-test                   { margin: 3px 0;}
     .tags-header-whitespace { margin-bottom: .5em;}
     .smaller-scr-size       { font-size: .6rem;}
     .background             { height: 130px;}
@@ -993,7 +1033,8 @@ a .img-card {
     /* random meal section*/
     .form-title             { font-size: 1.5rem;}
     .recipe-name            { margin: 1em 0 0;}
-    .btn-margin             { margin: 0 0 1em !important;}
+    .btn-margin             { margin: 0 0 1em;}
+    .my-btn-margin          { margin: 0 0 1em;}
     .image-random-meal      { display: flex;
                               justify-content: flex-start;
                               margin: 0 auto;

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <!-- top image -->
-<div class="top-image-my-recipes container"></div>
-<div class="container">
+<div class="top-image-my-recipes container my-container"></div>
+<div class="container my-container">
     <div class="wrapper-browse-recipes">
         <h4 class="center form-title">{{recipe_category_name}}</h4>
         {% if session['logged_in'] and count_recipes == 0 %}
@@ -52,19 +52,15 @@
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img class="img-card"
+                        <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img class="img-card my-img-card"
                                 src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}"></a>
                         <form action="{{url_for('recipe_favorite', recipe_id = recipe._id)}}" method="POST"
                             class="col s12">
                             {% if recipe.author_name == session.username %}
-                            {% if recipe.favorite != true %}
+                            {% if session['logged_in'] and not recipe.favorite %}
                             <a href="{{url_for('add_favorite_recipe_browse_recipes', recipe_id = recipe._id, recipe_category_name = recipe_category_name, page = page, destination = 'browse_recipes')}}"
-                                class="halfway-fab btn-floating">
-                                <i class="material-icons">add</i></a>
-                            {% else %}
-                            <a href="{{url_for('remove_favorite_recipe_browse_recipes', recipe_id = recipe._id, recipe_category_name = recipe_category_name, page = page, destination = 'browse_recipes')}}"
-                                class="halfway-fab btn-floating blury">
-                                <i class="material-icons">remove</i></a>
+                                class="halfway-fab btn-floating my-btn-floating">
+                                <i class="material-icons">favorite</i></a>
                             {% endif %}
                             {% endif %}
                         </form>

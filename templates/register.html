@@ -1,33 +1,33 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="main-content-forms container">
+<div class="main-content-forms container my-container">
     <div class="container-form">
         {% if session['logged_in'] %}v
         <p class="alert-text">You are already logged in. You don't need to register!</p>
         <p class="alert-text">Go to <a class="sign-in-link" href="{{url_for('home')}}">Home</a></p>
         {% else %}
         <form action="{{url_for('signup')}}" method="POST" class="form-register">
-            <h5 class="log-reg-title">Register to personalize your cookbook!</h5>
+            <h5 class="log-reg-title my-h5">Register to personalize your cookbook!</h5>
             <fieldset class="form-group">
                 <legend class="legend-text">Register</legend>
 
                 <div class="group">
                     <h6 class="login-label">Type Your Full Name</h6>
-                    <input class="login-input validate" id="author_name" name="author_name" type="text" value=""
+                    <input class="login-input my-login-input validate" id="author_name" name="author_name" type="text" value=""
                         placeholder="" required>
 
                     <h6 class="login-label">Choose a Username</h6>
-                    <input class="login-input validate" id="login-name" name="username" type="text" value=""
+                    <input class="login-input my-login-input validate" id="login-name" name="username" type="text" value=""
                         placeholder="" required>
 
                     <h6 class="login-label">Choose a Password</h6>
-                    <input class="login-input validate" id="password" type="password" value="" placeholder=""
+                    <input class="login-input my-login-input validate" id="password" type="password" value="" placeholder=""
                         name="password" required>
                 </div>
             </fieldset>
             <div class="btn-group">
                 <button type="submit" name="action" value="Join Now"
-                    class="waves-effect waves-light btn-small">submit</button>
+                    class="waves-effect waves-light btn-small my-btn-small">submit</button>
             </div>
 
             <div class="bottom-text">

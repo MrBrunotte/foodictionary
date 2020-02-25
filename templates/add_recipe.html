@@ -2,17 +2,17 @@
 {% if session['logged_in'] %}
 
 <!-- top image -->
-<div class="top-image-add-form container"></div>
+<div class="top-image-add-form container my-container"></div>
 
 <!-- title of page-->
-<h5 class="form-title">add your recipe</h5>
+<h5 class="form-title my-h5">add your recipe</h5>
 
 <!-- Edit recipe -->
-<div class="container">
-    <div class="row">
+<div class="container my-container">
+    <div class="row my-row">
         <form action="{{ url_for('insert_recipe', author=session.get('username')) }}" method="POST" class="col s12">
 
-            <div class="row">
+            <div class="row my-row">
                 <!-- Recipe name -->
                 <div class="input-field col s12">
                     <h6 class="edit-recipe-headers">recipe name</h6>
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row my-row">
                 <!-- Recipe description-->
                 <div class="input-field col s12">
                     <h6 class="edit-recipe-headers">description</h6>
@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row my-row">
                 <!-- Recipe category from mongoDB -->
                 <div class="input-field col s12 m6">
                     <h6 class="edit-recipe-headers">recipe category</h6>
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row my-row">
                 <!-- Prep time -->
                 <div class="input-field col s12 m6">
                     <h6 class="edit-recipe-headers">Preparation time</h6>
@@ -85,7 +85,7 @@
             </div>
 
             <!-- Add image -->
-            <div class="row">
+            <div class="row my-row">
                 <div class="input-field col s12">
                     <h6 class="edit-recipe-headers">Recipe image URL</h6>
                     <input placeholder="* Copy image location (http(s)://...) and paste it here" id="recipe_image"
@@ -96,7 +96,7 @@
             <!-- Add ingredients -->
             <!-- Add another ingredient: see custom.js "Add Ingredient to Recipe function" -->
             <!-- Remove added ingredient: see custom.js "Remove the Ingredient from Recipe" -->
-            <div class="row">
+            <div class="row my-row">
                 <div class="col s12">
                     <h6 class="edit-recipe-headers">Recipe ingredients</h6>
                     <div id="ingredients">
@@ -109,7 +109,7 @@
                 </div>
                 <!-- Add ingredient button -->
                 <div class="col s12">
-                    <a class="waves-effect waves-light btn-small" id="add_ingredient">Next ingredient<i
+                    <a class="waves-effect waves-light btn-small my-btn-small" id="add_ingredient">Next ingredient<i
                             class="material-icons">add</i></a>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             <!-- Recipe method -->
             <!-- Add next step: see custom.js "Add Step to Recipe Method" -->
             <!-- Add Step to Method: see custom.js "Add Step to Recipe Method" -->
-            <div class="row">
+            <div class="row my-row">
                 <div class="col s12">
                     <h6 class="edit-recipe-headers">Recipe method</h6>
                     <div id="steps">
@@ -129,14 +129,14 @@
                 </div>
                 <!-- Next step button -->
                 <div class="col s12">
-                    <a class="waves-effect waves-light btn-small" id="add_method_step">Next step<i
+                    <a class="waves-effect waves-light btn-small my-btn-small" id="add_method_step">Next step<i
                             class="material-icons">add</i></a>
                 </div>
 
             </div>
 
             <!-- Recipe tags -->
-            <div class="row">
+            <div class="row my-row">
                 <div class="col s12">
                     <h6 class="edit-recipe-headers">Recipe Tags</h6>
                     <input name="recipe_tags" value="" type="hidden">
@@ -145,8 +145,8 @@
             </div>
 
             <!-- Update button -->
-            <div class="row center col s12">
-                <button class="waves-effect waves-light btn-small" type="submit" name="action">Add Recipe
+            <div class="row my-row center col s12">
+                <button class="waves-effect waves-light btn-small my-btn-small" type="submit" name="action">Add Recipe
                     <i class="material-icons right">playlist_add</i>
                 </button>
             </div>
@@ -154,7 +154,7 @@
     </div>
 </div>
 {% else %}
-<div class="row vh">
+<div class="row my-row vh">
     <div class="col s12">
         <h4 class="login-recipe">You must be logged in to Add a Recipe!<br><br>Login <a
                 href="{{url_for('login')}}">here</a>

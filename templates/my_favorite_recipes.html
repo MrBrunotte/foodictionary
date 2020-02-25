@@ -2,10 +2,10 @@
 {% if session['logged_in'] %}
 
 <!-- top image -->
-<div class="top-image-my-recipes container"></div>
-<div class="container">
+<div class="top-image-my-recipes container my-container"></div>
+<div class="container my-container">
     <!-- title of page-->
-    <h5 class="form-title">my favorite recipes</h5>
+    <h5 class="form-title my-h5">my favorite recipes</h5>
 
     {% if count_recipes == 0 %}
     <p class="center">You don't have any favorite recipes yet. Why don't you <a href="{{url_for('add_recipe')}}">add
@@ -51,15 +51,15 @@
                 <div class="card">
                     <div class="card-image">
                         <a href="{{url_for('recipe_page', recipe_id = recipe._id)}}"><img src="{{recipe.recipe_image}}"
-                                class="img-card" alt="{{recipe.recipe_name}}"></a>
+                                class="img-card my-img-card" alt="{{recipe.recipe_name}}"></a>
                         {% if recipe.favorite != true %}
                         <a href="{{url_for('add_favorite_recipe', recipe_id = recipe._id, page = page, destination = 'my_favorite_recipes')}}"
-                            class="halfway-fab btn-floating">
-                            <i class="material-icons">add</i>
+                            class="halfway-fab btn-floating my-btn-floating">
+                            <i class="material-icons">favorite</i>
                         </a>
                         {% else %}
                         <a href="{{url_for('remove_favorite_recipe', recipe_id = recipe._id, page = page, destination = 'my_favorite_recipes')}}"
-                            class="halfway-fab btn-floating blury">
+                            class="halfway-fab btn-floating my-btn-floating blury">
                             <i class="material-icons">remove</i>
                         </a>
                         {% endif %}
