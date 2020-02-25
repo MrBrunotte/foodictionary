@@ -57,11 +57,11 @@ The website uses two differnt fonts to create typographic harmony.
 
 ### **Wireframe & Mockup**
 
-I have used [AdobeXD](https://www.adobe.com/se/products/xd.html) as my tool for the mockup.
+I have used **[AdobeXD](https://www.adobe.com/se/products/xd.html)** as my tool for the mockup.
 
 #### **Desktop & Mobile**
 
-See the [FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c-7b6cc300c5c0-d631/grid)
+See the **[FOODictionary Mockup](https://xd.adobe.com/view/a0007d73-1f7d-4b10-765c-7b6cc300c5c0-d631/grid)**
 
 
 
@@ -368,8 +368,8 @@ instructions under the heading [Create a MongoDB account](https://github.com/Ant
     * Set MongoDB database name as environment variable.
         * MacOS and Linux ````export MONGO_DBNAME=<mongo_DBNAME>````
         * Windows ````set MONGO_DBNAME=<mongo_DBNAME>````
-1.  Open up a terminal and run ````flask run````.
-2.  Navigate to the address the terminal returns to view **FOODictionary**.
+1.  Open up a terminal and run ````python app.py````.
+2.  Follow the link by (Ctrl + click) on **http://127.0.0.1:5000** to view **FOODictionary** in your browser.
 
 ### **Deploy to Heroku**
 
