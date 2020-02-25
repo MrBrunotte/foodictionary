@@ -1,6 +1,6 @@
 # **FOODictionary**
 
-![alt text](https://github.com/AnthonyNicklin/meat-free/blob/master/app/static/images/white_logo.png "Meat Free Logo")
+![alt text](https://github.com/MrBrunotte/foodictionary/blob/master/static/images/Landingpage.JPG "FOODictionary landingpage")
 
 **FOODictionary - Your personalized cookbook!**
 
